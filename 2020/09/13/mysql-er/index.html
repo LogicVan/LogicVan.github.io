@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MySQL(一), LogicVan&#39;s Blog">
+    <meta name="keywords" content="MySQL(二), LogicVan&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>MySQL(一) | LogicVan&#39;s Blog</title>
+    <title>MySQL(二) | LogicVan&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MySQL(一)</h1>
+                    <h1 class="description center-align post-title">MySQL(二)</h1>
                 </div>
             </div>
         </div>
@@ -481,14 +481,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    8 分
                 </div>
                 
 
@@ -503,242 +503,219 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>笔记来自于B站老杜数据库课程，这里主要是整理。</p>
-<h2 id="1-SQL、DB、DBMS及其中关系？"><a href="#1-SQL、DB、DBMS及其中关系？" class="headerlink" title="1.SQL、DB、DBMS及其中关系？"></a>1.SQL、DB、DBMS及其中关系？</h2><p><strong>DB</strong>：DataBase（数据库，数据库实际上是在硬盘上以<strong>文件</strong>的形式存在的）<br><strong>DBMS</strong>：DataBase Management System（数据库管理系统，常见的有：MySQL、Oracle、DB2、Sybase、SqlSever…）<br><strong>SQL</strong>：结构化查询语言，是一门标准通用的语言。标准的SQL语言适合于所有的数据库产品。<br>SQL属于高级语言。只要能看懂英语单词的，写出来的SQL语句，可以读懂什么意思。<br>SQL语句在执行的时候，实际上内部也会先进行编译，然后再执行SQL。（SQL语句的编译有DBMS完成）</p>
-<p>DBMS负责执行SQL语句，通过执行SQL语句来操作DB当中的数据。<br>DBMS–执行–&gt;SQL–操作–&gt;DB</p>
-<h2 id="2-什么是表"><a href="#2-什么是表" class="headerlink" title="2.什么是表"></a>2.什么是表</h2><p>表：table，是<strong>数据库的基本组成单元</strong>，所有的数据都以表格的形式组织，目的是<strong>可读性强</strong>。<br>一个表包括<strong>行</strong>和<strong>列</strong><br>    行：被称为<strong>数据/记录（data）</strong><br>    列：被称为<strong>字段</strong></p>
-<table>
-<thead>
-<tr>
-<th>学号（int）</th>
-<th>姓名（<strong>varchar</strong>）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>110</td>
-<td>张三</td>
-</tr>
-</tbody></table>
-<p>每一个字段应该包含：<br>      字段名、数据类型、相关的约数</p>
-<h2 id="3-SQL语句分类"><a href="#3-SQL语句分类" class="headerlink" title="3.SQL语句分类"></a>3.SQL语句分类</h2><p><strong>DQL（数据查询语言）</strong>：查询语句，凡是select语句都是DQL。<br><strong>DML（数据操作语言）</strong>：insert、delete、update，对表当中的数据进行增删改。<br><strong>DDL（数据定义语言）</strong>：create、drop、alter，对表结构进行增删改。<br><strong>TCL（事务控制语言）</strong>：commit提交事务，rollback回滚事务。（TCL中的T是Transaction）<br><strong>DCL（数据控制语言）</strong>：grant授权，revoke撤销权限等。</p>
-<h2 id="4、导入数据"><a href="#4、导入数据" class="headerlink" title="4、导入数据"></a>4、导入数据</h2><p>第一步：登录mysql数据库管理系统<br>        dos命令窗口：</p>
-<pre class=" language-java"><code class="language-java">mysql <span class="token operator">-</span>uroot <span class="token operator">-</span>p333</code></pre>
-<p>第二步：查看有哪些数据库</p>
-<pre class=" language-java"><code class="language-java">show databases<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这个不是SQL语句，属于MySQL的命令。</span></code></pre>
+                <h2 id="12-函数"><a href="#12-函数" class="headerlink" title="12.函数"></a>12.函数</h2><h3 id="12-1-字符函数"><a href="#12-1-字符函数" class="headerlink" title="12-1.字符函数"></a>12-1.字符函数</h3><p><strong>length函数</strong>用于获取参数值的字节个数</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">length</span><span class="token punctuation">(</span><span class="token string">'john'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>结果：</p>
 <blockquote>
-<p> +——————–+<br> | Database           |<br> +——————–+<br> | information_schema |<br> | mysql              |<br> | performance_schema |<br> | test               |<br> +——————–+</p>
+<p>4</p>
 </blockquote>
-<p>第三步：创建属于我们自己的数据库</p>
-<pre class=" language-java"><code class="language-java">create database bjpowernode<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这个不是SQL语句，属于MySQL的命令。</span></code></pre>
-<p>第四步：使用bjpowernode数据</p>
-<pre class=" language-java"><code class="language-java">use bjpowernode<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这个不是SQL语句，属于MySQL的命令。</span></code></pre>
-<p>第五步：查看当前使用的数据库中有哪些表？</p>
-<pre class=" language-java"><code class="language-java">show tables<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//(这个不是SQL语句，属于MySQL的命令。)</span></code></pre>
-<p>第六步：初始化数据</p>
-<pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> source D<span class="token operator">:</span>\course\<span class="token number">05</span><span class="token operator">-</span>MySQL\resources\bjpowernode<span class="token punctuation">.</span>sql</code></pre>
-<p><strong>注意</strong>：数据初始化完成之后，有三张表：</p>
+<p><strong>concat函数</strong>拼接字符串</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">concat</span><span class="token punctuation">(</span>l_name<span class="token punctuation">,</span><span class="token string">'_'</span><span class="token punctuation">,</span>f_name<span class="token punctuation">)</span> 姓名 from emp<span class="token punctuation">;</span></code></pre>
+<p><strong>upper、lower函数</strong>改变大小写<br><strong>substr、substring函数</strong>截取，索引从1开始</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//截取从指定索引处后面的所有字符</span>
+select <span class="token function">substr</span><span class="token punctuation">(</span><span class="token string">'李莫愁爱上了陆展元'</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//截取从指定索引处指定字符长度的字符</span>
+select <span class="token function">substr</span><span class="token punctuation">(</span><span class="token string">'李莫愁爱上了陆展元'</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>结果：</p>
 <blockquote>
-<pre><code>+-----------------------+</code></pre>
-<p>| Tables_in_bjpowernode |<br>+———————–+<br>| dept                  |<br>| emp                   |<br>| salgrade              |<br>+———————–+</p>
+<p>陆展元<br>李莫愁</p>
 </blockquote>
-<h2 id="5-sql文件"><a href="#5-sql文件" class="headerlink" title="5 .sql文件"></a>5 .sql文件</h2><p>bjpowernode.sql，这个文件以sql结尾，这样的文件被称为“SQL脚本”。什么是SQL脚本呢？<br>当一个文件的扩展名是.sql，并且该文件中编写了大量的SQL语句，我们称这样的文件为SQL脚本。<br><strong>注意</strong>：直接使用source命令可以执行SQL脚本。<br>SQL脚本中的数据量太大的时候，无法打开，请使用source命令完成初始化。 </p>
-<h2 id="6-删除数据库"><a href="#6-删除数据库" class="headerlink" title="6.删除数据库"></a>6.删除数据库</h2><pre class=" language-java"><code class="language-java">drop database bjpowernode<span class="token punctuation">;</span></code></pre>
-<h2 id="7-查看表结构"><a href="#7-查看表结构" class="headerlink" title="7.查看表结构"></a>7.查看表结构</h2><blockquote>
-<p>+———————–+<br>| Tables_in_bjpowernode |<br>+———————–+<br>| dept                  |   (部门表)<br>| emp                   |   (员工表)<br>| salgrade              |   (工资等级表)<br>+———————–+</p>
-</blockquote>
-<p>查看各个表的具体结构</p>
-<pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> desc dept<span class="token punctuation">;</span></code></pre>
+<p><strong>instr函数</strong>返回字符串第一次出现的索引，若找不到，则返回0</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">instr</span><span class="token punctuation">(</span><span class="token string">'杨不悔爱上了殷六侠'</span><span class="token punctuation">,</span><span class="token string">'殷六侠‘'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>结果：</p>
 <blockquote>
-<p>+——–+————-+——+—–+———+——-+<br>| Field  | Type        | Null | Key | Default | Extra |<br>+——–+————-+——+—–+———+——-+<br>| DEPTNO | int(2)      | NO   | PRI | NULL    |       |        部门编号<br>| DNAME  | varchar(14) | YES  |     | NULL    |       |        部门名称<br>| LOC    | varchar(13) | YES  |     | NULL    |       |        部门位置<br>+——–+————-+——+—–+———+——-+</p>
+<p>7</p>
 </blockquote>
-<pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> desc emp<span class="token punctuation">;</span></code></pre>
+<p><strong>trim函数</strong>去前后空格</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">trim</span><span class="token punctuation">(</span><span class="token string">'张翠山'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+select <span class="token function">trim</span><span class="token punctuation">(</span><span class="token string">'a'</span> from <span class="token string">'aaa张aaaa翠山aaaa'</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//去掉a</span></code></pre>
+<p>结果：</p>
 <blockquote>
-<p>+———-+————-+——+—–+———+——-+<br>| Field    | Type        | Null | Key | Default | Extra |<br>+———-+————-+——+—–+———+——-+<br>| EMPNO    | int(4)      | NO   | PRI | NULL    |       |    员工编号<br>| ENAME    | varchar(10) | YES  |     | NULL    |       |    员工姓名<br>| JOB      | varchar(9)  | YES  |     | NULL    |       |    工作岗位<br>| MGR      | int(4)      | YES  |     | NULL    |       |    上级领导编号<br>| HIREDATE | date        | YES  |     | NULL    |       |    入职日期<br>| SAL      | double(7,2) | YES  |     | NULL    |       |    月薪<br>| COMM     | double(7,2) | YES  |     | NULL    |       |    补助/津贴<br>| DEPTNO   | int(2)      | YES  |     | NULL    |       |    部门编号<br>+———-+————-+——+—–+———+——-+</p>
+<p>张翠山<br>张翠山</p>
 </blockquote>
-<pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> desc salgrade<span class="token punctuation">;</span></code></pre>
+<p><strong>lpad函数</strong>用指定字符实现左填充指定长度</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">lpad</span><span class="token punctuation">(</span><span class="token string">'aaa'</span><span class="token punctuation">,</span><span class="token string">'5'</span><span class="token punctuation">,</span><span class="token string">'*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>结果：</p>
 <blockquote>
-<p>+——-+———+——+—–+———+——-+<br>| Field | Type    | Null | Key | Default | Extra |<br>+——-+———+——+—–+———+——-+<br>| GRADE | int(11) | YES  |     | NULL    |       |        等级<br>| LOSAL | int(11) | YES  |     | NULL    |       |        最低薪资<br>| HISAL | int(11) | YES  |     | NULL    |       |        最高薪资<br>+——-+———+——+—–+———+——-+</p>
+<p>**aaa</p>
 </blockquote>
-<h2 id="8-表中的数据"><a href="#8-表中的数据" class="headerlink" title="8.表中的数据"></a>8.表中的数据</h2><pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> select <span class="token operator">*</span> from emp<span class="token punctuation">;</span></code></pre>
+<p><strong>rpad函数</strong>同上<br><strong>replace函数</strong>替换</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'aaabbbddd'</span><span class="token punctuation">,</span><span class="token string">'ddd'</span><span class="token punctuation">,</span><span class="token string">'ccc'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>结果：</p>
 <blockquote>
-<p>+——-+——–+———–+——+————+———+———+——–+<br>| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |<br>+——-+——–+———–+——+————+———+———+——–+<br>|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |<br>|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |<br>|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |<br>|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |<br>|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |<br>|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |<br>|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |<br>|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |<br>|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |<br>|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |<br>|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |<br>|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |<br>|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |<br>|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |<br>+——-+——–+———–+——+————+———+———+——–+</p>
+<p>aaabbbccc</p>
 </blockquote>
-<pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> select <span class="token operator">*</span> from dept<span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+——–+————+———-+<br>| DEPTNO | DNAME      | LOC      |<br>+——–+————+———-+<br>|     10 | ACCOUNTING | NEW YORK |<br>|     20 | RESEARCH   | DALLAS   |<br>|     30 | SALES      | CHICAGO  |<br>|     40 | OPERATIONS | BOSTON   |<br>+——–+————+———-+</p>
-</blockquote>
-<pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> select <span class="token operator">*</span> from salgrade<span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+——-+——-+——-+<br>| GRADE | LOSAL | HISAL |<br>+——-+——-+——-+<br>|     1 |   700 |  1200 |<br>|     2 |  1201 |  1400 |<br>|     3 |  1401 |  2000 |<br>|     4 |  2001 |  3000 |<br>|     5 |  3001 |  9999 |<br>+——-+——-+——-+</p>
-</blockquote>
-<h2 id="9-常用命令"><a href="#9-常用命令" class="headerlink" title="9.常用命令"></a>9.常用命令</h2><pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> select <span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//查看当前使用的是哪个数据库</span></code></pre>
-<blockquote>
-<p>+————-+<br>| database()  |<br>+————-+<br>| bjpowernode |<br>+————-+</p>
-</blockquote>
-<pre class=" language-java"><code class="language-java">mysql<span class="token operator">></span> select <span class="token function">version</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//查看mysql的版本号。</span></code></pre>
-<blockquote>
-<p>+———–+<br>| version() |<br>+———–+<br>| 5.5.36    |<br>+———–+</p>
-</blockquote>
-<p>\c   命令，结束一条语句。</p>
-<p>exit 命令，退出mysql。</p>
-<h2 id="10-查看创建表的语句"><a href="#10-查看创建表的语句" class="headerlink" title="10.查看创建表的语句"></a>10.查看创建表的语句</h2><pre class=" language-java"><code class="language-java">    show create table emp<span class="token punctuation">;</span></code></pre>
-<h2 id="11-DQL"><a href="#11-DQL" class="headerlink" title="11.DQL"></a>11.DQL</h2><h3 id="11-1-简单的查询语句"><a href="#11-1-简单的查询语句" class="headerlink" title="11-1.简单的查询语句"></a>11-1.简单的查询语句</h3><p><strong>语法格式</strong>：</p>
+<h3 id="12-2-数学函数"><a href="#12-2-数学函数" class="headerlink" title="12-2.数学函数"></a>12-2.数学函数</h3><p><strong>round()函数</strong>四舍五入<br><strong>ceil函数</strong>向上取整<br><strong>floor函数</strong>向下取整<br><strong>truncate函数</strong>截断<br><strong>mod函数</strong>取余</p>
+<h3 id="12-3-日期函数"><a href="#12-3-日期函数" class="headerlink" title="12-3.日期函数"></a>12-3.日期函数</h3><p><strong>now函数</strong></p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>curdate函数</strong>返回当前日期，不包含时间</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>curtime函数</strong>返回当前时间，不包含日期<br><strong>获取指定部分，年，月，日</strong></p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">year</span><span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> as <span class="token string">'年'</span><span class="token punctuation">;</span></code></pre>
+<p><strong>str_to_date函数</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token function">str_to_date</span><span class="token punctuation">(</span><span class="token string">'9-13-1999'</span><span class="token punctuation">,</span><span class="token string">'%m-%d-%Y'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><strong>date_format函数</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token function">date_format</span><span class="token punctuation">(</span><span class="token string">'2018/6/6'</span><span class="token punctuation">,</span><span class="token string">'%Y年%m月%d日'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="12-4-其他函数"><a href="#12-4-其他函数" class="headerlink" title="12-4.其他函数"></a>12-4.其他函数</h3><p><strong>version()</strong><br><strong>database()</strong><br><strong>user()</strong></p>
+<h2 id="13-排序（升序，降序）"><a href="#13-排序（升序，降序）" class="headerlink" title="13.排序（升序，降序）"></a>13.排序（升序，降序）</h2><p>按照工资升序，找出员工名和薪资？</p>
 <pre class=" language-java"><code class="language-java">select 
-    字段名<span class="token number">1</span><span class="token punctuation">,</span>字段名<span class="token number">2</span><span class="token punctuation">,</span>字段名<span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+    ename<span class="token punctuation">,</span>sal
 from 
-    表名<span class="token punctuation">;</span></code></pre>
-<p>提示：</p>
-<ol>
-<li>任何一条SQL语句以“;”结尾。</li>
-<li>SQL语句不区分大小写。</li>
-</ol>
-<p>特点：</p>
-<ul>
-<li>查询列表可以是：表中字段，常量值，表达式，函数。</li>
-<li>查询的结果是一个虚拟的表格。</li>
-</ul>
-<p>例：<br>查询员工的年薪？<strong>（字段可以参与数学运算）</strong></p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal <span class="token operator">*</span> <span class="token number">12</span> from emp<span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>+——–+———-+<br>| ename  | sal * 12 |<br>+——–+———-+<br>| SMITH  |  9600.00 |<br>| ALLEN  | 19200.00 |<br>| WARD   | 15000.00 |<br>| JONES  | 35700.00 |<br>| MARTIN | 15000.00 |<br>| BLAKE  | 34200.00 |<br>| CLARK  | 29400.00 |<br>| SCOTT  | 36000.00 |<br>| KING   | 60000.00 |<br>| TURNER | 18000.00 |<br>| ADAMS  | 13200.00 |<br>| JAMES  | 11400.00 |<br>| FORD   | 36000.00 |<br>| MILLER | 15600.00 |<br>+——–+———-+</p>
-</blockquote>
-<p>给查询结果的列重命名？</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal <span class="token operator">*</span> <span class="token number">12</span> <span class="token operator">*</span><span class="token operator">*</span>as<span class="token operator">*</span><span class="token operator">*</span> yearsal from emp<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//as可省略，空格代替</span></code></pre>
-<p>别名中有中文？</p>
-<pre class=" language-java"><code class="language-java">        select ename<span class="token punctuation">,</span>sal <span class="token operator">*</span> <span class="token number">12</span> as 年薪 from emp<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 错误</span>
-        select ename<span class="token punctuation">,</span>sal <span class="token operator">*</span> <span class="token number">12</span> as <span class="token string">'年薪'</span> from emp<span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>+——–+———-+<br>| ename  | 年薪        |<br>+——–+———-+<br>| SMITH  |  9600.00 |<br>| ALLEN  | 19200.00 |<br>| WARD   | 15000.00 |<br>| JONES  | 35700.00 |<br>| MARTIN | 15000.00 |<br>| BLAKE  | 34200.00 |<br>| CLARK  | 29400.00 |<br>| SCOTT  | 36000.00 |<br>| KING   | 60000.00 |<br>| TURNER | 18000.00 |<br>| ADAMS  | 13200.00 |<br>| JAMES  | 11400.00 |<br>| FORD   | 36000.00 |<br>| MILLER | 15600.00 |<br>+——–+———-+</p>
-</blockquote>
-<p><strong>PS</strong>：标准SQL语句中要求字符串使用单引号括起来。虽然MySQL支持双引号，尽量别用。</p>
-<p>查询所有字段</p>
-<pre class=" language-java"><code class="language-java">select <span class="token operator">*</span> from emp<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 实际开发中不建议使用*，效率较低。</span></code></pre>
-<p>去重：<br>distinct关键字</p>
-<pre class=" language-java"><code class="language-java">select distinct ename from emp<span class="token punctuation">;</span></code></pre>
-<p>==distinct只能出现在所有字段的最前面。此时后面所有的字段联合起来去重==</p>
-<p>统计岗位的数量？</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">count</span><span class="token punctuation">(</span>distinct job<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
-<p>‘+’号作用<br>MySQL中的‘+’号作用，只有一个功能，就是==运算符==</p>
-<ul>
-<li>如果两个操作数都是数值型，则做加法运算；</li>
-<li>如果其中一方为字符型，试图将字符型数值转换成数值型，如果转换成功，则继续做加法运算，如果转换失败，则将字符型数值转换为0；</li>
-<li>只要其中一方为null，结果肯定为null。</li>
-<li>若要连接/拼接两个字符，则要使用<strong>函数concat</strong>，例：concat(‘你好’，‘MySQL’);</li>
-</ul>
-<h3 id="11-2-条件查询"><a href="#11-2-条件查询" class="headerlink" title="11-2.条件查询"></a>11-2.条件查询</h3><p><strong>语法格式</strong>：</p>
-<pre class=" language-java"><code class="language-java">select 
-    字段<span class="token number">1</span><span class="token punctuation">,</span>字段<span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-from
-    表名
-where
-    条件<span class="token punctuation">;</span></code></pre>
-<p>==执行顺序：先from，然后where，最后select.==</p>
-<p>查询工资等于5000的员工姓名？</p>
-<pre class=" language-java"><code class="language-java">select 
-    ename
-from
     emp
-where
-    sal <span class="token operator">=</span> <span class="token number">5000</span><span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>+——-+<br>| ename |<br>+——-+<br>| KING  |<br>+——-+</p>
-</blockquote>
-<p>查询SMITH的工资？</p>
-<pre class=" language-java"><code class="language-java">select 
-    sal
-from
-    emp
-where
-    ename <span class="token operator">=</span> <span class="token string">'SMITH'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 字符串使用单引号括起来。</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>+——–+<br>| sal    |<br>+——–+<br>| 800.00 |<br>+——–+    </p>
-</blockquote>
-<p>找出工资高于3000的员工？</p>
-<pre class=" language-java"><code class="language-java">select 
-    ename<span class="token punctuation">,</span>sal
-from
-    emp
-where
-    sal <span class="token operator">></span> <span class="token number">3000</span><span class="token punctuation">;</span></code></pre>
-<p>找出工资不等于3000的？</p>
+order by
+    sal<span class="token punctuation">;</span></code></pre>
+<p><strong>PS</strong>:默认是升序。怎么指定升序或者降序呢？<strong>asc表示升序，desc表示降序</strong>。</p>
+<pre class=" language-java"><code class="language-java">select ename <span class="token punctuation">,</span> sal from emp order by sal<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 升序</span>
+select ename <span class="token punctuation">,</span> sal from emp order by sal asc<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 升序</span>
+select ename <span class="token punctuation">,</span> sal from emp order by sal desc<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 降序</span></code></pre>
+<p>按照工资的降序排列，当工资相同的时候再按照名字的升序排列。</p>
+<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp order by sal desc <span class="token punctuation">,</span> ename asc<span class="token punctuation">;</span></code></pre>
+<p><strong>PS</strong>:越靠前的字段越能起到主导作用。只有当前面的字段无法完成排序的时候，才会启用后面的字段。</p>
+<p>找出工作岗位是SALESMAN的员工，并且要求按照薪资的降序排列。</p>
 <pre class=" language-java"><code class="language-java">select
-    ename<span class="token punctuation">,</span>sal
-fom
+    ename<span class="token punctuation">,</span>job<span class="token punctuation">,</span>sal
+from
     emp
 where
-    sal <span class="token operator">&lt;</span><span class="token operator">></span> <span class="token number">3000</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//sal != 3000也可以</span></code></pre>
-<p>找出工资在1100和3000之间的员工，包括1100和3000？</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp where sal <span class="token operator">></span>  <span class="token number">1100</span> and sal <span class="token operator">&lt;</span> <span class="token number">3000</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//运用到了and</span>
-select ename<span class="token punctuation">,</span>sal from emp where sal between <span class="token number">1100</span> and <span class="token number">3000</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// between...and...是闭区间 [1100 ~ 3000]</span></code></pre>
-<p>between…and…在使用的时候必须左小右大。<br>between…and…除了可以使用在数字方面之外，还可以使用在字符串方面。</p>
-<pre class=" language-java"><code class="language-java">select ename from emp where ename between <span class="token string">'A'</span> and <span class="token string">'C'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 左闭右开</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<pre><code>+-------+</code></pre>
-<p>| ename |<br>+——-+<br>| ALLEN |<br>| BLAKE |<br>| ADAMS |<br>+——-+</p>
-</blockquote>
-<p>找出哪些人津贴为NULL？</p>
+    job <span class="token operator">=</span> <span class="token string">'SALESMAN'</span>
+order by
+    sal desc<span class="token punctuation">;</span></code></pre>
+<p><strong>总结</strong>：</p>
+<pre class=" language-java"><code class="language-java">select 
+    字段                        <span class="token number">3</span>
+from
+    表名                        <span class="token number">1</span>
+where
+    条件                        <span class="token number">2</span>
+order by
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                        <span class="token number">4</span>
+
+<span class="token comment" spellcheck="true">//order by是最后执行的。</span></code></pre>
+<h2 id="14-分组函数"><a href="#14-分组函数" class="headerlink" title="14.分组函数"></a>14.分组函数</h2><p><strong>count 计数<br>sum 求和<br>avg 平均值<br>max 最大值<br>min 最小值</strong><br>记住：所有的分组函数都是对“某一组”数据进行操作的。</p>
+<p>找出工资总和？</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">sum</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
+<p>找出最高工资？</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
+<p>找出总人数？</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> from emp<span class="token punctuation">;</span>
+select <span class="token function">count</span><span class="token punctuation">(</span>ename<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
+<p>count(*)和count(具体的某个字段)，他们有什么区别？</p>
 <ul>
-<li>在数据库当中NULL不是一个值，代表什么也没有，为空。</li>
-<li>空不是一个值，不能用等号衡量。</li>
-<li>必须使用 is null或者is not null</li>
+<li>count(*):不是统计某个字段中数据的个数，而是统计总记录条数。（和某个字段无关）</li>
+<li>count(comm): 表示统计comm字段中不为NULL的数据总数量。</li>
 </ul>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal<span class="token punctuation">,</span>comm from emp where comm is null<span class="token punctuation">;</span></code></pre>
+<p>分组函数一共5个。<br>分组函数还有另一个名字：多行处理函数。<br>多行处理函数的特点：<strong>输入多行，最终输出的结果是1行。</strong></p>
+<p>分组函数也能组合起来用：</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
 <p>结果：</p>
 <blockquote>
-<p>+——–+———+——+<br>| ename  | sal     | comm |<br>+——–+———+——+<br>| SMITH  |  800.00 | NULL |<br>| JONES  | 2975.00 | NULL |<br>| BLAKE  | 2850.00 | NULL |<br>| CLARK  | 2450.00 | NULL |<br>| SCOTT  | 3000.00 | NULL |<br>| KING   | 5000.00 | NULL |<br>| ADAMS  | 1100.00 | NULL |<br>| JAMES  |  950.00 | NULL |<br>| FORD   | 3000.00 | NULL |<br>| MILLER | 1300.00 | NULL |<br>+——–+———+——+</p>
+<p>+———-+———-+————-+———-+———-+<br>| count(*) | sum(sal) | avg(sal)    | max(sal) | min(sal) |<br>+———-+———-+————-+———-+———-+<br>|       14 | 29025.00 | 2073.214286 |  5000.00 |   800.00 |<br>+———-+———-+————-+———-+———-+</p>
 </blockquote>
-<p>若使用‘=’连接判断</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal<span class="token punctuation">,</span>comm from emp where comm <span class="token operator">=</span> null<span class="token punctuation">;</span></code></pre>
+<p><strong>分组函数自动忽略NULL。</strong></p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">count</span><span class="token punctuation">(</span>comm<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
 <p>结果：</p>
 <blockquote>
-<p>Empty set (0.00 sec)   //出现错误</p>
+<pre><code>+-------------+</code></pre>
+<p>| count(comm) |<br>+————-+<br>|           4 |<br>+————-+</p>
 </blockquote>
-<p>找出哪些人津贴不为NULL？</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal<span class="token punctuation">,</span>comm from emp where comm is not null<span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java">select <span class="token function">sum</span><span class="token punctuation">(</span>comm<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//select sum(comm) from emp where comm is not null; 不需要额外添加这个过滤条件。sum函数自动忽略NULL。</span></code></pre>
 <p>结果：</p>
 <blockquote>
-<p>+——–+———+———+<br>| ename  | sal     | comm    |<br>+——–+———+———+<br>| ALLEN  | 1600.00 |  300.00 |<br>| WARD   | 1250.00 |  500.00 |<br>| MARTIN | 1250.00 | 1400.00 |<br>| TURNER | 1500.00 |    0.00 |<br>+——–+———+———+</p>
+<pre><code>+-----------+</code></pre>
+<p>| sum(comm) |<br>+———–+<br>|   2200.00 |<br>+———–+</p>
 </blockquote>
-<p>找出哪些人没有津贴？</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal<span class="token punctuation">,</span>comm from emp where comm is null or comm <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//运用到了or</span></code></pre>
+<p>找出工资高于平均工资的员工？</p>
+<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp where sal <span class="token operator">></span> <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//ERROR 1111 (HY000): Invalid use of group function</span></code></pre>
+<p>分析：<br>以上的错误信息：无效地使用了分组函数。<br>原因：SQL语句当中有一个语法规则，==分组函数不可直接使用在where子句当中。<br>why——&gt;因为group by是在where执行之后才会执行的。</p>
+<pre class=" language-java"><code class="language-java">select            <span class="token number">5</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>            
+from            <span class="token number">1</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+where            <span class="token number">2</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+group by        <span class="token number">3</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+having            <span class="token number">4</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+order by        <span class="token number">6</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<p>解决：<br>第一步：找出平均工资</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
 <blockquote>
-<p>结果：<br>+——–+———+——+<br>| ename  | sal     | comm |<br>+——–+———+——+<br>| SMITH  |  800.00 | NULL |<br>| JONES  | 2975.00 | NULL |<br>| BLAKE  | 2850.00 | NULL |<br>| CLARK  | 2450.00 | NULL |<br>| SCOTT  | 3000.00 | NULL |<br>| KING   | 5000.00 | NULL |<br>| TURNER | 1500.00 | 0.00 |<br>| ADAMS  | 1100.00 | NULL |<br>| JAMES  |  950.00 | NULL |<br>| FORD   | 3000.00 | NULL |<br>| MILLER | 1300.00 | NULL |<br>+——–+———+——+</p>
+<p>+————-+<br>| avg(sal)    |<br>+————-+<br>| 2073.214286 |<br>+————-+</p>
 </blockquote>
-<p>in,not in,and和or联合使用</p>
-<p>找出工作岗位是MANAGER和SALESMAN的员工？</p>
-<pre class=" language-java"><code class="language-java">select ename from emp where job <span class="token operator">=</span> <span class="token string">'MANAGER'</span> or job <span class="token operator">=</span> <span class="token string">'SALESMAN'</span><span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
+<p>第二步：找出高于平均工资的员工</p>
+<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp where sal <span class="token operator">></span> <span class="token number">2073.214286</span><span class="token punctuation">;</span></code></pre>
 <blockquote>
-<p>+——–+———-+<br>| ename  | job      |<br>+——–+———-+<br>| ALLEN  | SALESMAN |<br>| WARD   | SALESMAN |<br>| JONES  | MANAGER  |<br>| MARTIN | SALESMAN |<br>| BLAKE  | MANAGER  |<br>| CLARK  | MANAGER  |<br>| TURNER | SALESMAN |<br>+——–+———-+</p>
+<p>+——-+———+<br>| ename | sal     |<br>+——-+———+<br>| JONES | 2975.00 |<br>| BLAKE | 2850.00 |<br>| CLARK | 2450.00 |<br>| SCOTT | 3000.00 |<br>| KING  | 5000.00 |<br>| FORD  | 3000.00 |<br>+——-+———+</p>
 </blockquote>
-<p>in等同于or</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>job from emp where job <span class="token function">in</span><span class="token punctuation">(</span><span class="token string">'SALESMAN'</span><span class="token punctuation">,</span> <span class="token string">'MANAGER'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// in后面的值不是区间，是具体的值。</span></code></pre>
-<p>not in: 不在这几个值当中。</p>
-<p>and和or联合起来使用：找出薪资大于1000的并且部门编号是20或30部门的员工。</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp where sal <span class="token operator">></span> <span class="token number">1000</span> <span class="token function">and</span> <span class="token punctuation">(</span>deptno <span class="token operator">=</span> <span class="token number">20</span> or deptno <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><strong>PS</strong>：当运算符的优先级不确定的时候加小括号。</p>
-<p>在模糊查询当中，必须掌握两个特殊的符号，一个是 % ，一个是 _ </p>
+<p>以上两步合为一步：</p>
+<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp where sal <span class="token operator">></span> <span class="token punctuation">(</span>select <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="15-单行处理函数"><a href="#15-单行处理函数" class="headerlink" title="15.单行处理函数"></a>15.单行处理函数</h2><p>什么是单行处理函数？输入一行，输出一行。</p>
+<p>计算每个员工的年薪？</p>
+<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span><span class="token punctuation">(</span>sal<span class="token operator">+</span>comm<span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">12</span> as yearsal from emp<span class="token punctuation">;</span></code></pre>
+<p><strong>重点</strong>：所有数据库都是这样规定的，只要有NULL参与的运算结果一定是NULL。<br>使用<strong>ifnull</strong>函数：</p>
+<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span><span class="token punctuation">(</span>sal<span class="token operator">+</span><span class="token function">ifnull</span><span class="token punctuation">(</span>comm<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">12</span> as yearsal from emp<span class="token punctuation">;</span></code></pre>
+<p>ifnull() 空处理函数？</p>
 <ul>
-<li>% 代表任意多个字符</li>
-<li>_ 代表任意1个字符</li>
+<li>ifnull(可能为NULL的数据,被当做什么处理) </li>
+<li>属于单行处理函数</li>
 </ul>
-<p>找出名字当中含有O的?</p>
-<pre class=" language-java"><code class="language-java">select ename from emp where ename like <span class="token string">'%O%'</span><span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
+<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span><span class="token function">ifnull</span><span class="token punctuation">(</span>comm<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> as comm from emp<span class="token punctuation">;</span></code></pre>
 <blockquote>
-<p>+——-+<br>| ename |<br>+——-+<br>| JONES |<br>| SCOTT |<br>| FORD  |<br>+——-+</p>
+<p>+——–+———+<br>| ename  | comm    |<br>+——–+———+<br>| SMITH  |    0.00 |<br>| ALLEN  |  300.00 |<br>| WARD   |  500.00 |<br>| JONES  |    0.00 |<br>| MARTIN | 1400.00 |<br>| BLAKE  |    0.00 |<br>| CLARK  |    0.00 |<br>| SCOTT  |    0.00 |<br>| KING   |    0.00 |<br>| TURNER |    0.00 |<br>| ADAMS  |    0.00 |<br>| JAMES  |    0.00 |<br>| FORD   |    0.00 |<br>| MILLER |    0.00 |<br>+——–+———+</p>
 </blockquote>
-<p>找出名字中第二个字母是A的？</p>
-<pre class=" language-java"><code class="language-java">select ename from emp where ename like <span class="token string">'_A%'</span><span class="token punctuation">;</span></code></pre>
-<p>找出名字中有下划线的？</p>
-<pre class=" language-java"><code class="language-java">select name from t_user where name like <span class="token string">'%\_%'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//'\'代表转义字符</span></code></pre>
+<h2 id="16-group-by和having"><a href="#16-group-by和having" class="headerlink" title="16.group by和having"></a>16.group by和having</h2><p>group by ： 按照某个字段或者某些字段进行分组。<br>having : having是对分组之后的数据进行再次过滤。<br>案例：找出每个工作岗位的最高薪资。</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>job from emp group by job<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+———-+———–+<br>| max(sal) | job       |<br>+———-+———–+<br>|  3000.00 | ANALYST   |<br>|  1300.00 | CLERK     |<br>|  2975.00 | MANAGER   |<br>|  5000.00 | PRESIDENT |<br>|  1600.00 | SALESMAN  |<br>+———-+———–+</p>
+</blockquote>
+<p><strong>注意</strong>：分组函数一般都会和group by联合使用，这也是为什么它被称为分组函数的原因。<br>    并且任何一个分组函数（count sum avg max min）都是在group by语句执行结束之后才会执行的。<br>    当一条SQL语句没有group by的话，整张表的数据会自成一组。</p>
+<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>job from emp group by job<span class="token punctuation">;</span></code></pre>
+<p>以上在mysql当中，查询结果是有的，但是结果没有意义，在Oracle数据库当中会报错。语法错误。<br>Oracle的语法规则比MySQL语法规则严谨。<br>记住一个规则：当一条语句中有group by的话，select后面只能跟分组函数和参与分组的字段。</p>
+<p>每个工作岗位的平均薪资？</p>
+<pre class=" language-java"><code class="language-java">select job<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp group by job<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+———–+————-+<br>| job       | avg(sal)    |<br>+———–+————-+<br>| ANALYST   | 3000.000000 |<br>| CLERK     | 1037.500000 |<br>| MANAGER   | 2758.333333 |<br>| PRESIDENT | 5000.000000 |<br>| SALESMAN  | 1400.000000 |<br>+———–+————-+</p>
+</blockquote>
+<p>多个字段能不能联合起来一块分组？<br>案例：找出每个部门不同工作岗位的最高薪资。</p>
+<pre class=" language-java"><code class="language-java">select 
+    deptno<span class="token punctuation">,</span>job<span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span>
+from
+    emp
+group by
+    deptno<span class="token punctuation">,</span>job<span class="token punctuation">;</span></code></pre>
+<p>找出每个部门的最高薪资，要求显示薪资大于2900的数据。<br>第一步：找出每个部门的最高薪资</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>deptno from emp group by deptno<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+———-+——–+<br>| max(sal) | deptno |<br>+———-+——–+<br>|  5000.00 |     10 |<br>|  3000.00 |     20 |<br>|  2850.00 |     30 |<br>+———-+——–+</p>
+</blockquote>
+<p>第二步：找出薪资大于2900</p>
+<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>deptno from emp group by deptno having <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2900</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 这种方式效率低。</span></code></pre>
+<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>deptno from emp where sal <span class="token operator">></span> <span class="token number">2900</span> group by deptno<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 效率较高，建议能够使用where过滤的尽量使用where。</span></code></pre>
+<p>找出每个部门的平均薪资，要求显示薪资大于2000的数据。<br>第一步：找出每个部门的平均薪资</p>
+<pre class=" language-java"><code class="language-java">select deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp group by deptno<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+——–+————-+<br>| deptno | avg(sal)    |<br>+——–+————-+<br>|     10 | 2916.666667 |<br>|     20 | 2175.000000 |<br>|     30 | 1566.666667 |<br>+——–+————-+</p>
+</blockquote>
+<p>第二步：要求显示薪资大于2000的数据</p>
+<pre class=" language-java"><code class="language-java">select deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp group by deptno having <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2000</span><span class="token punctuation">;</span>    </code></pre>
+<p>where后面不能使用分组函数：</p>
+<pre class=" language-java"><code class="language-java">select deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp where <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2000</span> group by deptno<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 错误了。</span></code></pre>
+<p>这种情况只能使用having过滤。</p>
+<h2 id="17-总结"><a href="#17-总结" class="headerlink" title="17.总结"></a>17.总结</h2><pre class=" language-java"><code class="language-java">select            <span class="token number">5</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+from            <span class="token number">1</span>    
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+where            <span class="token number">2</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+group by        <span class="token number">3</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+having            <span class="token number">4</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>
+order by        <span class="token number">6</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
 
             </div>
             <hr/>
@@ -764,7 +741,7 @@ select ename<span class="token punctuation">,</span>sal from emp where sal betwe
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://LogicVan.github.io/2020/09/13/mysql-yi/">http://LogicVan.github.io/2020/09/13/mysql-yi/</a>
+                    <a href="http://LogicVan.github.io/2020/09/13/mysql-er/">http://LogicVan.github.io/2020/09/13/mysql-er/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -983,9 +960,10 @@ select ename<span class="token punctuation">,</span>sal from emp where sal betwe
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/09/13/mysql-er/">
                     <div class="card-image">
@@ -1003,9 +981,9 @@ select ename<span class="token punctuation">,</span>sal from emp where sal betwe
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1018,6 +996,7 @@ select ename<span class="token punctuation">,</span>sal from emp where sal betwe
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1045,7 +1024,7 @@ select ename<span class="token punctuation">,</span>sal from emp where sal betwe
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2020/09/13/mysql-yi/">
@@ -1079,7 +1058,6 @@ select ename<span class="token punctuation">,</span>sal from emp where sal betwe
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
