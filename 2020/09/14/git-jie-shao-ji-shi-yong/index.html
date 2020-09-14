@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MySQL(二), LogicVan&#39;s Blog">
+    <meta name="keywords" content="Git使用, LogicVan&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>MySQL(二) | LogicVan&#39;s Blog</title>
+    <title>Git使用 | LogicVan&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MySQL(二)</h1>
+                    <h1 class="description center-align post-title">Git使用</h1>
                 </div>
             </div>
         </div>
@@ -438,12 +438,8 @@
                                 <span class="chip bg-color">Markdown</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
-                            </a>
-                        
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/Git/">
+                                <span class="chip bg-color">Git</span>
                             </a>
                         
                     </div>
@@ -467,28 +463,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-13
+                    2020-09-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-13
+                    2020-09-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    5 分
                 </div>
                 
 
@@ -503,219 +499,153 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="12-函数"><a href="#12-函数" class="headerlink" title="12.函数"></a>12.函数</h2><h3 id="12-1-字符函数"><a href="#12-1-字符函数" class="headerlink" title="12-1.字符函数"></a>12-1.字符函数</h3><p><strong>length函数</strong>用于获取参数值的字节个数</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">length</span><span class="token punctuation">(</span><span class="token string">'john'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>4</p>
-</blockquote>
-<p><strong>concat函数</strong>拼接字符串</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">concat</span><span class="token punctuation">(</span>l_name<span class="token punctuation">,</span><span class="token string">'_'</span><span class="token punctuation">,</span>f_name<span class="token punctuation">)</span> 姓名 from emp<span class="token punctuation">;</span></code></pre>
-<p><strong>upper、lower函数</strong>改变大小写<br><strong>substr、substring函数</strong>截取，索引从1开始</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//截取从指定索引处后面的所有字符</span>
-select <span class="token function">substr</span><span class="token punctuation">(</span><span class="token string">'李莫愁爱上了陆展元'</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//截取从指定索引处指定字符长度的字符</span>
-select <span class="token function">substr</span><span class="token punctuation">(</span><span class="token string">'李莫愁爱上了陆展元'</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>陆展元<br>李莫愁</p>
-</blockquote>
-<p><strong>instr函数</strong>返回字符串第一次出现的索引，若找不到，则返回0</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">instr</span><span class="token punctuation">(</span><span class="token string">'杨不悔爱上了殷六侠'</span><span class="token punctuation">,</span><span class="token string">'殷六侠‘'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>7</p>
-</blockquote>
-<p><strong>trim函数</strong>去前后空格</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">trim</span><span class="token punctuation">(</span><span class="token string">'张翠山'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-select <span class="token function">trim</span><span class="token punctuation">(</span><span class="token string">'a'</span> from <span class="token string">'aaa张aaaa翠山aaaa'</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//去掉a</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>张翠山<br>张翠山</p>
-</blockquote>
-<p><strong>lpad函数</strong>用指定字符实现左填充指定长度</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">lpad</span><span class="token punctuation">(</span><span class="token string">'aaa'</span><span class="token punctuation">,</span><span class="token string">'5'</span><span class="token punctuation">,</span><span class="token string">'*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>**aaa</p>
-</blockquote>
-<p><strong>rpad函数</strong>同上<br><strong>replace函数</strong>替换</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'aaabbbddd'</span><span class="token punctuation">,</span><span class="token string">'ddd'</span><span class="token punctuation">,</span><span class="token string">'ccc'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>aaabbbccc</p>
-</blockquote>
-<h3 id="12-2-数学函数"><a href="#12-2-数学函数" class="headerlink" title="12-2.数学函数"></a>12-2.数学函数</h3><p><strong>round()函数</strong>四舍五入<br><strong>ceil函数</strong>向上取整<br><strong>floor函数</strong>向下取整<br><strong>truncate函数</strong>截断<br><strong>mod函数</strong>取余</p>
-<h3 id="12-3-日期函数"><a href="#12-3-日期函数" class="headerlink" title="12-3.日期函数"></a>12-3.日期函数</h3><p><strong>now函数</strong></p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><strong>curdate函数</strong>返回当前日期，不包含时间</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">curdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><strong>curtime函数</strong>返回当前时间，不包含日期<br><strong>获取指定部分，年，月，日</strong></p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">year</span><span class="token punctuation">(</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> as <span class="token string">'年'</span><span class="token punctuation">;</span></code></pre>
-<p><strong>str_to_date函数</strong></p>
-<pre class=" language-java"><code class="language-java"><span class="token function">str_to_date</span><span class="token punctuation">(</span><span class="token string">'9-13-1999'</span><span class="token punctuation">,</span><span class="token string">'%m-%d-%Y'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><strong>date_format函数</strong></p>
-<pre class=" language-java"><code class="language-java"><span class="token function">date_format</span><span class="token punctuation">(</span><span class="token string">'2018/6/6'</span><span class="token punctuation">,</span><span class="token string">'%Y年%m月%d日'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="12-4-其他函数"><a href="#12-4-其他函数" class="headerlink" title="12-4.其他函数"></a>12-4.其他函数</h3><p><strong>version()</strong><br><strong>database()</strong><br><strong>user()</strong></p>
-<h2 id="13-排序（升序，降序）"><a href="#13-排序（升序，降序）" class="headerlink" title="13.排序（升序，降序）"></a>13.排序（升序，降序）</h2><p>按照工资升序，找出员工名和薪资？</p>
-<pre class=" language-java"><code class="language-java">select 
-    ename<span class="token punctuation">,</span>sal
-from 
-    emp
-order by
-    sal<span class="token punctuation">;</span></code></pre>
-<p><strong>PS</strong>:默认是升序。怎么指定升序或者降序呢？<strong>asc表示升序，desc表示降序</strong>。</p>
-<pre class=" language-java"><code class="language-java">select ename <span class="token punctuation">,</span> sal from emp order by sal<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 升序</span>
-select ename <span class="token punctuation">,</span> sal from emp order by sal asc<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 升序</span>
-select ename <span class="token punctuation">,</span> sal from emp order by sal desc<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 降序</span></code></pre>
-<p>按照工资的降序排列，当工资相同的时候再按照名字的升序排列。</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp order by sal desc <span class="token punctuation">,</span> ename asc<span class="token punctuation">;</span></code></pre>
-<p><strong>PS</strong>:越靠前的字段越能起到主导作用。只有当前面的字段无法完成排序的时候，才会启用后面的字段。</p>
-<p>找出工作岗位是SALESMAN的员工，并且要求按照薪资的降序排列。</p>
-<pre class=" language-java"><code class="language-java">select
-    ename<span class="token punctuation">,</span>job<span class="token punctuation">,</span>sal
-from
-    emp
-where
-    job <span class="token operator">=</span> <span class="token string">'SALESMAN'</span>
-order by
-    sal desc<span class="token punctuation">;</span></code></pre>
-<p><strong>总结</strong>：</p>
-<pre class=" language-java"><code class="language-java">select 
-    字段                        <span class="token number">3</span>
-from
-    表名                        <span class="token number">1</span>
-where
-    条件                        <span class="token number">2</span>
-order by
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                        <span class="token number">4</span>
-
-<span class="token comment" spellcheck="true">//order by是最后执行的。</span></code></pre>
-<h2 id="14-分组函数"><a href="#14-分组函数" class="headerlink" title="14.分组函数"></a>14.分组函数</h2><p><strong>count 计数<br>sum 求和<br>avg 平均值<br>max 最大值<br>min 最小值</strong><br>记住：所有的分组函数都是对“某一组”数据进行操作的。</p>
-<p>找出工资总和？</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">sum</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
-<p>找出最高工资？</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
-<p>找出总人数？</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> from emp<span class="token punctuation">;</span>
-select <span class="token function">count</span><span class="token punctuation">(</span>ename<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
-<p>count(*)和count(具体的某个字段)，他们有什么区别？</p>
-<ul>
-<li>count(*):不是统计某个字段中数据的个数，而是统计总记录条数。（和某个字段无关）</li>
-<li>count(comm): 表示统计comm字段中不为NULL的数据总数量。</li>
+                <h2 id="什么是Git"><a href="#什么是Git" class="headerlink" title="什么是Git"></a>什么是Git</h2><p>Git是一套程序源代码的分布式版本管理系统，最初用于管理Linux核心代码的开发，后来被多个开源工程采用，现在已经成为互联网协作开发的标准的源代码管理软件。（更加管理项目的开发流程）</p>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git官方网站</a></p>
+<h3 id="Git初运行"><a href="#Git初运行" class="headerlink" title="Git初运行"></a>Git初运行</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
+$ git version<span class="token comment" spellcheck="true">//查看git的版本号</span></code></pre>
+<p><img src="/images/Git/git-version.png"></p>
+<p><a target="_blank" rel="noopener" href="https://try.github.io/">Git在线体验</a></p>
+<h3 id="采用Git的云服务"><a href="#采用Git的云服务" class="headerlink" title="采用Git的云服务"></a>采用Git的云服务</h3><ul>
+<li>GitHub</li>
+<li>gitee(oschina)</li>
+<li>等等</li>
 </ul>
-<p>分组函数一共5个。<br>分组函数还有另一个名字：多行处理函数。<br>多行处理函数的特点：<strong>输入多行，最终输出的结果是1行。</strong></p>
-<p>分组函数也能组合起来用：</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">sum</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<p>+———-+———-+————-+———-+———-+<br>| count(*) | sum(sal) | avg(sal)    | max(sal) | min(sal) |<br>+———-+———-+————-+———-+———-+<br>|       14 | 29025.00 | 2073.214286 |  5000.00 |   800.00 |<br>+———-+———-+————-+———-+———-+</p>
-</blockquote>
-<p><strong>分组函数自动忽略NULL。</strong></p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">count</span><span class="token punctuation">(</span>comm<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<pre><code>+-------------+</code></pre>
-<p>| count(comm) |<br>+————-+<br>|           4 |<br>+————-+</p>
-</blockquote>
-<pre class=" language-java"><code class="language-java">select <span class="token function">sum</span><span class="token punctuation">(</span>comm<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//select sum(comm) from emp where comm is not null; 不需要额外添加这个过滤条件。sum函数自动忽略NULL。</span></code></pre>
-<p>结果：</p>
-<blockquote>
-<pre><code>+-----------+</code></pre>
-<p>| sum(comm) |<br>+———–+<br>|   2200.00 |<br>+———–+</p>
-</blockquote>
-<p>找出工资高于平均工资的员工？</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp where sal <span class="token operator">></span> <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//ERROR 1111 (HY000): Invalid use of group function</span></code></pre>
-<p>分析：<br>以上的错误信息：无效地使用了分组函数。<br>原因：SQL语句当中有一个语法规则，==分组函数不可直接使用在where子句当中。<br>why——&gt;因为group by是在where执行之后才会执行的。</p>
-<pre class=" language-java"><code class="language-java">select            <span class="token number">5</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>            
-from            <span class="token number">1</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-where            <span class="token number">2</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-group by        <span class="token number">3</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-having            <span class="token number">4</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-order by        <span class="token number">6</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<p>解决：<br>第一步：找出平均工资</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+————-+<br>| avg(sal)    |<br>+————-+<br>| 2073.214286 |<br>+————-+</p>
-</blockquote>
-<p>第二步：找出高于平均工资的员工</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp where sal <span class="token operator">></span> <span class="token number">2073.214286</span><span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+——-+———+<br>| ename | sal     |<br>+——-+———+<br>| JONES | 2975.00 |<br>| BLAKE | 2850.00 |<br>| CLARK | 2450.00 |<br>| SCOTT | 3000.00 |<br>| KING  | 5000.00 |<br>| FORD  | 3000.00 |<br>+——-+———+</p>
-</blockquote>
-<p>以上两步合为一步：</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp where sal <span class="token operator">></span> <span class="token punctuation">(</span>select <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="15-单行处理函数"><a href="#15-单行处理函数" class="headerlink" title="15.单行处理函数"></a>15.单行处理函数</h2><p>什么是单行处理函数？输入一行，输出一行。</p>
-<p>计算每个员工的年薪？</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span><span class="token punctuation">(</span>sal<span class="token operator">+</span>comm<span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">12</span> as yearsal from emp<span class="token punctuation">;</span></code></pre>
-<p><strong>重点</strong>：所有数据库都是这样规定的，只要有NULL参与的运算结果一定是NULL。<br>使用<strong>ifnull</strong>函数：</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span><span class="token punctuation">(</span>sal<span class="token operator">+</span><span class="token function">ifnull</span><span class="token punctuation">(</span>comm<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">12</span> as yearsal from emp<span class="token punctuation">;</span></code></pre>
-<p>ifnull() 空处理函数？</p>
-<ul>
-<li>ifnull(可能为NULL的数据,被当做什么处理) </li>
-<li>属于单行处理函数</li>
+<h2 id="理解版本管理的流程"><a href="#理解版本管理的流程" class="headerlink" title="理解版本管理的流程"></a>理解版本管理的流程</h2><h3 id="代码开发流程"><a href="#代码开发流程" class="headerlink" title="代码开发流程"></a>代码开发流程</h3><ol>
+<li>系统开发，编写代码</li>
+<li>提交代码给Git本地库</li>
+<li>将代码提交到Git远程库，分享给团队其他人</li>
+<li>从远程库获取最新代码</li>
+<li>继续修改代码</li>
+<li>重复第二步</li>
+</ol>
+<h3 id="Git基础概念（本期重点）"><a href="#Git基础概念（本期重点）" class="headerlink" title="Git基础概念（本期重点）"></a>Git基础概念（本期重点）</h3><ol>
+<li>本地工作文件夹</li>
+<li>Git索引区（Stage）</li>
+<li>Git库（Repository）<ul>
+<li>local：本地库</li>
+<li>remote：远程库（服务器端）</li>
 </ul>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span><span class="token function">ifnull</span><span class="token punctuation">(</span>comm<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> as comm from emp<span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+——–+———+<br>| ename  | comm    |<br>+——–+———+<br>| SMITH  |    0.00 |<br>| ALLEN  |  300.00 |<br>| WARD   |  500.00 |<br>| JONES  |    0.00 |<br>| MARTIN | 1400.00 |<br>| BLAKE  |    0.00 |<br>| CLARK  |    0.00 |<br>| SCOTT  |    0.00 |<br>| KING   |    0.00 |<br>| TURNER |    0.00 |<br>| ADAMS  |    0.00 |<br>| JAMES  |    0.00 |<br>| FORD   |    0.00 |<br>| MILLER |    0.00 |<br>+——–+———+</p>
-</blockquote>
-<h2 id="16-group-by和having"><a href="#16-group-by和having" class="headerlink" title="16.group by和having"></a>16.group by和having</h2><p>group by ： 按照某个字段或者某些字段进行分组。<br>having : having是对分组之后的数据进行再次过滤。<br>案例：找出每个工作岗位的最高薪资。</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>job from emp group by job<span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+———-+———–+<br>| max(sal) | job       |<br>+———-+———–+<br>|  3000.00 | ANALYST   |<br>|  1300.00 | CLERK     |<br>|  2975.00 | MANAGER   |<br>|  5000.00 | PRESIDENT |<br>|  1600.00 | SALESMAN  |<br>+———-+———–+</p>
-</blockquote>
-<p><strong>注意</strong>：分组函数一般都会和group by联合使用，这也是为什么它被称为分组函数的原因。<br>    并且任何一个分组函数（count sum avg max min）都是在group by语句执行结束之后才会执行的。<br>    当一条SQL语句没有group by的话，整张表的数据会自成一组。</p>
-<pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>job from emp group by job<span class="token punctuation">;</span></code></pre>
-<p>以上在mysql当中，查询结果是有的，但是结果没有意义，在Oracle数据库当中会报错。语法错误。<br>Oracle的语法规则比MySQL语法规则严谨。<br>记住一个规则：当一条语句中有group by的话，select后面只能跟分组函数和参与分组的字段。</p>
-<p>每个工作岗位的平均薪资？</p>
-<pre class=" language-java"><code class="language-java">select job<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp group by job<span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+———–+————-+<br>| job       | avg(sal)    |<br>+———–+————-+<br>| ANALYST   | 3000.000000 |<br>| CLERK     | 1037.500000 |<br>| MANAGER   | 2758.333333 |<br>| PRESIDENT | 5000.000000 |<br>| SALESMAN  | 1400.000000 |<br>+———–+————-+</p>
-</blockquote>
-<p>多个字段能不能联合起来一块分组？<br>案例：找出每个部门不同工作岗位的最高薪资。</p>
-<pre class=" language-java"><code class="language-java">select 
-    deptno<span class="token punctuation">,</span>job<span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span>
-from
-    emp
-group by
-    deptno<span class="token punctuation">,</span>job<span class="token punctuation">;</span></code></pre>
-<p>找出每个部门的最高薪资，要求显示薪资大于2900的数据。<br>第一步：找出每个部门的最高薪资</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>deptno from emp group by deptno<span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+———-+——–+<br>| max(sal) | deptno |<br>+———-+——–+<br>|  5000.00 |     10 |<br>|  3000.00 |     20 |<br>|  2850.00 |     30 |<br>+———-+——–+</p>
-</blockquote>
-<p>第二步：找出薪资大于2900</p>
-<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>deptno from emp group by deptno having <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2900</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 这种方式效率低。</span></code></pre>
-<pre class=" language-java"><code class="language-java">select <span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>deptno from emp where sal <span class="token operator">></span> <span class="token number">2900</span> group by deptno<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 效率较高，建议能够使用where过滤的尽量使用where。</span></code></pre>
-<p>找出每个部门的平均薪资，要求显示薪资大于2000的数据。<br>第一步：找出每个部门的平均薪资</p>
-<pre class=" language-java"><code class="language-java">select deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp group by deptno<span class="token punctuation">;</span></code></pre>
-<blockquote>
-<p>+——–+————-+<br>| deptno | avg(sal)    |<br>+——–+————-+<br>|     10 | 2916.666667 |<br>|     20 | 2175.000000 |<br>|     30 | 1566.666667 |<br>+——–+————-+</p>
-</blockquote>
-<p>第二步：要求显示薪资大于2000的数据</p>
-<pre class=" language-java"><code class="language-java">select deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp group by deptno having <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2000</span><span class="token punctuation">;</span>    </code></pre>
-<p>where后面不能使用分组函数：</p>
-<pre class=" language-java"><code class="language-java">select deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> from emp where <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2000</span> group by deptno<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 错误了。</span></code></pre>
-<p>这种情况只能使用having过滤。</p>
-<h2 id="17-总结"><a href="#17-总结" class="headerlink" title="17.总结"></a>17.总结</h2><pre class=" language-java"><code class="language-java">select            <span class="token number">5</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-from            <span class="token number">1</span>    
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-where            <span class="token number">2</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-group by        <span class="token number">3</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-having            <span class="token number">4</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span>
-order by        <span class="token number">6</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+</li>
+</ol>
+<h2 id="Git初始设定"><a href="#Git初始设定" class="headerlink" title="Git初始设定"></a>Git初始设定</h2><h3 id="建立一个Git库"><a href="#建立一个Git库" class="headerlink" title="建立一个Git库"></a>建立一个Git库</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
+$ git init<span class="token comment" spellcheck="true">//初始化</span></code></pre>
+<p><strong>在当前文件下，建/初始一个Git的数据库</strong>。当前文件夹下所有的文件，都可以进行文件管理。</p>
+<h3 id="设置基础信息"><a href="#设置基础信息" class="headerlink" title="设置基础信息"></a>设置基础信息</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
+$ git init<span class="token comment" spellcheck="true">//建一个库</span>
+$ git config <span class="token operator">-</span>l<span class="token comment" spellcheck="true">//查看当前的设置</span>
+$ git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>name <span class="token string">"LogicVan"</span><span class="token comment" spellcheck="true">//进行用户名的设置</span>
+$ git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>email <span class="token string">"LogicVan@163.com"</span><span class="token comment" spellcheck="true">//Git是Internet分布式开发管理系统，Internet每个用户有邮件地址，进行邮箱的设置</span>
+$ git config <span class="token operator">--</span>global color<span class="token punctuation">.</span>ui <span class="token boolean">true</span><span class="token comment" spellcheck="true">//设置编辑器的颜色为true，多在Linux和Mac系统设置，Windows里不多</span>
+$ git config <span class="token operator">-</span>l</code></pre>
+<p>跳转到D盘下文件夹F下的Cloud文件夹</p>
+<p><img src="/images/Git/git01.png"></p>
+<pre class=" language-java"><code class="language-java">$ git init<span class="token comment" spellcheck="true">//建一个库</span></code></pre>
+<p><img src="/images/Git/git02.png"></p>
+<p>查看新建出来的.git文件下有什么</p>
+<p><img src="/images/Git/git03.png"></p>
+<pre class=" language-java"><code class="language-java">$ git config <span class="token operator">-</span>l<span class="token comment" spellcheck="true">//查看当前的设置</span></code></pre>
+<p><img src="/images/Git/git04.png"></p>
+<p>由于我之前已经设置好用户名和邮箱了，就不再演示了。</p>
+<h3 id="方便的命令"><a href="#方便的命令" class="headerlink" title="方便的命令"></a>方便的命令</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
+$ git config <span class="token operator">--</span>help
+<span class="token comment" spellcheck="true">//$ git help config也可以</span></code></pre>
+<p>在Git Bash中敲下代码，再按下回车键，在浏览器中打开帮助文档（Windows下），若是Linux，则在当前命令行中打开。</p>
+<h2 id="第一次提交"><a href="#第一次提交" class="headerlink" title="第一次提交"></a>第一次提交</h2><h3 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h3><ul>
+<li>建立文件（本地工作区）</li>
+<li>追加文件（索引区）</li>
+<li>提交文件（本地库）</li>
+</ul>
+<p>跳转到D盘下文件夹F下的Cloud文件夹</p>
+<p><img src="/images/Git/git01.png"></p>
+<p>初始化Git库</p>
+<p><img src="/images/Git/git02.png"></p>
+<p>在F/Cloud文件下，新建index.html文件，命令如下，也可手动自行创造。</p>
+<p><img src="/images/Git/git05.png"></p>
+<p>使用<strong>git status</strong>命令，看一下当前文件夹的状态。此时index.htm文件未放入到索引区，显示红色。</p>
+<p><img src="/images/Git/git06.png"></p>
+<p>使用<strong>git add index.htm</strong>命令，把当前红色文件放到索引区。</p>
+<p><img src="/images/Git/git07.png"></p>
+<p>再次查看状态，index.htm变为绿色。本地有一个文件，修改完之后，提交到索引区，但是还没有向数据库提交。</p>
+<p><img src="/images/Git/git08.png"></p>
+<p>**git commit -m “…”**提交，需要加一些备注，告诉数据库你改了些什么。</p>
+<p><img src="/images/Git/git09.png"></p>
+<p>再次查看状态。index.htm并未消失，只是在数据库当中寄存了一个版本。</p>
+<p><img src="/images/Git/git10.png"></p>
+<p><strong>git log</strong>查看提交历史。</p>
+<p><img src="/images/Git/git11.png"></p>
+<h2 id="查看提交履历"><a href="#查看提交履历" class="headerlink" title="查看提交履历"></a>查看提交履历</h2><p><strong>知识点：git log</strong>命令的使用</p>
+<h3 id="实战演练-1"><a href="#实战演练-1" class="headerlink" title="实战演练"></a>实战演练</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
+$ git log
+$ nano index<span class="token punctuation">.</span>htm
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+$ git add index<span class="token punctuation">.</span>htm
+$ git commit <span class="token operator">-</span>m <span class="token string">"added code"</span>
+$ git log
+$ git log <span class="token operator">-</span>n<span class="token comment" spellcheck="true">//n为1,2,3...,显示最近n次记录</span>
+$ git log <span class="token operator">--</span>oneline<span class="token comment" spellcheck="true">//**将记录归为一行显示</span>
+$ git log <span class="token operator">-</span>p<span class="token comment" spellcheck="true">//将记录详细显示</span>
+$ git log <span class="token operator">--</span>stat<span class="token comment" spellcheck="true">//对每次提交的信息进行统计</span>
+$ git log <span class="token operator">--</span>help<span class="token comment" spellcheck="true">//对于git log 选项的帮助文档</span></code></pre>
+<h2 id="把握Git状态"><a href="#把握Git状态" class="headerlink" title="把握Git状态"></a>把握Git状态</h2><p><strong>知识点</strong></p>
+<ul>
+<li>git status</li>
+<li>git checkout – [file]</li>
+<li>git restore / git restore –staged</li>
+</ul>
+<p>修改先前的index.htm文件，多加一句“I love git”，检查状态。</p>
+<p><img src="/images/Git/git12.png"></p>
+<ul>
+<li>使用<strong>git checkout – index.htm</strong>，回车，发现刚刚加上的“I love git”撤销了，回复之前的状态。</li>
+<li>观察红字上方，有restore命令，于是<strong>git restore index.htm</strong>，也可以撤销，恢复刚刚状态。</li>
+</ul>
+<p><img src="/images/Git/git13.png"></p>
+<p>如果加入了索引区add（<strong>没有提交commit</strong>），使用<strong>git checkout – [file]**是无效的。此时，</strong>git restore –staged index.htm<strong>即可将文件从索引区（暂存区）撤出，但是</strong>不撤销对 工作区 文件的更改**,即由<strong>git status</strong>命令得出的红字“被修改  且 被加入暂存区 ”被撤销。</p>
+<p>详细内容：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/houhj168/article/details/106335131">git restore 和 git restore –staged 的区别（详细）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013493841/article/details/104451987/">git restore 和 git restore –staged 的区别</a></p>
+<h2 id="比较修改内容"><a href="#比较修改内容" class="headerlink" title="比较修改内容"></a>比较修改内容</h2><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li>git diff</li>
+<li>git diff –cached</li>
+</ul>
+<h3 id="实战演练-2"><a href="#实战演练-2" class="headerlink" title="实战演练"></a>实战演练</h3><p>我们再次对上次的index.htm文件进行操作，增加一行“I love git”，查看状态，显示未添加（红字状态），图略。</p>
+<p>此时，我们使用<strong>git diff</strong>命令，显示出我们修改的内容。</p>
+<p><img src="/images/Git/git-diff01.png"></p>
+<p>我们再将index.htm文件提交到索引区（暂存区）并查看状态，代码略，图略。</p>
+<p>再次使用<strong>git diff</strong>命令，这时，我们发现没有任何反映和显示。</p>
+<p>使用<strong>git diff –cached</strong>命令，则再一次显示出我们修改的内容。</p>
+<p><img src="/images/Git/git-diff02.png"></p>
+<h2 id="Git文件操作"><a href="#Git文件操作" class="headerlink" title="Git文件操作"></a>Git文件操作</h2><h3 id="知识点-1"><a href="#知识点-1" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li>git add [file1 file 2 …]</li>
+<li>git add .  将当前工作文件夹下的所有文件（包括子目录）添加到索引区  </li>
+<li>git rm / git rm –cached 删除</li>
+<li>git mv  文件移动，更多用于文件更名</li>
+</ul>
+<h3 id="实战演练-3"><a href="#实战演练-3" class="headerlink" title="实战演练"></a>实战演练</h3><p>我们再一次修改index.htm文件，并且创建style.css文件，查看状态。</p>
+<p><img src="/images/Git/git-add01.png"></p>
+<p>使用**git add .**，提交所有文件到索引区。</p>
+<p><img src="/images/Git/git-add02.png"></p>
+<p>使用<strong>git mv</strong>，进行文件更名。</p>
+<p><img src="/images/Git/git-mv.png"></p>
+<p>使用<strong>git rm</strong>命令，将刚刚提交到索引区内的文件从中撤了出来。</p>
+<p><img src="/images/Git/git-rm.png"></p>
+<h2 id="Git忽略管理"><a href="#Git忽略管理" class="headerlink" title="Git忽略管理"></a>Git忽略管理</h2><p>设置Git忽略的文件，这些文件不参与Git库的提交和管理。</p>
+<h3 id="知识点-2"><a href="#知识点-2" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li>. gitignore</li>
+</ul>
+<p>详情查询：</p>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/docs/gitignore">帮助网页</a></p>
+<h3 id="实战演练-4"><a href="#实战演练-4" class="headerlink" title="实战演练"></a>实战演练</h3><p>我们创建temp.txt文件，查看状态，显示红字，但是我们不想这个文件被管理，所以我们有创建了一个<strong>末尾文件名</strong>为“ . gitignore”的文件，查看状态，这两个文件目前都是被管理的（ . gitignore文件肯定是需要管理的）</p>
+<p><img src="/images/Git/git-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86.png"></p>
+<p>我们在 . gitignore文件中写入 “ *.txt “这一行，如图：</p>
+<p><img src="/images/Git/git-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%8602.png"></p>
+<p>再次查看状态，这次只有 . gitignore文件被管理，达到了我们的目的。</p>
+<p><img src="/images/Git/git-gitignore.png"></p>
+<h2 id="更新最后的提交"><a href="#更新最后的提交" class="headerlink" title="更新最后的提交"></a>更新最后的提交</h2><h3 id="知识点-3"><a href="#知识点-3" class="headerlink" title="知识点"></a>知识点</h3><ul>
+<li>git commit -m “…”</li>
+<li>git cmmit –amend</li>
+<li>git commit -am “…” [–amend]</li>
+</ul>
 
             </div>
             <hr/>
@@ -741,7 +671,7 @@ order by        <span class="token number">6</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://LogicVan.github.io/2020/09/13/mysql-er/">http://LogicVan.github.io/2020/09/13/mysql-er/</a>
+                    <a href="http://LogicVan.github.io/2020/09/14/git-jie-shao-ji-shi-yong/">http://LogicVan.github.io/2020/09/14/git-jie-shao-ji-shi-yong/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -787,12 +717,8 @@ order by        <span class="token number">6</span>
                                     <span class="chip bg-color">Markdown</span>
                                 </a>
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
-                                </a>
-                            
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/Git/">
+                                    <span class="chip bg-color">Git</span>
                                 </a>
                             
                         </div>
@@ -960,9 +886,68 @@ order by        <span class="token number">6</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/09/14/git-jie-shao-ji-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Git使用">
+                        
+                        <span class="card-title">Git使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Git介绍及其使用
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Markdown/" class="post-category">
+                                    Markdown
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Typora/">
+                        <span class="chip bg-color">Typora</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/09/14/mysql-san/">
                     <div class="card-image">
@@ -980,69 +965,8 @@ order by        <span class="token number">6</span>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-14
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Typora/">
-                        <span class="chip bg-color">Typora</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
-                    </a>
-                    
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/09/13/mysql-yi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="MySQL(一)">
-                        
-                        <span class="card-title">MySQL(一)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            MySQL笔记
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-14
                             </span>
                         <span class="publish-author">
                             

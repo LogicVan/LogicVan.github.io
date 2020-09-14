@@ -4,6 +4,66 @@
   
     
     <entry>
+      <title>Git使用</title>
+      <link href="2020/09/14/git-jie-shao-ji-shi-yong/"/>
+      <url>2020/09/14/git-jie-shao-ji-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<h2 id="什么是Git"><a href="#什么是Git" class="headerlink" title="什么是Git"></a>什么是Git</h2><p>Git是一套程序源代码的分布式版本管理系统，最初用于管理Linux核心代码的开发，后来被多个开源工程采用，现在已经成为互联网协作开发的标准的源代码管理软件。（更加管理项目的开发流程）</p><p><a href="https://git-scm.com/">Git官方网站</a></p><h3 id="Git初运行"><a href="#Git初运行" class="headerlink" title="Git初运行"></a>Git初运行</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash$ git version<span class="token comment" spellcheck="true">//查看git的版本号</span></code></pre><p><img src="/images/Git/git-version.png"></p><p><a href="https://try.github.io/">Git在线体验</a></p><h3 id="采用Git的云服务"><a href="#采用Git的云服务" class="headerlink" title="采用Git的云服务"></a>采用Git的云服务</h3><ul><li>GitHub</li><li>gitee(oschina)</li><li>等等</li></ul><h2 id="理解版本管理的流程"><a href="#理解版本管理的流程" class="headerlink" title="理解版本管理的流程"></a>理解版本管理的流程</h2><h3 id="代码开发流程"><a href="#代码开发流程" class="headerlink" title="代码开发流程"></a>代码开发流程</h3><ol><li>系统开发，编写代码</li><li>提交代码给Git本地库</li><li>将代码提交到Git远程库，分享给团队其他人</li><li>从远程库获取最新代码</li><li>继续修改代码</li><li>重复第二步</li></ol><h3 id="Git基础概念（本期重点）"><a href="#Git基础概念（本期重点）" class="headerlink" title="Git基础概念（本期重点）"></a>Git基础概念（本期重点）</h3><ol><li>本地工作文件夹</li><li>Git索引区（Stage）</li><li>Git库（Repository）<ul><li>local：本地库</li><li>remote：远程库（服务器端）</li></ul></li></ol><h2 id="Git初始设定"><a href="#Git初始设定" class="headerlink" title="Git初始设定"></a>Git初始设定</h2><h3 id="建立一个Git库"><a href="#建立一个Git库" class="headerlink" title="建立一个Git库"></a>建立一个Git库</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash$ git init<span class="token comment" spellcheck="true">//初始化</span></code></pre><p><strong>在当前文件下，建/初始一个Git的数据库</strong>。当前文件夹下所有的文件，都可以进行文件管理。</p><h3 id="设置基础信息"><a href="#设置基础信息" class="headerlink" title="设置基础信息"></a>设置基础信息</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash$ git init<span class="token comment" spellcheck="true">//建一个库</span>$ git config <span class="token operator">-</span>l<span class="token comment" spellcheck="true">//查看当前的设置</span>$ git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>name <span class="token string">"LogicVan"</span><span class="token comment" spellcheck="true">//进行用户名的设置</span>$ git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>email <span class="token string">"LogicVan@163.com"</span><span class="token comment" spellcheck="true">//Git是Internet分布式开发管理系统，Internet每个用户有邮件地址，进行邮箱的设置</span>$ git config <span class="token operator">--</span>global color<span class="token punctuation">.</span>ui <span class="token boolean">true</span><span class="token comment" spellcheck="true">//设置编辑器的颜色为true，多在Linux和Mac系统设置，Windows里不多</span>$ git config <span class="token operator">-</span>l</code></pre><p>跳转到D盘下文件夹F下的Cloud文件夹</p><p><img src="/images/Git/git01.png"></p><pre class=" language-java"><code class="language-java">$ git init<span class="token comment" spellcheck="true">//建一个库</span></code></pre><p><img src="/images/Git/git02.png"></p><p>查看新建出来的.git文件下有什么</p><p><img src="/images/Git/git03.png"></p><pre class=" language-java"><code class="language-java">$ git config <span class="token operator">-</span>l<span class="token comment" spellcheck="true">//查看当前的设置</span></code></pre><p><img src="/images/Git/git04.png"></p><p>由于我之前已经设置好用户名和邮箱了，就不再演示了。</p><h3 id="方便的命令"><a href="#方便的命令" class="headerlink" title="方便的命令"></a>方便的命令</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash$ git config <span class="token operator">--</span>help<span class="token comment" spellcheck="true">//$ git help config也可以</span></code></pre><p>在Git Bash中敲下代码，再按下回车键，在浏览器中打开帮助文档（Windows下），若是Linux，则在当前命令行中打开。</p><h2 id="第一次提交"><a href="#第一次提交" class="headerlink" title="第一次提交"></a>第一次提交</h2><h3 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h3><ul><li>建立文件（本地工作区）</li><li>追加文件（索引区）</li><li>提交文件（本地库）</li></ul><p>跳转到D盘下文件夹F下的Cloud文件夹</p><p><img src="/images/Git/git01.png"></p><p>初始化Git库</p><p><img src="/images/Git/git02.png"></p><p>在F/Cloud文件下，新建index.html文件，命令如下，也可手动自行创造。</p><p><img src="/images/Git/git05.png"></p><p>使用<strong>git status</strong>命令，看一下当前文件夹的状态。此时index.htm文件未放入到索引区，显示红色。</p><p><img src="/images/Git/git06.png"></p><p>使用<strong>git add index.htm</strong>命令，把当前红色文件放到索引区。</p><p><img src="/images/Git/git07.png"></p><p>再次查看状态，index.htm变为绿色。本地有一个文件，修改完之后，提交到索引区，但是还没有向数据库提交。</p><p><img src="/images/Git/git08.png"></p><p>**git commit -m “…”**提交，需要加一些备注，告诉数据库你改了些什么。</p><p><img src="/images/Git/git09.png"></p><p>再次查看状态。index.htm并未消失，只是在数据库当中寄存了一个版本。</p><p><img src="/images/Git/git10.png"></p><p><strong>git log</strong>查看提交历史。</p><p><img src="/images/Git/git11.png"></p><h2 id="查看提交履历"><a href="#查看提交履历" class="headerlink" title="查看提交履历"></a>查看提交履历</h2><p><strong>知识点：git log</strong>命令的使用</p><h3 id="实战演练-1"><a href="#实战演练-1" class="headerlink" title="实战演练"></a>实战演练</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash$ git log$ nano index<span class="token punctuation">.</span>htm<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>$ git add index<span class="token punctuation">.</span>htm$ git commit <span class="token operator">-</span>m <span class="token string">"added code"</span>$ git log$ git log <span class="token operator">-</span>n<span class="token comment" spellcheck="true">//n为1,2,3...,显示最近n次记录</span>$ git log <span class="token operator">--</span>oneline<span class="token comment" spellcheck="true">//**将记录归为一行显示</span>$ git log <span class="token operator">-</span>p<span class="token comment" spellcheck="true">//将记录详细显示</span>$ git log <span class="token operator">--</span>stat<span class="token comment" spellcheck="true">//对每次提交的信息进行统计</span>$ git log <span class="token operator">--</span>help<span class="token comment" spellcheck="true">//对于git log 选项的帮助文档</span></code></pre><h2 id="把握Git状态"><a href="#把握Git状态" class="headerlink" title="把握Git状态"></a>把握Git状态</h2><p><strong>知识点</strong></p><ul><li>git status</li><li>git checkout – [file]</li><li>git restore / git restore –staged</li></ul><p>修改先前的index.htm文件，多加一句“I love git”，检查状态。</p><p><img src="/images/Git/git12.png"></p><ul><li>使用<strong>git checkout – index.htm</strong>，回车，发现刚刚加上的“I love git”撤销了，回复之前的状态。</li><li>观察红字上方，有restore命令，于是<strong>git restore index.htm</strong>，也可以撤销，恢复刚刚状态。</li></ul><p><img src="/images/Git/git13.png"></p><p>如果加入了索引区add（<strong>没有提交commit</strong>），使用<strong>git checkout – [file]**是无效的。此时，</strong>git restore –staged index.htm<strong>即可将文件从索引区（暂存区）撤出，但是</strong>不撤销对 工作区 文件的更改**,即由<strong>git status</strong>命令得出的红字“被修改  且 被加入暂存区 ”被撤销。</p><p>详细内容：</p><p><a href="https://blog.csdn.net/houhj168/article/details/106335131">git restore 和 git restore –staged 的区别（详细）</a></p><p><a href="https://blog.csdn.net/u013493841/article/details/104451987/">git restore 和 git restore –staged 的区别</a></p><h2 id="比较修改内容"><a href="#比较修改内容" class="headerlink" title="比较修改内容"></a>比较修改内容</h2><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul><li>git diff</li><li>git diff –cached</li></ul><h3 id="实战演练-2"><a href="#实战演练-2" class="headerlink" title="实战演练"></a>实战演练</h3><p>我们再次对上次的index.htm文件进行操作，增加一行“I love git”，查看状态，显示未添加（红字状态），图略。</p><p>此时，我们使用<strong>git diff</strong>命令，显示出我们修改的内容。</p><p><img src="/images/Git/git-diff01.png"></p><p>我们再将index.htm文件提交到索引区（暂存区）并查看状态，代码略，图略。</p><p>再次使用<strong>git diff</strong>命令，这时，我们发现没有任何反映和显示。</p><p>使用<strong>git diff –cached</strong>命令，则再一次显示出我们修改的内容。</p><p><img src="/images/Git/git-diff02.png"></p><h2 id="Git文件操作"><a href="#Git文件操作" class="headerlink" title="Git文件操作"></a>Git文件操作</h2><h3 id="知识点-1"><a href="#知识点-1" class="headerlink" title="知识点"></a>知识点</h3><ul><li>git add [file1 file 2 …]</li><li>git add .  将当前工作文件夹下的所有文件（包括子目录）添加到索引区  </li><li>git rm / git rm –cached 删除</li><li>git mv  文件移动，更多用于文件更名</li></ul><h3 id="实战演练-3"><a href="#实战演练-3" class="headerlink" title="实战演练"></a>实战演练</h3><p>我们再一次修改index.htm文件，并且创建style.css文件，查看状态。</p><p><img src="/images/Git/git-add01.png"></p><p>使用**git add .**，提交所有文件到索引区。</p><p><img src="/images/Git/git-add02.png"></p><p>使用<strong>git mv</strong>，进行文件更名。</p><p><img src="/images/Git/git-mv.png"></p><p>使用<strong>git rm</strong>命令，将刚刚提交到索引区内的文件从中撤了出来。</p><p><img src="/images/Git/git-rm.png"></p><h2 id="Git忽略管理"><a href="#Git忽略管理" class="headerlink" title="Git忽略管理"></a>Git忽略管理</h2><p>设置Git忽略的文件，这些文件不参与Git库的提交和管理。</p><h3 id="知识点-2"><a href="#知识点-2" class="headerlink" title="知识点"></a>知识点</h3><ul><li>. gitignore</li></ul><p>详情查询：</p><p><a href="https://git-scm.com/docs/gitignore">帮助网页</a></p><h3 id="实战演练-4"><a href="#实战演练-4" class="headerlink" title="实战演练"></a>实战演练</h3><p>我们创建temp.txt文件，查看状态，显示红字，但是我们不想这个文件被管理，所以我们有创建了一个<strong>末尾文件名</strong>为“ . gitignore”的文件，查看状态，这两个文件目前都是被管理的（ . gitignore文件肯定是需要管理的）</p><p><img src="/images/Git/git-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86.png"></p><p>我们在 . gitignore文件中写入 “ *.txt “这一行，如图：</p><p><img src="/images/Git/git-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%8602.png"></p><p>再次查看状态，这次只有 . gitignore文件被管理，达到了我们的目的。</p><p><img src="/images/Git/git-gitignore.png"></p><h2 id="更新最后的提交"><a href="#更新最后的提交" class="headerlink" title="更新最后的提交"></a>更新最后的提交</h2><h3 id="知识点-3"><a href="#知识点-3" class="headerlink" title="知识点"></a>知识点</h3><ul><li>git commit -m “…”</li><li>git cmmit –amend</li><li>git commit -am “…” [–amend]</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> Markdown </tag>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MySQL</title>
+      <link href="2020/09/14/mysql-san/"/>
+      <url>2020/09/14/mysql-san/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-连接查询"><a href="#1-连接查询" class="headerlink" title="1.连接查询"></a>1.连接查询</h2><ul><li>在实际开发中，大部分的情况下都不是从单表中查询数据，一般都是多张表联合查询取出最终的结果。</li><li>在实际开发中，一般一个业务都会对应多张表，比如：学生和班级，起码两张表。</li></ul><table><thead><tr><th>stuno</th><th>stuname</th><th>classno</th><th>classname</th></tr></thead><tbody><tr><td>1</td><td>zs</td><td>1</td><td>第二中学高三1班</td></tr><tr><td>2</td><td>ls</td><td>1</td><td>第二中学高三1班</td></tr></tbody></table><p>因此，学生和班级信息存储到一张表中，结果就像上面一样，数据会存在大量的重复，导致<strong>数据的冗余</strong>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Typora </tag>
+            
+            <tag> Markdown </tag>
+            
+            <tag> 数据库 </tag>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MySQL(二)</title>
       <link href="2020/09/13/mysql-er/"/>
       <url>2020/09/13/mysql-er/</url>
