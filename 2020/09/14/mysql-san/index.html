@@ -434,14 +434,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Typora/">
-                                <span class="chip bg-color">Typora</span>
-                            </a>
-                        
-                            <a href="/tags/Markdown/">
-                                <span class="chip bg-color">Markdown</span>
-                            </a>
-                        
                             <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
                                 <span class="chip bg-color">数据库</span>
                             </a>
@@ -476,14 +468,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    7 分
                 </div>
                 
 
@@ -525,7 +517,7 @@
 </tr>
 </tbody></table>
 <p>因此，学生和班级信息存储到一张表中，结果就像上面一样，数据会存在大量的重复，导致<strong>数据的冗余</strong>。</p>
-<h3 id="1-1-连接查询分类"><a href="#1-1-连接查询分类" class="headerlink" title="1-1.连接查询分类"></a>1-1.连接查询分类</h3><ul>
+<h2 id="2-连接查询分类"><a href="#2-连接查询分类" class="headerlink" title="2.连接查询分类"></a>2.连接查询分类</h2><ul>
 <li>根据语法出现的年代<ul>
 <li>SQL92（一些老的DBA可能还在使用这种语法。DBA：DataBase Administrator，数据库管理员）</li>
 <li>SQL99（比较新的语法）</li>
@@ -547,7 +539,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="1-2-笛卡尔积现象"><a href="#1-2-笛卡尔积现象" class="headerlink" title="1-2.笛卡尔积现象"></a>1-2.笛卡尔积现象</h3><p>在表的连接查询方面有一种现象被称为：笛卡尔积现象（笛卡尔乘积现象）</p>
+<h2 id="3-笛卡尔积现象"><a href="#3-笛卡尔积现象" class="headerlink" title="3.笛卡尔积现象"></a>3.笛卡尔积现象</h2><p>在表的连接查询方面有一种现象被称为：笛卡尔积现象（笛卡尔乘积现象）</p>
 <p>案例：找出每一个员工的部门名称，要求显示员工名和部门名。</p>
 <p>EMP表：</p>
 <table>
@@ -666,7 +658,7 @@
 <p>案例：找出每一个员工的部门名称，要求显示员工名和部门名。</p>
 <pre class=" language-java"><code class="language-java">select e<span class="token punctuation">.</span>ename<span class="token punctuation">,</span>d<span class="token punctuation">.</span>dname from emp e<span class="token punctuation">,</span>dept d where e<span class="token punctuation">.</span>deptno <span class="token operator">=</span> d<span class="token punctuation">.</span>deptno</code></pre>
 <p>这个语句可以帮我们避免笛卡尔积现象，但是，这是SQL92的写法，现在不用了。（表格连接条件与之前的条件查询都放在了where里面，不好）</p>
-<h3 id="1-4-内连接-inner-：等值连接"><a href="#1-4-内连接-inner-：等值连接" class="headerlink" title="1-4.内连接(inner)：等值连接"></a>1-4.内连接(inner)：等值连接</h3><p>特点：条件是<strong>等量</strong>关系</p>
+<h2 id="4-内连接-inner-：等值连接"><a href="#4-内连接-inner-：等值连接" class="headerlink" title="4.内连接(inner)：等值连接"></a>4.内连接(inner)：等值连接</h2><p>特点：条件是<strong>等量</strong>关系</p>
 <p>还是上面的案例：找出每一个员工的部门名称，要求显示员工名和部门名。</p>
 <p>（SQL92的写法就在上面，就不再写了，而且现在也不用了）下面是SQL99的写法，被普遍采用。</p>
 <pre class=" language-java"><code class="language-java">select
@@ -682,7 +674,7 @@ on
 </code></pre>
 <p>因为此处是等值连接，正如小标题所述一样，等值连接属于内连接（inner)，所以inner被省略了，但是，带着inner目的是可读性更好一些。</p>
 <p>SQL99语法结构更清晰一些：表的连接条件和后来的where条件分离了。同样达到避免笛卡尔积现象的目的。</p>
-<h3 id="1-5-内连接-inner-：非等值查询"><a href="#1-5-内连接-inner-：非等值查询" class="headerlink" title="1-5.内连接(inner)：非等值查询"></a>1-5.内连接(inner)：非等值查询</h3><p>特点：连接条件中的关系是非等量关系。</p>
+<h2 id="5-内连接-inner-：非等值查询"><a href="#5-内连接-inner-：非等值查询" class="headerlink" title="5.内连接(inner)：非等值查询"></a>5.内连接(inner)：非等值查询</h2><p>特点：连接条件中的关系是非等量关系。</p>
 <p>案例：找出每个员工的工资等级，要求显示员工名、工资、工资等级。</p>
 <pre class=" language-java"><code class="language-java">select ename<span class="token punctuation">,</span>sal from emp<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将此表取别名：e</span></code></pre>
 <blockquote>
@@ -705,6 +697,77 @@ on
 <blockquote>
 <p>+——–+———+——-+<br>| ename  | sal     | grade |<br>+——–+———+——-+<br>| SMITH  |  800.00 |     1 |<br>| ALLEN  | 1600.00 |     3 |<br>| WARD   | 1250.00 |     2 |<br>| JONES  | 2975.00 |     4 |<br>| MARTIN | 1250.00 |     2 |<br>| BLAKE  | 2850.00 |     4 |<br>| CLARK  | 2450.00 |     4 |<br>| SCOTT  | 3000.00 |     4 |<br>| KING   | 5000.00 |     5 |<br>| TURNER | 1500.00 |     3 |<br>| ADAMS  | 1100.00 |     1 |<br>| JAMES  |  950.00 |     1 |<br>| FORD   | 3000.00 |     4 |<br>| MILLER | 1300.00 |     2 |<br>+——–+———+——-+</p>
 </blockquote>
+<h2 id="6-自连接"><a href="#6-自连接" class="headerlink" title="6.自连接"></a>6.自连接</h2><p>特点：一张表看做两张表。自己连接自己。</p>
+<p>案例：找出每个员工的上级领导，要求显示员工名和对应的领导名。</p>
+<pre class=" language-java"><code class="language-java">select empno<span class="token punctuation">,</span>ename<span class="token punctuation">,</span>mgr from emp<span class="token punctuation">;</span></code></pre>
+<p>EMP a 员工表</p>
+<blockquote>
+<p>+——-+——–+——+<br>| empno | ename  | mgr  |<br>+——-+——–+——+<br>|  7369 | SMITH  | 7902 |<br>|  7499 | ALLEN  | 7698 |<br>|  7521 | WARD   | 7698 |<br>|  7566 | JONES  | 7839 |<br>|  7654 | MARTIN | 7698 |<br>|  7698 | BLAKE  | 7839 |<br>|  7782 | CLARK  | 7839 |<br>|  7788 | SCOTT  | 7566 |<br>|  7839 | KING   | NULL |<br>|  7844 | TURNER | 7698 |<br>|  7876 | ADAMS  | 7788 |<br>|  7900 | JAMES  | 7698 |<br>|  7902 | FORD   | 7566 |<br>|  7934 | MILLER | 7782 |<br>+——-+——–+——+</p>
+</blockquote>
+<p>EMP b 领导表</p>
+<blockquote>
+<p>+——-+——–+<br>| empno | ename  |<br>+——-+——–+<br>|  7566 | JONES  |<br>|  7698 | BLAKE  |<br>|  7782 | CLARK  |<br>|  7788 | SCOTT  |<br>|  7839 | KING   |<br>|  7902 | FORD   |<br>+——-+——–+</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java">select
+    a<span class="token punctuation">.</span>ename as <span class="token string">'员工'</span><span class="token punctuation">,</span>b<span class="token punctuation">.</span>ename as <span class="token string">'领导'</span>
+from 
+    emp a
+<span class="token comment" spellcheck="true">/*inner*/</span>join
+    emp b
+on
+    a<span class="token punctuation">.</span>mgr <span class="token operator">=</span> b<span class="token punctuation">.</span>empno<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//员工的领导编号 = 领导的员工编号</span></code></pre>
+<h2 id="7-外连接"><a href="#7-外连接" class="headerlink" title="7.外连接"></a>7.外连接</h2><h3 id="7-1-与内连接区别"><a href="#7-1-与内连接区别" class="headerlink" title="7-1.与内连接区别"></a>7-1.与内连接区别</h3><ul>
+<li>内连接<ul>
+<li>假设A和B表使用内(inner)连接的话，凡是A表和B表能够匹配上的记录查询出来，这就是内连接。AB两张表没有主副之分，两张表是平等的。</li>
+</ul>
+</li>
+<li>外连接<ul>
+<li>假设A和B表使用外(outer)连接的话，AB两张表中有一张表是<strong>主表</strong>，一张表是<strong>副表</strong>，主要查询主表中的数据，捎带着查询副表，当副表中的数据没有和主表中的数据匹配上，副表自动模拟出NULL与之匹配。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-2-外连接分类"><a href="#7-2-外连接分类" class="headerlink" title="7-2.外连接分类"></a>7-2.外连接分类</h3><ul>
+<li>左外连接（左连接）：表示左边的这张表是主表。</li>
+<li>右外连接（右连接）：表示右边的这张表是主表。</li>
+</ul>
+<p>左连接有右连接的写法，右连接也会有对应的左连接的写法。</p>
+<p>案例：找出每个员工的上级领导？（所有员工必须全部查询出来。）</p>
+<p>EMP a 员工表</p>
+<blockquote>
+<p>+——-+——–+——+<br>| empno | ename  | mgr  |<br>+——-+——–+——+<br>|  7369 | SMITH  | 7902 |<br>|  7499 | ALLEN  | 7698 |<br>|  7521 | WARD   | 7698 |<br>|  7566 | JONES  | 7839 |<br>|  7654 | MARTIN | 7698 |<br>|  7698 | BLAKE  | 7839 |<br>|  7782 | CLARK  | 7839 |<br>|  7788 | SCOTT  | 7566 |<br>|  7839 | KING   | NULL |<br>|  7844 | TURNER | 7698 |<br>|  7876 | ADAMS  | 7788 |<br>|  7900 | JAMES  | 7698 |<br>|  7902 | FORD   | 7566 |<br>|  7934 | MILLER | 7782 |<br>+——-+——–+——+</p>
+</blockquote>
+<p>EMP b 领导表</p>
+<blockquote>
+<p>+——-+——–+<br>| empno | ename  |<br>+——-+——–+<br>|  7566 | JONES  |<br>|  7698 | BLAKE  |<br>|  7782 | CLARK  |<br>|  7788 | SCOTT  |<br>|  7839 | KING   |<br>|  7902 | FORD   |<br>+——-+——–+</p>
+</blockquote>
+<p>内连接：</p>
+<pre class=" language-java"><code class="language-java">select
+    a<span class="token punctuation">.</span>ename as <span class="token string">'员工'</span><span class="token punctuation">,</span>b<span class="token punctuation">.</span>ename as <span class="token string">'领导'</span>
+from 
+    emp a
+<span class="token comment" spellcheck="true">/*inner*/</span>join
+    emp b
+on
+    a<span class="token punctuation">.</span>mgr <span class="token operator">=</span> b<span class="token punctuation">.</span>empno<span class="token punctuation">;</span></code></pre>
+<p>左外连接：</p>
+<pre class=" language-java"><code class="language-java">select 
+    a<span class="token punctuation">.</span>ename <span class="token string">'员工'</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>ename <span class="token string">'领导'</span>
+from
+    emp a
+left <span class="token comment" spellcheck="true">/*outer*/</span> join
+    emp b
+on
+    a<span class="token punctuation">.</span>mgr <span class="token operator">=</span> b<span class="token punctuation">.</span>empno<span class="token punctuation">;</span></code></pre>
+<p>右外连接：</p>
+<pre class=" language-java"><code class="language-java">select 
+    a<span class="token punctuation">.</span>ename <span class="token string">'员工'</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>ename <span class="token string">'领导'</span>
+from
+    emp b
+right <span class="token comment" spellcheck="true">/*outer*/</span> join
+    emp a
+on
+    a<span class="token punctuation">.</span>mgr <span class="token operator">=</span> b<span class="token punctuation">.</span>empno<span class="token punctuation">;</span></code></pre>
+<p>外连接最重要的特点：主表的数据无条件的全部查询出来。</p>
 
             </div>
             <hr/>
@@ -767,14 +830,6 @@ on
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Typora/">
-                                    <span class="chip bg-color">Typora</span>
-                                </a>
-                            
-                                <a href="/tags/Markdown/">
-                                    <span class="chip bg-color">Markdown</span>
-                                </a>
                             
                                 <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
                                     <span class="chip bg-color">数据库</span>
@@ -1237,26 +1292,14 @@ on
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            LogicVan
                             
                         </span>
                     </div>
                 </div>
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/Typora/">
-                        <span class="chip bg-color">Typora</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
-                    </a>
                     
                     <a href="/tags/Git/">
                         <span class="chip bg-color">Git</span>
@@ -1294,26 +1337,14 @@ on
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            LogicVan
                             
                         </span>
                     </div>
                 </div>
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/Typora/">
-                        <span class="chip bg-color">Typora</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
-                    </a>
                     
                     <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
                         <span class="chip bg-color">数据库</span>
@@ -1527,7 +1558,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.9k</span>&nbsp;字
+                class="white-color">7.5k</span>&nbsp;字
             
             
             
