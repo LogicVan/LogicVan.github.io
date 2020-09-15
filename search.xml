@@ -37,7 +37,7 @@
       <link href="2020/09/14/mysql-san/"/>
       <url>2020/09/14/mysql-san/</url>
       
-        <content type="html"><![CDATA[<h2 id="1-连接查询"><a href="#1-连接查询" class="headerlink" title="1.连接查询"></a>1.连接查询</h2><ul><li>在实际开发中，大部分的情况下都不是从单表中查询数据，一般都是多张表联合查询取出最终的结果。</li><li>在实际开发中，一般一个业务都会对应多张表，比如：学生和班级，起码两张表。</li></ul><table><thead><tr><th>stuno</th><th>stuname</th><th>classno</th><th>classname</th></tr></thead><tbody><tr><td>1</td><td>zs</td><td>1</td><td>第二中学高三1班</td></tr><tr><td>2</td><td>ls</td><td>1</td><td>第二中学高三1班</td></tr></tbody></table><p>因此，学生和班级信息存储到一张表中，结果就像上面一样，数据会存在大量的重复，导致<strong>数据的冗余</strong>。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="1-连接查询"><a href="#1-连接查询" class="headerlink" title="1.连接查询"></a>1.连接查询</h2><ul><li>在实际开发中，大部分的情况下都不是从单表中查询数据，一般都是多张表联合查询取出最终的结果。</li><li>在实际开发中，一般一个业务都会对应多张表，比如：学生和班级，起码两张表。</li></ul><table><thead><tr><th>stuno</th><th>stuname</th><th>classno</th><th>classname</th></tr></thead><tbody><tr><td>1</td><td>zs</td><td>1</td><td>第二中学高三1班</td></tr><tr><td>2</td><td>ls</td><td>1</td><td>第二中学高三1班</td></tr></tbody></table><p>因此，学生和班级信息存储到一张表中，结果就像上面一样，数据会存在大量的重复，导致<strong>数据的冗余</strong>。</p><h3 id="1-1-连接查询分类"><a href="#1-1-连接查询分类" class="headerlink" title="1-1.连接查询分类"></a>1-1.连接查询分类</h3><ul><li>根据语法出现的年代<ul><li>SQL92（一些老的DBA可能还在使用这种语法。DBA：DataBase Administrator，数据库管理员）</li><li>SQL99（比较新的语法）</li></ul></li><li>根据表的连接方式<ul><li>内连接<ul><li>等值连接</li><li>非等值连接</li><li>自连接</li></ul></li></ul></li></ul>]]></content>
       
       
       <categories>
