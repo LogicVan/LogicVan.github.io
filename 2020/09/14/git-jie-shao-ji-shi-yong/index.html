@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-15
+                    2020-09-16
                 </div>
                 
 
@@ -488,8 +488,8 @@
             <div id="articleContent">
                 <h2 id="什么是Git"><a href="#什么是Git" class="headerlink" title="什么是Git"></a>什么是Git</h2><p>Git是一套程序源代码的分布式版本管理系统，最初用于管理Linux核心代码的开发，后来被多个开源工程采用，现在已经成为互联网协作开发的标准的源代码管理软件。（更加管理项目的开发流程）</p>
 <p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git官方网站</a></p>
-<h3 id="Git初运行"><a href="#Git初运行" class="headerlink" title="Git初运行"></a>Git初运行</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
-$ git version<span class="token comment" spellcheck="true">//查看git的版本号</span></code></pre>
+<h3 id="Git初运行"><a href="#Git初运行" class="headerlink" title="Git初运行"></a>Git初运行</h3><pre class=" language-bash"><code class="language-bash">​~~~bash
+$ <span class="token function">git</span> version//查看git的版本号</code></pre>
 <p><img src="/images/Git/git-version.png"></p>
 <p><a target="_blank" rel="noopener" href="https://try.github.io/">Git在线体验</a></p>
 <h3 id="采用Git的云服务"><a href="#采用Git的云服务" class="headerlink" title="采用Git的云服务"></a>采用Git的云服务</h3><ul>
@@ -514,28 +514,28 @@ $ git version<span class="token comment" spellcheck="true">//查看git的版本�
 </ul>
 </li>
 </ol>
-<h2 id="Git初始设定"><a href="#Git初始设定" class="headerlink" title="Git初始设定"></a>Git初始设定</h2><h3 id="建立一个Git库"><a href="#建立一个Git库" class="headerlink" title="建立一个Git库"></a>建立一个Git库</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
-$ git init<span class="token comment" spellcheck="true">//初始化</span></code></pre>
+<h2 id="Git初始设定"><a href="#Git初始设定" class="headerlink" title="Git初始设定"></a>Git初始设定</h2><h3 id="建立一个Git库"><a href="#建立一个Git库" class="headerlink" title="建立一个Git库"></a>建立一个Git库</h3><pre class=" language-bash"><code class="language-bash">​~~~bash
+$ <span class="token function">git</span> init//初始化</code></pre>
 <p><strong>在当前文件下，建/初始一个Git的数据库</strong>。当前文件夹下所有的文件，都可以进行文件管理。</p>
-<h3 id="设置基础信息"><a href="#设置基础信息" class="headerlink" title="设置基础信息"></a>设置基础信息</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
-$ git init<span class="token comment" spellcheck="true">//建一个库</span>
-$ git config <span class="token operator">-</span>l<span class="token comment" spellcheck="true">//查看当前的设置</span>
-$ git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>name <span class="token string">"LogicVan"</span><span class="token comment" spellcheck="true">//进行用户名的设置</span>
-$ git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>email <span class="token string">"LogicVan@163.com"</span><span class="token comment" spellcheck="true">//Git是Internet分布式开发管理系统，Internet每个用户有邮件地址，进行邮箱的设置</span>
-$ git config <span class="token operator">--</span>global color<span class="token punctuation">.</span>ui <span class="token boolean">true</span><span class="token comment" spellcheck="true">//设置编辑器的颜色为true，多在Linux和Mac系统设置，Windows里不多</span>
-$ git config <span class="token operator">-</span>l</code></pre>
+<h3 id="设置基础信息"><a href="#设置基础信息" class="headerlink" title="设置基础信息"></a>设置基础信息</h3><pre class=" language-bash"><code class="language-bash">​~~~bash
+$ <span class="token function">git</span> init//建一个库
+$ <span class="token function">git</span> config -l//查看当前的设置
+$ <span class="token function">git</span> config --global user.name <span class="token string">"LogicVan"</span>//进行用户名的设置
+$ <span class="token function">git</span> config --global user.email <span class="token string">"LogicVan@163.com"</span>//Git是Internet分布式开发管理系统，Internet每个用户有邮件地址，进行邮箱的设置
+$ <span class="token function">git</span> config --global color.ui true//设置编辑器的颜色为true，多在Linux和Mac系统设置，Windows里不多
+$ <span class="token function">git</span> config -l</code></pre>
 <p>跳转到D盘下文件夹F下的Cloud文件夹</p>
 <p><img src="/images/Git/git01.png"></p>
-<pre class=" language-java"><code class="language-java">$ git init<span class="token comment" spellcheck="true">//建一个库</span></code></pre>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> init//建一个库</code></pre>
 <p><img src="/images/Git/git02.png"></p>
 <p>查看新建出来的.git文件下有什么</p>
 <p><img src="/images/Git/git03.png"></p>
-<pre class=" language-java"><code class="language-java">$ git config <span class="token operator">-</span>l<span class="token comment" spellcheck="true">//查看当前的设置</span></code></pre>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> config -l//查看当前的设置</code></pre>
 <p><img src="/images/Git/git04.png"></p>
 <p>由于我之前已经设置好用户名和邮箱了，就不再演示了。</p>
-<h3 id="方便的命令"><a href="#方便的命令" class="headerlink" title="方便的命令"></a>方便的命令</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
-$ git config <span class="token operator">--</span>help
-<span class="token comment" spellcheck="true">//$ git help config也可以</span></code></pre>
+<h3 id="方便的命令"><a href="#方便的命令" class="headerlink" title="方便的命令"></a>方便的命令</h3><pre class=" language-bash"><code class="language-bash">​~~~bash
+$ <span class="token function">git</span> config --help
+//$ <span class="token function">git</span> <span class="token function">help</span> config也可以</code></pre>
 <p>在Git Bash中敲下代码，再按下回车键，在浏览器中打开帮助文档（Windows下），若是Linux，则在当前命令行中打开。</p>
 <h2 id="第一次提交"><a href="#第一次提交" class="headerlink" title="第一次提交"></a>第一次提交</h2><h3 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h3><ul>
 <li>建立文件（本地工作区）</li>
@@ -561,19 +561,19 @@ $ git config <span class="token operator">--</span>help
 <p><strong>git log</strong>查看提交历史。</p>
 <p><img src="/images/Git/git11.png"></p>
 <h2 id="查看提交履历"><a href="#查看提交履历" class="headerlink" title="查看提交履历"></a>查看提交履历</h2><p><strong>知识点：git log</strong>命令的使用</p>
-<h3 id="实战演练-1"><a href="#实战演练-1" class="headerlink" title="实战演练"></a>实战演练</h3><pre class=" language-java"><code class="language-java">​<span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>bash
-$ git log
-$ nano index<span class="token punctuation">.</span>htm
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-$ git add index<span class="token punctuation">.</span>htm
-$ git commit <span class="token operator">-</span>m <span class="token string">"added code"</span>
-$ git log
-$ git log <span class="token operator">-</span>n<span class="token comment" spellcheck="true">//n为1,2,3...,显示最近n次记录</span>
-$ git log <span class="token operator">--</span>oneline<span class="token comment" spellcheck="true">//**将记录归为一行显示</span>
-$ git log <span class="token operator">-</span>p<span class="token comment" spellcheck="true">//将记录详细显示</span>
-$ git log <span class="token operator">--</span>stat<span class="token comment" spellcheck="true">//对每次提交的信息进行统计</span>
-$ git log <span class="token operator">--</span>help<span class="token comment" spellcheck="true">//对于git log 选项的帮助文档</span></code></pre>
+<h3 id="实战演练-1"><a href="#实战演练-1" class="headerlink" title="实战演练"></a>实战演练</h3><pre class=" language-bash"><code class="language-bash">​~~~bash
+$ <span class="token function">git</span> log
+$ <span class="token function">nano</span> index.htm
+<span class="token punctuation">..</span>.
+<span class="token punctuation">..</span>.
+$ <span class="token function">git</span> add index.htm
+$ <span class="token function">git</span> commit -m <span class="token string">"added code"</span>
+$ <span class="token function">git</span> log
+$ <span class="token function">git</span> log -n//n为1,2,3<span class="token punctuation">..</span>.,显示最近n次记录
+$ <span class="token function">git</span> log --oneline//**将记录归为一行显示
+$ <span class="token function">git</span> log -p//将记录详细显示
+$ <span class="token function">git</span> log --stat//对每次提交的信息进行统计
+$ <span class="token function">git</span> log --help//对于git log 选项的帮助文档</code></pre>
 <h2 id="把握Git状态"><a href="#把握Git状态" class="headerlink" title="把握Git状态"></a>把握Git状态</h2><p><strong>知识点</strong></p>
 <ul>
 <li>git status</li>
