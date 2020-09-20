@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>数据库系统</title>
+      <link href="2020/09/20/shu-ju-ku-xi-tong/"/>
+      <url>2020/09/20/shu-ju-ku-xi-tong/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-什么是数据库"><a href="#1-什么是数据库" class="headerlink" title="1.什么是数据库"></a>1.什么是数据库</h2><p>数据库起源于规范化 “ 表(Table) “ 的处理。</p><p>表(Table)：以按行按列形式组织及展现的数据。</p><p>表(Table)中描述了一批相互有关联关系的数据–&gt;关系</p><p>常用术语：</p><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9301.png"></p><p>数据库(Database)：相互之间有关联关系的若干个Table的集合，如下图。</p><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9303.png"></p><p>以下的图中，左边称为结构化数据库，右边称为非结构化数据库。</p><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9302.png"></p><p>左边称为结构化数据库，右边称为非结构化数据库。非结构化数据库除了有关系数据库的特性之外，还有其他的特性。各种各样的数据都可聚集成库，它们的基础都是关系数据库。</p><h2 id="2-什么是数据库系统"><a href="#2-什么是数据库系统" class="headerlink" title="2.什么是数据库系统"></a>2.什么是数据库系统</h2><h3 id="2-1-数据库系统-工作环境"><a href="#2-1-数据库系统-工作环境" class="headerlink" title="2-1.数据库系统(工作环境)"></a>2-1.数据库系统(工作环境)</h3><ul><li>数据库(DB)：Database</li><li>数据库管理系统(DBMS)</li><li>数据库应用(DBAP)</li><li>数据库管理员(DBA)</li><li>计算机基本系统</li></ul><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9304.png"></p><h3 id="2-2-实例层次"><a href="#2-2-实例层次" class="headerlink" title="2-2.实例层次"></a>2-2.实例层次</h3><p>数据库系统(工作环境)：图书管理数据库系统</p><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9305.png"></p><h3 id="2-3-实例化与抽象化-概念化"><a href="#2-3-实例化与抽象化-概念化" class="headerlink" title="2-3.实例化与抽象化(概念化)"></a>2-3.实例化与抽象化(概念化)</h3><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9306.png"></p><h2 id="3-数据库管理系统-DBMS"><a href="#3-数据库管理系统-DBMS" class="headerlink" title="3.数据库管理系统(DBMS)"></a>3.数据库管理系统(DBMS)</h2><h3 id="3-1-从用户角度"><a href="#3-1-从用户角度" class="headerlink" title="3-1.从用户角度"></a>3-1.从用户角度</h3><h4 id="3-1-1-具有数据库定义的功能"><a href="#3-1-1-具有数据库定义的功能" class="headerlink" title="3-1-1.具有数据库定义的功能"></a>3-1-1.具有数据库定义的功能</h4><p>定义数据库中Table的名称，标题(内含的属性名称及对该属性的值的要求)等。</p><ul><li>DBMS提供一套数据定义语言(DDL：Data Definition Language)给用户</li><li>用户使用DDL描述其所要建立表的格式</li><li>DBMS依照用户的定义，创建数据库及其中的Table</li></ul><h4 id="3-1-2-具有数据库操作的功能"><a href="#3-1-2-具有数据库操作的功能" class="headerlink" title="3-1-2.具有数据库操作的功能"></a>3-1-2.具有数据库操作的功能</h4><p>向数据库当中的Table中<strong>增加，删除，更新</strong>数据及对数据进行查询，检索，统计等。</p><ul><li>DBMS提供一套数据操纵语言(DML：Data Manipulation Language)给用户</li><li>用户使用DML描述其所要进行的增，删，改，查等操作</li><li>DBMS依照用户的操作描述，实际执行这些操作</li></ul><h4 id="3-1-3-具有数据库控制的功能"><a href="#3-1-3-具有数据库控制的功能" class="headerlink" title="3-1-3.具有数据库控制的功能"></a>3-1-3.具有数据库控制的功能</h4><p>控制数据库中的数据使用。</p><ul><li>DBMS提供一套数据控制语言(DCL：Data Control Language)给用户</li><li>用户使用DCL描述其对数据库所要实施的控制</li><li>DBMS依照用户的操作描述，实际执行控制</li></ul><h4 id="3-1-4-具有数据库维护的功能"><a href="#3-1-4-具有数据库维护的功能" class="headerlink" title="3-1-4.具有数据库维护的功能"></a>3-1-4.具有数据库维护的功能</h4><p>转储，恢复，重组，性能检测，分析</p><ul><li>DBMS提供一系列程序(实用程序，例行程序)给用户</li><li>在这些程序中提供了对数据库维护的各种功能</li><li>用户使用这些程序进行各种数据库维护操作</li></ul><p>数据库维护的实用程序，一般都是有数据库管理员(DBA)来使用和掌握的。</p><h3 id="3-2-数据库语言"><a href="#3-2-数据库语言" class="headerlink" title="3-2.数据库语言"></a>3-2.数据库语言</h3><ul><li>数据定义语言(DDL：Data Definition Language)</li><li>数据操纵语言(DML：Data Manipulation Language)</li><li>数据控制语言(DCL：Data Control Language)</li><li>数据库各种操作的执行</li></ul><h3 id="3-3-从系统实现角度"><a href="#3-3-从系统实现角度" class="headerlink" title="3-3.从系统实现角度"></a>3-3.从系统实现角度</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git介绍及使用(更新中)</title>
       <link href="2020/09/14/git-jie-shao-ji-shi-yong/"/>
       <url>2020/09/14/git-jie-shao-ji-shi-yong/</url>
