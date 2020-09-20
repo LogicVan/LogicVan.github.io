@@ -636,14 +636,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    730
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -710,7 +710,67 @@
 <li>数据控制语言(DCL：Data Control Language)</li>
 <li>数据库各种操作的执行</li>
 </ul>
-<h3 id="3-3-从系统实现角度"><a href="#3-3-从系统实现角度" class="headerlink" title="3-3.从系统实现角度"></a>3-3.从系统实现角度</h3>
+<h3 id="3-3-从系统实现角度"><a href="#3-3-从系统实现角度" class="headerlink" title="3-3.从系统实现角度"></a>3-3.从系统实现角度</h3><p>强调了”形式-&gt;构造-&gt;自动化”</p>
+<p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9307.png"></p>
+<h2 id="4-相关介绍"><a href="#4-相关介绍" class="headerlink" title="4.相关介绍"></a>4.相关介绍</h2><p>岗位介绍</p>
+<ul>
+<li>End Users，普通用户</li>
+<li>Application Programmers，应用程序员</li>
+<li>Database anylyzer and designer</li>
+<li>Database Administrators，DBA</li>
+<li>Database Management System designer and inplementor</li>
+<li>Techniques for Special and New Database Management Syatem</li>
+</ul>
+<h2 id="5-数据库的标准结构"><a href="#5-数据库的标准结构" class="headerlink" title="5.数据库的标准结构"></a>5.数据库的标准结构</h2><h3 id="5-1-分层抽象"><a href="#5-1-分层抽象" class="headerlink" title="5-1.分层抽象"></a>5-1.分层抽象</h3><p>DBMS管理数据的三个层次</p>
+<ul>
+<li>External Level，User Level：某一个用户能够看到的与处理的数据，全局数据中的某一部分</li>
+<li>Conceptual Level，Logic Level：从全局角度理解/管理的数据，含相应的关联约束</li>
+<li>Internal Level，Physical Level：存储在介质上的数据，含存储路径，存储方式，索引方式等</li>
+</ul>
+<p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9308.png"></p>
+<h3 id="5-2-数据-视图-与模式"><a href="#5-2-数据-视图-与模式" class="headerlink" title="5-2.数据(视图)与模式"></a>5-2.数据(视图)与模式</h3><p>模式(Schema)：</p>
+<ul>
+<li>对数据库中数据所进行的一种结构性的描述</li>
+<li>所观察到数据的结构信息</li>
+</ul>
+<p>视图(View)/数据(Data)：某一种表现形式下表现出来的数据库中的数据</p>
+<p>三级模式(三级视图)</p>
+<p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9309.png"></p>
+<p>两层映像</p>
+<p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9310.png"></p>
+<h2 id="6-数据模型"><a href="#6-数据模型" class="headerlink" title="6.数据模型"></a>6.数据模型</h2><h3 id="6-1-概念"><a href="#6-1-概念" class="headerlink" title="6-1.概念"></a>6-1.概念</h3><ul>
+<li>规定模式统一描述方式的模型，包括：数据结构，操作和约束</li>
+<li>数据模型是对模式本身结构的抽象，模式是对数据本身结构形式的抽象</li>
+</ul>
+<p>比如：</p>
+<ul>
+<li>关系模型：所有模式都可为抽象表(Table)的形式【数据结构】，而每一个具体的模式都是拥有不同列名的具体的表。对这种表形式的数据有哪些【操作】和【约束】。</li>
+</ul>
+<h3 id="6-2-三大经典数据模型"><a href="#6-2-三大经典数据模型" class="headerlink" title="6-2.三大经典数据模型"></a>6-2.三大经典数据模型</h3><ul>
+<li>关系模型：表的形式</li>
+<li>层次模型：树的形式</li>
+<li>网状模型：图的形式</li>
+</ul>
+<h2 id="7-关系模型简述"><a href="#7-关系模型简述" class="headerlink" title="7.关系模型简述"></a>7.关系模型简述</h2><p>标准的数据库语言SQL语言是建立在关系模型基础上的。形象的说，一个关系(relation)模型就是一个表(Table)。</p>
+<p>关系模型就是处理Table的，它由三个部分组成：</p>
+<ul>
+<li>描述DB各种数据的基本结构形式(Table/Relation)</li>
+<li>描述Table与Table之间所可能发生的各种操作(关系运算)</li>
+<li>描述这些操作所应遵循的约束条件(完整性约束)</li>
+</ul>
+<h2 id="8-什么是关系"><a href="#8-什么是关系" class="headerlink" title="8.什么是关系"></a>8.什么是关系</h2><h3 id="8-1-表的基本构成要素"><a href="#8-1-表的基本构成要素" class="headerlink" title="8-1.表的基本构成要素"></a>8-1.表的基本构成要素</h3><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9311.png"></p>
+<h3 id="8-2-相关概念"><a href="#8-2-相关概念" class="headerlink" title="8-2.相关概念"></a>8-2.相关概念</h3><ul>
+<li><p>候选码/候选键：关系中的一个属性组，其值能够唯一标识一个元组，若从该属性组中去掉任何一个属性，它就不具有这一性质，这样的属性组称作候选码。</p>
+<p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9312.png"></p>
+</li>
+<li><p>主码/主键(Primary Key)：当有多个候选码时，可以选定一个作为主码。DBMS以主码为主要线索管理关系中的各个元组。</p>
+</li>
+<li><p>主属性与非主属性：包含在任何一个候选码中的属性被称作主属性，而其他属性被称作非主属性。</p>
+</li>
+<li><p>外码/外键(Foreign Key)：关系R中的一个属性组，它不是R的候选码，但它与另外一个关系S的候选码相对应。</p>
+</li>
+</ul>
+
             </div>
             <hr/>
 
@@ -1281,8 +1341,12 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            LogicVan
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1498,7 +1562,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8.5k</span>&nbsp;字
+                class="white-color">9.2k</span>&nbsp;字
             
             
             
