@@ -633,21 +633,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-20
+                    2020-09-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    11 分
                 </div>
                 
 
@@ -960,7 +960,19 @@
     <span class="token number">e</span><span class="token punctuation">.</span>deptno <span class="token operator">=</span> <span class="token number">d</span><span class="token punctuation">.</span>deptno 
 <span class="token keyword">where</span> 
     <span class="token number">e</span><span class="token punctuation">.</span>empno <span class="token operator">is</span> <span class="token boolean">null</span><span class="token punctuation">;</span></code></pre>
-<h2 id="8-三张表的连接查询"><a href="#8-三张表的连接查询" class="headerlink" title="8.三张表的连接查询"></a>8.三张表的连接查询</h2><p>案例：找出每一个员工的部门名称以及工资等级。</p>
+<h2 id="8-三张表的连接查询"><a href="#8-三张表的连接查询" class="headerlink" title="8.三张表的连接查询"></a>8.三张表的连接查询</h2><p>EMP e：</p>
+<blockquote>
+<p>+——-+——–+———+——–+<br>| empno | ename  | sal     | deptno |<br>+——-+——–+———+——–+<br>|  7369 | SMITH  |  800.00 |     20 |<br>|  7499 | ALLEN  | 1600.00 |     30 |<br>|  7521 | WARD   | 1250.00 |     30 |<br>|  7566 | JONES  | 2975.00 |     20 |<br>|  7654 | MARTIN | 1250.00 |     30 |<br>|  7698 | BLAKE  | 2850.00 |     30 |<br>|  7782 | CLARK  | 2450.00 |     10 |<br>|  7788 | SCOTT  | 3000.00 |     20 |<br>|  7839 | KING   | 5000.00 |     10 |<br>|  7844 | TURNER | 1500.00 |     30 |<br>|  7876 | ADAMS  | 1100.00 |     20 |<br>|  7900 | JAMES  |  950.00 |     30 |<br>|  7902 | FORD   | 3000.00 |     20 |<br>|  7934 | MILLER | 1300.00 |     10 |<br>+——-+——–+———+——–+</p>
+</blockquote>
+<p>DEPT d：</p>
+<blockquote>
+<p>+——–+————+———-+<br>| DEPTNO | DNAME      | LOC      |<br>+——–+————+———-+<br>|     10 | ACCOUNTING | NEW YORK |<br>|     20 | RESEARCH   | DALLAS   |<br>|     30 | SALES      | CHICAGO  |<br>|     40 | OPERATIONS | BOSTON   |<br>+——–+————+———-+</p>
+</blockquote>
+<p>SALGRADE s：</p>
+<blockquote>
+<p>+——-+——-+——-+<br>| GRADE | LOSAL | HISAL |<br>+——-+——-+——-+<br>|     1 |   700 |  1200 |<br>|     2 |  1201 |  1400 |<br>|     3 |  1401 |  2000 |<br>|     4 |  2001 |  3000 |<br>|     5 |  3001 |  9999 |<br>+——-+——-+——-+</p>
+</blockquote>
+<p>案例：找出每一个员工的部门名称以及工资等级。</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> 
     <span class="token number">e</span><span class="token punctuation">.</span>ename<span class="token punctuation">,</span><span class="token number">d</span><span class="token punctuation">.</span>dname<span class="token punctuation">,</span>s<span class="token punctuation">.</span>grade
 <span class="token keyword">from</span>
@@ -974,8 +986,72 @@
 <span class="token keyword">on</span>
     <span class="token number">e</span><span class="token punctuation">.</span>sal <span class="token operator">between</span> s<span class="token punctuation">.</span>losal <span class="token operator">and</span> s<span class="token punctuation">.</span>hisal<span class="token punctuation">;</span></code></pre>
 <p>表示：emp表和dept表先进行表连接，连接之后emp表继续和salgrade表进行连接。</p>
-<hr>
-<h2 id="9-子查询"><a href="#9-子查询" class="headerlink" title="9.子查询"></a>9.子查询</h2>
+<p>案例：找出每一个员工的部门名称，工资等级，以及上级领导。</p>
+<p>PS：这个时候必须使用<strong>外连接</strong>，KING是员工，有部门名称，工资等级，但是KING没有上司，所以KING 必须查出，若是使用内连接，则会导致KING丢失。</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span>
+    <span class="token number">e</span><span class="token punctuation">.</span>ename <span class="token string">'员工'</span><span class="token punctuation">,</span><span class="token number">d</span><span class="token punctuation">.</span>dname<span class="token punctuation">,</span>s<span class="token punctuation">.</span>grade<span class="token punctuation">,</span><span class="token number">e1</span><span class="token punctuation">.</span>ename <span class="token string">'领导'</span>
+<span class="token keyword">from</span>
+    emp <span class="token number">e</span>
+<span class="token keyword">join</span>
+    dept <span class="token number">d</span>
+<span class="token keyword">on</span>
+    <span class="token number">e</span><span class="token punctuation">.</span>deptno <span class="token operator">=</span> <span class="token number">d</span><span class="token punctuation">.</span>deptno
+<span class="token keyword">join</span>
+    salgrade s
+<span class="token keyword">on</span>
+    <span class="token number">e</span><span class="token punctuation">.</span>sal <span class="token operator">between</span> s<span class="token punctuation">.</span>losal <span class="token operator">and</span> s<span class="token punctuation">.</span>hisal
+<span class="token keyword">left</span> <span class="token keyword">join</span>
+    emp <span class="token number">e1</span>
+<span class="token keyword">on</span>
+    <span class="token number">e</span><span class="token punctuation">.</span>mgr <span class="token operator">=</span> <span class="token number">e1</span><span class="token punctuation">.</span>empno<span class="token punctuation">;</span></code></pre>
+<p>结果：</p>
+<blockquote>
+<p>+——–+————+——-+——-+<br>    | 员工      | dname      | grade | 领导    |<br>    +——–+————+——-+——-+<br>    | SMITH  | RESEARCH   |     1 | FORD  |<br>    | ALLEN  | SALES      |     3 | BLAKE |<br>    | WARD   | SALES      |     2 | BLAKE |<br>    | JONES  | RESEARCH   |     4 | KING  |<br>    | MARTIN | SALES      |     2 | BLAKE |<br>    | BLAKE  | SALES      |     4 | KING  |<br>    | CLARK  | ACCOUNTING |     4 | KING  |<br>    | SCOTT  | RESEARCH   |     4 | JONES |<br>    | KING   | ACCOUNTING |     5 | NULL  |<br>    | TURNER | SALES      |     3 | BLAKE |<br>    | ADAMS  | RESEARCH   |     1 | SCOTT |<br>    | JAMES  | SALES      |     1 | BLAKE |<br>    | FORD   | RESEARCH   |     4 | JONES |<br>    | MILLER | ACCOUNTING |     2 | CLARK |<br>    +——–+————+——-+——-+</p>
+</blockquote>
+<h2 id="9-子查询"><a href="#9-子查询" class="headerlink" title="9.子查询"></a>9.子查询</h2><h3 id="9-1-什么是子查询"><a href="#9-1-什么是子查询" class="headerlink" title="9-1.什么是子查询"></a>9-1.什么是子查询</h3><p>select语句当中<strong>嵌套</strong>select语句，被嵌套的select语句是子查询。</p>
+<p>子查询可以出现在以下位置：</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span>
+     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword">select</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+<span class="token keyword">from</span>
+     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword">select</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+<span class="token keyword">where</span>
+     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token keyword">select</span><span class="token punctuation">)</span><span class="token punctuation">.</span></code></pre>
+<h3 id="9-2-where子句中使用子查询"><a href="#9-2-where子句中使用子查询" class="headerlink" title="9-2.where子句中使用子查询"></a>9-2.where子句中使用子查询</h3><p>案例：找出高于平均薪资的员工信息。</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> sal <span class="token operator">></span> <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
+<p><strong>注意</strong>：错误的写法，where后面不能直接使用分组函数。</p>
+<p>分为两步：</p>
+<ol>
+<li><p>找出平均薪资</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span></code></pre>
+</li>
+<li><p>where过滤</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> sal <span class="token operator">></span> <span class="token number">2073</span><span class="token punctuation">;</span></code></pre>
+</li>
+</ol>
+<p>将以上两步合为一步：</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp <span class="token keyword">where</span> sal <span class="token operator">></span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="9-3-from后面嵌套子查询"><a href="#9-3-from后面嵌套子查询" class="headerlink" title="9-3.from后面嵌套子查询"></a>9-3.from后面嵌套子查询</h3><p>案例：找出每个部门平均薪水的等级。</p>
+<p>第一步：找出每个部门平均薪水（按照部门编号分组，求sal的平均值）</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">from</span> emp <span class="token keyword">group</span> <span class="token keyword">by</span> deptno<span class="token punctuation">;</span></code></pre>
+<p>结果：</p>
+<blockquote>
+<p>+——–+————-+<br>| deptno | avgsal      |<br>+——–+————-+<br>|     10 | 2916.666667 |<br>|     20 | 2175.000000 |<br>|     30 | 1566.666667 |<br>+——–+————-+</p>
+</blockquote>
+<p>第二步：将以上的查询结果当做临时表t，让t表和salgrade s表连接，条件是：t.avgsal between s.losal and s.hisal</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span>
+    t<span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span>s<span class="token punctuation">.</span>grade
+<span class="token keyword">from</span>
+    <span class="token punctuation">(</span><span class="token keyword">select</span> deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">from</span> emp <span class="token keyword">group</span> <span class="token keyword">by</span> deptno<span class="token punctuation">)</span> t
+<span class="token keyword">join</span>
+    salgrade s
+<span class="token keyword">on</span>
+    t<span class="token punctuation">.</span>avgsal <span class="token operator">between</span> s<span class="token punctuation">.</span>losal <span class="token operator">and</span> s<span class="token punctuation">.</span>hisal</code></pre>
+<p>结果：</p>
+<blockquote>
+<p>+——–+————-+——-+<br>| deptno | avgsal      | grade |<br>+——–+————-+——-+<br>|     30 | 1566.666667 |     3 |<br>|     10 | 2916.666667 |     4 |<br>|     20 | 2175.000000 |     4 |<br>+——–+————-+——-+</p>
+</blockquote>
+<p>案例：找出每个部门平均的薪水等级。</p>
+
             </div>
             <hr/>
 
@@ -1773,7 +1849,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">9.8k</span>&nbsp;字
+                class="white-color">10.4k</span>&nbsp;字
             
             
             
