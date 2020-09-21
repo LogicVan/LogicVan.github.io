@@ -964,10 +964,10 @@
         <div class="col s12 m6 l6" data-aos="fade-up">
             <div class="skillbar">
                 <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #FFEB3B 0%, #FFF176 100%); width: 75%">
+                     style="background: linear-gradient(to right, #FFEB3B 0%, #FFF176 100%); width: 10%">
                     <span>程序设计</span>
                 </div>
-                <div class="skill-bar-percent">75%</div>
+                <div class="skill-bar-percent">10%</div>
             </div>
         </div>
         
@@ -1072,7 +1072,7 @@
 <p>联系我</p>
 <ul>
 <li>QQ：2768716198</li>
-<li>邮箱：<a href="mailto:&#50;&#x37;&#x36;&#56;&#x37;&#49;&#54;&#49;&#x39;&#x38;&#64;&#113;&#x71;&#46;&#99;&#111;&#x6d;">&#50;&#x37;&#x36;&#56;&#x37;&#49;&#54;&#49;&#x39;&#x38;&#64;&#113;&#x71;&#46;&#99;&#111;&#x6d;</a></li>
+<li>邮箱：<a href="mailto:&#x32;&#x37;&#54;&#x38;&#55;&#49;&#54;&#49;&#x39;&#x38;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#x32;&#x37;&#54;&#x38;&#55;&#49;&#54;&#49;&#x39;&#x38;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a></li>
 <li>我的博客：<a href="https://logicvan.github.io/">https://LogicVan.github.io/</a></li>
 <li>CSDN： <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45397620">https://blog.csdn.net/weixin_45397620</a> </li>
 </ul>
@@ -1142,10 +1142,10 @@
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
-            <span id="year">2019</span>
+            <span id="year">2020</span>
             <a href="/about" target="_blank">LogicVan</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1171,6 +1171,50 @@
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "09";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             
