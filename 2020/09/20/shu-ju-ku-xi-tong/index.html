@@ -629,21 +629,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-20
+                    2020-09-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -759,17 +759,27 @@
 <li>描述这些操作所应遵循的约束条件(完整性约束)</li>
 </ul>
 <h2 id="8-什么是关系"><a href="#8-什么是关系" class="headerlink" title="8.什么是关系"></a>8.什么是关系</h2><h3 id="8-1-表的基本构成要素"><a href="#8-1-表的基本构成要素" class="headerlink" title="8-1.表的基本构成要素"></a>8-1.表的基本构成要素</h3><p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9311.png"></p>
-<h3 id="8-2-相关概念"><a href="#8-2-相关概念" class="headerlink" title="8-2.相关概念"></a>8-2.相关概念</h3><ul>
-<li><p>候选码/候选键：关系中的一个属性组，其值能够唯一标识一个元组，若从该属性组中去掉任何一个属性，它就不具有这一性质，这样的属性组称作候选码。</p>
+<h3 id="8-2-相关概念"><a href="#8-2-相关概念" class="headerlink" title="8-2.相关概念"></a>8-2.相关概念</h3><p>我们必须有一种能够区分给定关系中不同的元组的方法。这用它们的属性来表明。也就是说，一个元组的属性值必须是能够唯一区分的。换句话说，一个关系中没有两个元组在所有属性上的取值都相同。</p>
+<ul>
+<li><p><strong>超码</strong>：是一个或多个属性的集合，这些属性的集合可以我们在一个关系中能够唯一标识一个元组。超码中可能包含无关紧要的属性。</p>
+</li>
+<li><p><strong>候选码/候选键</strong>：最小的超码称之为候选码。关系中的一个属性组，其值能够唯一标识一个元组，若从该属性组中去掉任何一个属性，它就不具有这一性质，这样的属性组称作候选码。</p>
 <p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9312.png"></p>
 </li>
-<li><p>主码/主键(Primary Key)：当有多个候选码时，可以选定一个作为主码。DBMS以主码为主要线索管理关系中的各个元组。</p>
+<li><p><strong>主码/主键(Primary Key)**：当有多个候选码时，可以选定一个作为主码。DBMS以主码为主要线索管理关系中的各个元组。</strong>主码应该选择那些值从不或极少变化的属性**。</p>
 </li>
-<li><p>主属性与非主属性：包含在任何一个候选码中的属性被称作主属性，而其他属性被称作非主属性。</p>
+<li><p><strong>主属性与非主属性</strong>：包含在任何一个候选码中的属性被称作主属性，而其他属性被称作非主属性。</p>
 </li>
-<li><p>外码/外键(Foreign Key)：关系R中的一个属性组，它不是R的候选码，但它与另外一个关系S的候选码相对应。</p>
+<li><p>**外码/外键(Foreign Key)**：关系R中的一个属性组，它不是R的候选码，但它与另外一个关系S的候选码相对应。</p>
 </li>
 </ul>
+<h2 id="9-关系数据库"><a href="#9-关系数据库" class="headerlink" title="9.关系数据库"></a>9.关系数据库</h2><p>关系数据库是由表(Table)的集合构成，每个表有唯一的名字。</p>
+<p>一般来说，表中一行代表了一组值之间的联系。</p>
+<p>元组，只是一组值的序列(或列表)。在n个值之间的一种联系可以在数学上用关于这些值的一个n元组(n-tuple)来表示，换言之，n元组就是一个有n个值的元组，它对应表中的一行。</p>
+<p>在关系模型的术语中，<strong>关系</strong>用来指代表，二<strong>元组</strong>用来指代行，类似的，<strong>属性</strong>指代表中的列。</p>
+<p>对于关系的每个属性，都存在一个允许取值的集合，成为该属性的**域(domain)**。</p>
+<h2 id="10-实体关系图-ERD"><a href="#10-实体关系图-ERD" class="headerlink" title="10.实体关系图(ERD)"></a>10.实体关系图(ERD)</h2><p>更多相关视频，请点击：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HC4y1W7w8?p=1">传送门</a></p>
 
             </div>
             <hr/>
@@ -1562,7 +1572,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">9.2k</span>&nbsp;字
+                class="white-color">9.6k</span>&nbsp;字
             
             
             
