@@ -793,11 +793,11 @@
 <li><p><strong>候选码/候选键</strong>：最小的超码称之为候选码。关系中的一个属性组，其值能够唯一标识一个元组，若从该属性组中去掉任何一个属性，它就不具有这一性质，这样的属性组称作候选码。</p>
 <p><img src="/images/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5/%E6%95%B0%E6%8D%AE%E5%BA%9312.png"></p>
 </li>
-<li><p><strong>主码/主键(Primary Key)**：当有多个候选码时，可以选定一个作为主码。DBMS以主码为主要线索管理关系中的各个元组。</strong>主码应该选择那些值从不或极少变化的属性**。</p>
+<li><p><strong>主码/主键(Primary Key)**：当有多个候选码时，可以选定一个作为主码。DBMS以主码为主要线索管理关系中的各个元组。</strong>主码应该选择那些值从不或极少变化的属性**。(no part of a primary key may be null)</p>
 </li>
 <li><p><strong>主属性与非主属性</strong>：包含在任何一个候选码中的属性被称作主属性，而其他属性被称作非主属性。</p>
 </li>
-<li><p>**外码/外键(Foreign Key)**：关系R中的一个属性组，它不是R的候选码，但它与另外一个关系S的候选码相对应。</p>
+<li><p>**外码/外键(Foreign Key)**：关系R中的一个属性组，它不是R的候选码，但它与另外一个关系S的候选码相对应。primary key of one table that has been placed into another table to  create a common attribute </p>
 </li>
 </ul>
 <h2 id="11-关系数据库"><a href="#11-关系数据库" class="headerlink" title="11.关系数据库"></a>11.关系数据库</h2><p>关系数据库是由表(Table)的集合构成，每个表有唯一的名字。</p>
