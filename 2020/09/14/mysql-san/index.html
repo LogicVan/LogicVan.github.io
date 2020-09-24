@@ -640,14 +640,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.2k
+                    4.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    21 分
                 </div>
                 
 
@@ -1254,6 +1254,39 @@
 <blockquote>
 <p>mysql&gt; select * from t_student;<br>+——+———-+——+————+————+<br>| no   | name     | sex  | classno    | birth      |<br>+——+———-+——+————+————+<br>| NULL | zhangsan | 1    | NULL       | NULL       |<br>|    1 | jack     | 0    | gaosan2ban | 1986-10-23 |<br>|    3 | rose     | 1    | gaosi2ban  | 1952-12-14 |<br>|    4 | laotie   | 1    | gaosi2ban  | 1955-12-14 |<br>+——+———-+——+————+————+</p>
 </blockquote>
+<h2 id="14-表的复制"><a href="#14-表的复制" class="headerlink" title="14.表的复制"></a>14.表的复制</h2><p>语法格式：</p>
+<blockquote>
+<p>create table 表名 as select语句;</p>
+<p>将查询结果当做表创建出来。</p>
+<p>比如：</p>
+<p>create table emp1 as select * from emp;</p>
+<p>将后面的查询结果当做一张新表emp1，创建出来。</p>
+</blockquote>
+<h2 id="15-将查询结果插入表中"><a href="#15-将查询结果插入表中" class="headerlink" title="15.将查询结果插入表中"></a>15.将查询结果插入表中</h2><blockquote>
+<p>mysql&gt; insert into dept1 select * from dept;<br>mysql&gt; select * from dept1;<br>+——–+————+———-+<br>| DEPTNO | DNAME      | LOC      |<br>+——–+————+———-+<br>|     10 | ACCOUNTING | NEW YORK |<br>|     20 | RESEARCH   | DALLAS   |<br>|     30 | SALES      | CHICAGO  |<br>|     40 | OPERATIONS | BOSTON   |<br>|     10 | ACCOUNTING | NEW YORK |<br>|     20 | RESEARCH   | DALLAS   |<br>|     30 | SALES      | CHICAGO  |<br>|     40 | OPERATIONS | BOSTON   |<br>+——–+————+———-+</p>
+</blockquote>
+<h2 id="16-修改数据update"><a href="#16-修改数据update" class="headerlink" title="16.修改数据update"></a>16.修改数据update</h2><h3 id="16-1-语法格式："><a href="#16-1-语法格式：" class="headerlink" title="16-1.语法格式："></a>16-1.语法格式：</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">update</span> 表名 <span class="token keyword">set</span> 字段名<span class="token number">1</span><span class="token operator">=</span>值<span class="token number">1</span><span class="token punctuation">,</span>字段名<span class="token number">2</span><span class="token operator">=</span>值<span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">where</span> 条件<span class="token punctuation">;</span></code></pre>
+<p><strong>注意</strong>：没有where条件，整张表数据全部更新；字段与字段之间用 ‘ , ‘ 连接，不用 ‘ and ‘ 。</p>
+<p>案例：将部门10的LOC修改为SHANGHAI，将部门名称修改为RENSHIBU</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">update</span> dept1 <span class="token keyword">set</span> loc <span class="token operator">=</span> <span class="token string">'SHANGHAI'</span><span class="token punctuation">,</span> dname <span class="token operator">=</span> <span class="token string">'RENSHIBU'</span> <span class="token keyword">where</span> deptno <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>mysql&gt; select * from dept1;<br>+——–+————+———-+<br>| DEPTNO | DNAME      | LOC      |<br>+——–+————+———-+<br>|     10 | RENSHIBU   | SHANGHAI |<br>|     20 | RESEARCH   | DALLAS   |<br>|     30 | SALES      | CHICAGO  |<br>|     40 | OPERATIONS | BOSTON   |<br>|     10 | RENSHIBU   | SHANGHAI |<br>|     20 | RESEARCH   | DALLAS   |<br>|     30 | SALES      | CHICAGO  |<br>|     40 | OPERATIONS | BOSTON   |<br>+——–+————+———-+</p>
+</blockquote>
+<h3 id="16-2-更新所有记录"><a href="#16-2-更新所有记录" class="headerlink" title="16-2.更新所有记录"></a>16-2.更新所有记录</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">update</span> dept1 <span class="token keyword">set</span> loc <span class="token operator">=</span> <span class="token string">'x'</span><span class="token punctuation">,</span> dname <span class="token operator">=</span> <span class="token string">'y'</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>mysql&gt; select * from dept1;<br>+——–+——-+——+<br>| DEPTNO | DNAME | LOC  |<br>+——–+——-+——+<br>|     10 | y     | x    |<br>|     20 | y     | x    |<br>|     30 | y     | x    |<br>|     40 | y     | x    |<br>|     10 | y     | x    |<br>|     20 | y     | x    |<br>|     30 | y     | x    |<br>|     40 | y     | x    |<br>+——–+——-+——+</p>
+</blockquote>
+<h2 id="17-删除数据"><a href="#17-删除数据" class="headerlink" title="17.删除数据"></a>17.删除数据</h2><p>语法格式：</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">delete</span> <span class="token keyword">from</span> 表名 <span class="token keyword">where</span> 条件<span class="token punctuation">;</span></code></pre>
+<p><strong>注意</strong>：没有where条件，则全部删除</p>
+<p>删除10部门数据？</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">delete</span> <span class="token keyword">from</span> dept1 <span class="token keyword">where</span> deptno <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span></code></pre>
+<p>删除大表中的数据（<strong>重点</strong>）</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">truncate</span> <span class="token keyword">table</span> 表名<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*表被截断，不可回滚。永久丢失。*/</span> </code></pre>
+<p>删除表</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> 表名<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*这个通用。*/</span> 
+<span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> 表名<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*oracle不支持这种写法。*/</span>  </code></pre>
+<h2 id="18-总结"><a href="#18-总结" class="headerlink" title="18.总结"></a>18.总结</h2><p>对于表结构的修改，这里不讲了，大家使用工具完成即可，因为在实际开发中表一旦设计好之后，对表结构的修改是很少的，修改表结构就是对之前的设计进行了否定，即使需要修改表结构，我们也可以直接使用工具操作。修改表结构的语句不会出现在Java代码当中。出现在java代码当中的sql包括：insert delete update select（这些都是表中的数据操作。）</p>
 
             </div>
             <hr/>
@@ -2052,7 +2085,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.4k</span>&nbsp;字
+                class="white-color">12.9k</span>&nbsp;字
             
             
             
