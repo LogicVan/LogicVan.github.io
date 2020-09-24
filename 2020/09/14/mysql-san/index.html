@@ -633,21 +633,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-23
+                    2020-09-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    4.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    19 分
                 </div>
                 
 
@@ -1154,6 +1154,106 @@
 <span class="token keyword">int</span> pageSize <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 每页显示10条</span>
 
 <span class="token function">limit</span> <span class="token punctuation">(</span>pageNo <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> pageSize<span class="token punctuation">,</span> pageSize</code></pre>
+<h2 id="12-表的创建"><a href="#12-表的创建" class="headerlink" title="12.表的创建"></a>12.表的创建</h2><h3 id="12-1-语法格式"><a href="#12-1-语法格式" class="headerlink" title="12-1.语法格式"></a>12-1.语法格式</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> 表名<span class="token punctuation">(</span>
+    字段名<span class="token number">1</span> 数据类型<span class="token punctuation">,</span>
+    字段名<span class="token number">2</span> 数据类型<span class="token punctuation">,</span>
+    字段名<span class="token number">3</span> 数据类型<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="12-2-MySQL中字段的数据类型-常见的"><a href="#12-2-MySQL中字段的数据类型-常见的" class="headerlink" title="12-2.MySQL中字段的数据类型(常见的)"></a>12-2.MySQL中字段的数据类型(常见的)</h3><ul>
+<li>int——整数型(java中的int)</li>
+<li>bigint——长整型(java中的long)</li>
+<li>float——浮点型(java中的float double)</li>
+<li>char——定长字符串(String)</li>
+<li>varchar——可变长字符串(StringBuffer/StringBuilder)</li>
+<li>date——日期类型 （对应Java中的java.sql.Date类型）</li>
+<li>BLOB——二进制大对象（存储图片、视频等流媒体信息），Binary Large OBject ，（对应java中的Object）</li>
+<li>CLOB——字符大对象（存储较大文本，比如，可以存储4G的字符），Character Large OBject，（对应java中的Object）</li>
+</ul>
+<p><strong>注意</strong>：</p>
+<ol>
+<li><p>char和varchar怎么选择？</p>
+<p>答：在实际的开发中，当某个字段中的数据长度不发生改变的时候，是定长的，例如：性别、生日等都是采用char；当一个字段的数据长度不确定，例如：简介、姓名等都是采用varchar。</p>
+</li>
+<li><p>BLOB和CLOB类型的使用？</p>
+<p>假设有一个电影表: t_movie</p>
+<table>
+<thead>
+<tr>
+<th align="center">id(int)</th>
+<th align="center">name(varchar)</th>
+<th align="center">playtime(date/char)</th>
+<th align="center">haibao(BLOB)</th>
+<th align="center">history(CLOB)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">蜘蛛侠</td>
+<td align="center">2020-10-10</td>
+<td align="center">图片型海报</td>
+<td align="center">电影简介</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>海报用insert语句插不进去，必须使用java中的IO流，才能将图片放到表当中。<strong>但是</strong>，用的不多，数据库太珍贵了，一般将图片，声音放到硬盘上，再将硬盘上的地址存入数据库中。<strong>但是</strong>，图片只有1k，或更小，比如qq头像。</p>
+</li>
+<li><p>表名在数据库当中一般建议以：t_或者tbl_开始。</p>
+</li>
+<li><p>char类型的效率高于varchar，char类型不需要做运算，不需要判断传过来多少长度的字符串。底层不会做if语句判断，而varchar这种智能型字符串在底层会做if语句判断。</p>
+</li>
+</ol>
+<h3 id="12-3-创建一个学生表"><a href="#12-3-创建一个学生表" class="headerlink" title="12-3.创建一个学生表"></a>12-3.创建一个学生表</h3><blockquote>
+<p>学生信息包括：<br>    学号、姓名、性别、班级编号、生日<br>    学号：bigint<br>    姓名：varchar<br>    性别：char<br>    班级编号：int<br>    生日：char</p>
+</blockquote>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> t_student<span class="token punctuation">(</span>
+    <span class="token keyword">no</span> <span class="token keyword">bigint</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    sex char<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    classno <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    birth char<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="13-insert语句插入数据"><a href="#13-insert语句插入数据" class="headerlink" title="13.insert语句插入数据"></a>13.insert语句插入数据</h2><h3 id="13-1-语法格式"><a href="#13-1-语法格式" class="headerlink" title="13-1.语法格式"></a>13-1.语法格式</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> 表名<span class="token punctuation">(</span>字段名<span class="token number">1</span><span class="token punctuation">,</span>字段名<span class="token number">2</span><span class="token punctuation">,</span>字段名<span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span>值<span class="token number">1</span><span class="token punctuation">,</span>值<span class="token number">2</span><span class="token punctuation">,</span>值<span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></code></pre>
+<p>要求：字段的数量和值的数量相同，并且数据类型要对应相同。</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> t_student<span class="token punctuation">(</span><span class="token keyword">no</span><span class="token punctuation">,</span>name<span class="token punctuation">,</span>sex<span class="token punctuation">,</span>classno<span class="token punctuation">,</span>birth<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'zhangsan'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">,</span><span class="token string">'gaosan1ban'</span><span class="token punctuation">,</span><span class="token string">'1950-10-12'</span><span class="token punctuation">)</span></code></pre>
+<blockquote>
+<p>mysql&gt; select * from t_student;<br>+——+———-+——+————+————+<br>| no   | name     | sex  | classno    | birth      |<br>+——+———-+——+————+————+<br>|    1 | zhangsan | 1    | gaosan1ban | 1950-10-12 |<br>+——+———-+——+————+————+</p>
+</blockquote>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> t_student<span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'wangwu'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*除name字段之外，剩下的所有字段自动插入NULL。*/</span></code></pre>
+<blockquote>
+<p>mysql&gt; select * from t_student;<br>+——+———-+——+————+————+<br>| no   | name     | sex  | classno    | birth      |<br>+——+———-+——+————+————+<br>|    1 | zhangsan | 1    | gaosan1ban | 1950-10-12 |<br>|    2 | lisi     | 1    | gaosan1ban | 1950-10-12 |<br>| NULL | wangwu   | NULL | NULL       | NULL       |<br>+——+———-+——+————+————+</p>
+</blockquote>
+<p><strong>注意</strong>：</p>
+<p>当一条insert语句执行成功之后，表格当中必然会多一行记录。即使多的这一行记录当中某些字段是NULL，后期也没有办法在执行insert语句插入数据了，只能使用update进行更新。</p>
+<h3 id="13-2-删表"><a href="#13-2-删表" class="headerlink" title="13-2.删表"></a>13-2.删表</h3><blockquote>
+<p>drop table if exists t_student; /<em>当这个表存在的话删除</em>/</p>
+</blockquote>
+<h3 id="13-3-默认值default"><a href="#13-3-默认值default" class="headerlink" title="13-3.默认值default"></a>13-3.默认值default</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> t_student<span class="token punctuation">(</span>
+    <span class="token keyword">no</span> <span class="token keyword">bigint</span><span class="token punctuation">,</span>
+    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    sex char<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">/*给性别默认值'1'*/</span>
+    classno <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    birth char<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> t_student<span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'zhangsan'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>mysql&gt; select * from t_student;<br>+——+———-+——+———+——-+<br>| no   | name     | sex  | classno | birth |<br>+——+———-+——+———+——-+<br>| NULL | zhangsan | 1    | NULL    | NULL  |<br>+——+———-+——+———+——-+</p>
+</blockquote>
+<h3 id="13-4-省略"><a href="#13-4-省略" class="headerlink" title="13-4.省略"></a>13-4.省略</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> t_student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'jack'</span><span class="token punctuation">,</span><span class="token string">'0'</span><span class="token punctuation">,</span><span class="token string">'gaosan2ban'</span><span class="token punctuation">,</span><span class="token string">'1986-10-23'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">/*字段可以省略不写，但是后面的value对数量和顺序都有要求*/</span></code></pre>
+<h3 id="13-5-一次插入多行数据"><a href="#13-5-一次插入多行数据" class="headerlink" title="13-5.一次插入多行数据"></a>13-5.一次插入多行数据</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> 
+    t_student<span class="token punctuation">(</span><span class="token keyword">no</span><span class="token punctuation">,</span>name<span class="token punctuation">,</span>sex<span class="token punctuation">,</span>classno<span class="token punctuation">,</span>birth<span class="token punctuation">)</span> 
+<span class="token keyword">values</span>
+    <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token string">'rose'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">,</span><span class="token string">'gaosi2ban'</span><span class="token punctuation">,</span><span class="token string">'1952-12-14'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token string">'laotie'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">,</span><span class="token string">'gaosi2ban'</span><span class="token punctuation">,</span><span class="token string">'1955-12-14'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>mysql&gt; select * from t_student;<br>+——+———-+——+————+————+<br>| no   | name     | sex  | classno    | birth      |<br>+——+———-+——+————+————+<br>| NULL | zhangsan | 1    | NULL       | NULL       |<br>|    1 | jack     | 0    | gaosan2ban | 1986-10-23 |<br>|    3 | rose     | 1    | gaosi2ban  | 1952-12-14 |<br>|    4 | laotie   | 1    | gaosi2ban  | 1955-12-14 |<br>+——+———-+——+————+————+</p>
+</blockquote>
 
             </div>
             <hr/>
@@ -1952,7 +2052,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.5k</span>&nbsp;字
+                class="white-color">12.4k</span>&nbsp;字
             
             
             
