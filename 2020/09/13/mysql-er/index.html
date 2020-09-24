@@ -633,7 +633,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-21
+                    2020-09-24
                 </div>
                 
 
@@ -775,15 +775,13 @@
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>comm<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span></code></pre>
 <p>结果：</p>
 <blockquote>
-<pre><code>+-------------+</code></pre>
-<p>| count(comm) |<br>+————-+<br>|           4 |<br>+————-+</p>
+<p>+————-+<br>| count(comm) |<br>+————-+<br>|           4 |<br>+————-+</p>
 </blockquote>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>comm<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">//select sum(comm) from emp where comm is not null; 不需要额外添加这个过滤条件。sum函数自动忽略NULL。</span></code></pre>
 <p>结果：</p>
 <blockquote>
-<pre><code>+-----------+</code></pre>
-<p>| sum(comm) |<br>+———–+<br>|   2200.00 |<br>+———–+</p>
+<p>+———–+<br>| sum(comm) |<br>+———–+<br>|   2200.00 |<br>+———–+</p>
 </blockquote>
 <p>找出工资高于平均工资的员工？</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> ename<span class="token punctuation">,</span>sal <span class="token keyword">from</span> emp <span class="token keyword">where</span> sal <span class="token operator">></span> <span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//ERROR 1111 (HY000): Invalid use of group function</span></code></pre>
