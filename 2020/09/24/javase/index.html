@@ -629,14 +629,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-24
+                    2020-09-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    499
                 </div>
                 
 
@@ -658,7 +658,32 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="JDK、JRE、JVM"><a href="#JDK、JRE、JVM" class="headerlink" title="JDK、JRE、JVM"></a>JDK、JRE、JVM</h2><ul>
+<li>JDK：Java开发工具箱</li>
+<li>JRE：java运行环境</li>
+<li>JVM：java虚拟机</li>
+</ul>
+<p>JDK包括JRE，JRE包括JVM。</p>
+<p>JVM是不能独立安装的，JRE和JDK都是可以独立安装的。有单独的JDK安装包，也有单独的JRE安装包，没有单独的JVM安装包。</p>
+<p>安装JDK的时候，JRE就自动安装了，同时JRE内部的JVM也就自动安装了。安装JRE的时候，JVM也就自动安装了。</p>
+<p><strong>问题1</strong>：假设你在软件公司开发了一个新的软件，现在要去客户那边给客户把项目部署一下，把项目跑起来，你需要安装JDK吗？</p>
+<p><strong>答</strong>：只需要安装JRE就行了。JRE体积很小，安装非常便捷快速。</p>
+<p><strong>问题2</strong>：为什么安装JDK的时候会自带一个JRE？</p>
+<p><strong>答</strong>：因为java程序员开发完程序之后，要测试这个程序，让这个程序运行起来，需要JRE。所以JDK安装的时候内部自带一个JRE。</p>
+<h2 id="Java的加载与执行（理论比较重要）"><a href="#Java的加载与执行（理论比较重要）" class="headerlink" title="Java的加载与执行（理论比较重要）"></a>Java的加载与执行（理论比较重要）</h2><p>java程序非常重要的两个阶段：</p>
+<ul>
+<li>编译阶段</li>
+<li>运行阶段</li>
+</ul>
+<p><strong>注意</strong>：java程序员直接编写的java代码（普通文本）是无法执行被JVM识别的。java程序员编写的java代码这种普通文本必须经过一个编译，将这个“普通文本代码”变成“字节码”，JVM能够识别“字节码”。java代码这种普通文本变成字节码的过程，被称为：编译。</p>
+<p><strong>问题1</strong>：编译阶段和运行阶段可以在不同的操作系统上完成吗？</p>
+<p><strong>答</strong>：在windows上编译，编译之后生成了“字节码”，把“字节码”放到linux上运行，完全可以。因为Java是跨平台的，可以做到一次编写到处运行。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="关于计算机存储单位"><a href="#关于计算机存储单位" class="headerlink" title="关于计算机存储单位"></a>关于计算机存储单位</h3><p>计算机只能识别二进制。（1001101100…）</p>
+<p>1字节 = 8bit（8比特）即 1byte = 8bit，1bit就是一个1或0。</p>
+<blockquote>
+<p>1KB = 1024byte<br>1MB = 1024KB<br>1GB = 1024MB<br>1TB = 1024GB</p>
+</blockquote>
+
             </div>
             <hr/>
 
@@ -1170,7 +1195,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java笔记
+                            Javase笔记(基础版)
                         
                     </div>
                     <div class="publish-info">
@@ -1450,7 +1475,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.9k</span>&nbsp;字
+                class="white-color">13.6k</span>&nbsp;字
             
             
             
