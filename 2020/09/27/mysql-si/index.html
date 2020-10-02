@@ -633,21 +633,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-28
+                    2020-10-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    9 分
                 </div>
                 
 
@@ -662,7 +662,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-约束"><a href="#1-约束" class="headerlink" title="1.约束"></a>1.约束</h2><h3 id="1-1-定义及分类"><a href="#1-1-定义及分类" class="headerlink" title="1-1.定义及分类"></a>1-1.定义及分类</h3><p>在创建表的时候，可以给表的字段添加相应的约束，添加约束的目的是为了保证表中数据的合法性、有效性、完整性。</p>
+                <h2 id="1-约束-Constraint"><a href="#1-约束-Constraint" class="headerlink" title="1.约束(Constraint)"></a>1.约束(Constraint)</h2><h3 id="1-1-定义及分类"><a href="#1-1-定义及分类" class="headerlink" title="1-1.定义及分类"></a>1-1.定义及分类</h3><p>在创建表的时候，可以给表的字段添加相应的约束，添加约束的目的是为了保证表中数据的合法性、有效性、完整性。</p>
 <p>常见的约束：</p>
 <ul>
 <li>非空约束(not null)：约束的字段不能为NULL</li>
@@ -731,7 +731,7 @@
 <span class="token comment" spellcheck="true">---------------------------------------------------------------------------------</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user<span class="token punctuation">;</span></code></pre>
 <blockquote>
-<p>+—-+———-+————+<br>| id | username | email         |<br>+—-+———-+————+<br>|  1 | zs       | <a href="mailto:&#122;&#115;&#x40;&#x31;&#50;&#x33;&#46;&#x63;&#x6f;&#109;">&#122;&#115;&#x40;&#x31;&#50;&#x33;&#46;&#x63;&#x6f;&#109;</a>   |<br>|  2 | ls        | <a href="mailto:&#108;&#115;&#x40;&#49;&#x32;&#51;&#x2e;&#x63;&#111;&#x6d;">&#108;&#115;&#x40;&#49;&#x32;&#51;&#x2e;&#x63;&#111;&#x6d;</a>    |<br>|  3 | ww      | <a href="mailto:&#x77;&#119;&#x40;&#x31;&#50;&#51;&#x2e;&#x63;&#111;&#109;">&#x77;&#119;&#x40;&#x31;&#50;&#51;&#x2e;&#x63;&#111;&#109;</a> |<br>+—-+———-+————+</p>
+<p>+—-+———-+————+<br>| id | username | email         |<br>+—-+———-+————+<br>|  1 | zs       | <a href="mailto:&#x7a;&#115;&#64;&#49;&#50;&#x33;&#x2e;&#x63;&#x6f;&#109;">&#x7a;&#115;&#64;&#49;&#50;&#x33;&#x2e;&#x63;&#x6f;&#109;</a>   |<br>|  2 | ls        | <a href="mailto:&#108;&#x73;&#64;&#49;&#50;&#51;&#46;&#x63;&#111;&#x6d;">&#108;&#x73;&#64;&#49;&#50;&#51;&#46;&#x63;&#111;&#x6d;</a>    |<br>|  3 | ww      | <a href="mailto:&#119;&#119;&#64;&#x31;&#x32;&#51;&#46;&#99;&#111;&#109;">&#119;&#119;&#64;&#x31;&#x32;&#51;&#46;&#99;&#111;&#109;</a> |<br>+—-+———-+————+</p>
 </blockquote>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>id<span class="token punctuation">,</span>username<span class="token punctuation">,</span>email<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'jack'</span><span class="token punctuation">,</span><span class="token string">'jack@123.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <blockquote>
@@ -801,6 +801,108 @@
 <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><strong>提示</strong>：Oracle当中也提供了一个自增机制，叫做：序列（sequence）对象。</p>
+<h2 id="2-事务-Transaction"><a href="#2-事务-Transaction" class="headerlink" title="2.事务(Transaction)"></a>2.事务(Transaction)</h2><h3 id="2-1-什么是事务"><a href="#2-1-什么是事务" class="headerlink" title="2-1.什么是事务"></a>2-1.什么是事务</h3><p>一个事务是一个<strong>完整</strong>的<strong>业务逻辑单元</strong>，不可再分。</p>
+<blockquote>
+<p>比如：银行账户转账，从A账户向B账户转账10000.需要执行两条update语句：<br>update t_act set balance = balance - 10000 where actno = ‘act-001’;<br>update t_act set balance = balance + 10000 where actno = ‘act-002’;</p>
+</blockquote>
+<p>以上两条DML语句必须<strong>同时成功</strong>，或者<strong>同时失败</strong>，不允许出现一条成功，一条失败。</p>
+<p>要想保证以上的两条DML语句同时成功或者同时失败，那么就需要使用数据库的“事务机制”。</p>
+<p><strong>注意</strong>：和事务相关的语句只有DML语句(insert delete update)，因为它们这三个语句都是和数据库表当中的“数据”相关的。而事务的存在是为了保证<strong>数据</strong>的完整性，安全性。</p>
+<p><strong>问题</strong>：假设所有的业务都能使用1条DML语句搞定，还需要事务机制吗？</p>
+<p><strong>答</strong>：不需要事务。但实际情况不是这样的，通常一个“事儿（事务【业务】）”需要多条DML语句共同联合完成。</p>
+<p><img src="/images/MySQL/%E4%BA%8B%E5%8A%A101.png"></p>
+<p>提交事务：commit；回滚事务：rollback。</p>
+<blockquote>
+<p>事务中，还有 save point 语句，即保存点，相当于游戏里的存档，当执行rollback时，不再重头开始，而是从保存点开始回滚事务。</p>
+</blockquote>
+<h3 id="2-2-事务四大特性ACID"><a href="#2-2-事务四大特性ACID" class="headerlink" title="2-2.事务四大特性ACID"></a>2-2.事务四大特性ACID</h3><ul>
+<li>A：原子性，即事务是最小的工作单元，不可再分。</li>
+<li>C: 一致性，即事务必须保证多条DML语句同时成功或者同时失败。</li>
+<li>I：隔离性，即事务A与事务B之间具有隔离。</li>
+<li>D：持久性，即最终数据必须持久化到硬盘文件中，事务才算成功的结束。</li>
+</ul>
+<h3 id="2-3-事务之间的隔离性"><a href="#2-3-事务之间的隔离性" class="headerlink" title="2-3.事务之间的隔离性"></a>2-3.事务之间的隔离性</h3><p>事务隔离性存在隔离级别，<strong>理论上</strong>隔离级别包括4个：</p>
+<ul>
+<li><p>第一级别：<strong>读未提交</strong>(read uncommitted) </p>
+<p>对方事务还没有提交，我们当前事务可以读取到对方未提交的数据。读未提交存在脏读(Dirty Read)现象，表示读到了脏的数据。</p>
+</li>
+<li><p>第二级别：<strong>读已提交</strong>(read committed)</p>
+<p>对方事务提交之后的数据我方可以读取到。这种隔离级别<strong>解决了脏读现象</strong>。读已提交存在的问题是：不可重复读。</p>
+</li>
+<li><p>第三级别：<strong>可重复读</strong>(repeatable read)</p>
+<p>这种隔离级别<strong>解决了不可重复读问题</strong>。这种隔离级别存在的问题是：读取到的数据是幻象。</p>
+</li>
+<li><p>第四级别：<strong>序列化读/串行化读</strong>(serializable)</p>
+<p>解决了所有问题。但是，效率低，需要事务排队。</p>
+</li>
+</ul>
+<blockquote>
+<p>oracle数据库默认的隔离级别是：读已提交。<br>mysql数据库默认的隔离级别是：可重复读。</p>
+</blockquote>
+<h3 id="2-4-演示事务"><a href="#2-4-演示事务" class="headerlink" title="2-4.演示事务"></a>2-4.演示事务</h3><p>MySQL事务默认情况下是自动提交的。</p>
+<blockquote>
+<p>什么是自动提交？只要执行任意一条DML语句则提交一次。</p>
+</blockquote>
+<p>怎么关闭自动提交？</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">start</span> <span class="token keyword">transaction</span><span class="token punctuation">;</span></code></pre>
+<h4 id="2-4-1-准备表"><a href="#2-4-1-准备表" class="headerlink" title="2-4-1.准备表"></a>2-4-1.准备表</h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> t_user<span class="token punctuation">;</span>
+creat <span class="token keyword">table</span> t_use<span class="token punctuation">(</span>
+    id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token keyword">auto_increment</span><span class="token punctuation">;</span>
+    username <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span></code></pre>
+<h4 id="2-4-2-演示一"><a href="#2-4-2-演示一" class="headerlink" title="2-4-2.演示一"></a>2-4-2.演示一</h4><p>MySQL中的事务是支持<strong>自动提交</strong>的，只要执行一条DML，则提交一次。</p>
+<pre class=" language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'zs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>Query OK, 1 row affected (0.03 sec)</p>
+</blockquote>
+<pre class=" language-SQL"><code class="language-SQL">mysql> select * from t_user;</code></pre>
+<blockquote>
+<p>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | zs       |<br>+—-+———-+<br>1 row in set (0.00 sec)</p>
+</blockquote>
+<pre class=" language-SQL"><code class="language-SQL">mysql> rollback; /*回滚事务*/</code></pre>
+<blockquote>
+<p>Query OK, 0 rows affected (0.00 sec)</p>
+</blockquote>
+<pre class=" language-SQL"><code class="language-SQL">mysql> select * from t_user;</code></pre>
+<blockquote>
+<p>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | zs       |<br>+—-+———-+<br>1 row in set (0.00 sec)</p>
+</blockquote>
+<p>上述演示一中，MySQL没有关闭自动提交机制，所以即使使用rollback，进行回滚事务，也是没用的</p>
+<h4 id="2-4-3-演示二"><a href="#2-4-3-演示二" class="headerlink" title="2-4-3.演示二"></a>2-4-3.演示二</h4><pre class=" language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">start</span> <span class="token keyword">transaction</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*使用start transaction;关闭自动提交机制，标志一个事务开启了*/</span></code></pre>
+<pre class=" language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'lisi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'wangwu'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | zs       |<br>|  2 | lisi     |<br>|  3 | wangwu   |<br>+—-+———-+<br>3 rows in set (0.00 sec)</p>
+</blockquote>
+<pre class=" language-SQL"><code class="language-SQL">mysql> rollback; /*回滚事务*/
+mysql> select * from t_user;</code></pre>
+<blockquote>
+<p>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | zs       |<br>+—-+———-+<br>1 row in set (0.00 sec)</p>
+</blockquote>
+<p>此时数据回滚了，只显示了一条记录。</p>
+<h4 id="2-4-4-演示三"><a href="#2-4-4-演示三" class="headerlink" title="2-4-4.演示三"></a>2-4-4.演示三</h4><pre class=" language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">start</span> <span class="token keyword">transaction</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*演示二中的rollback事务已经结束，还得重新写这一行*/</span>
+<span class="token comment" spellcheck="true">---------------------------------------------------------------------------------</span>
+mysql<span class="token operator">></span> <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'wangwu'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'rose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'jack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*1*/</span>
+<span class="token comment" spellcheck="true">---------------------------------------------------------------------------------</span>
+mysql<span class="token operator">></span> <span class="token keyword">commit</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*提交，已经将数据持续化到硬盘里了*/</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*2*/</span>
+<span class="token comment" spellcheck="true">---------------------------------------------------------------------------------</span>
+mysql<span class="token operator">></span> <span class="token keyword">rollback</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*回滚到上一次的提交点，相当于没用*/</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*3*/</span></code></pre>
+<blockquote>
+<p>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | zs       |<br>|  4 | wangwu   |<br>|  5 | rose     |<br>|  6 | jack     |<br>+—-+———-+<br>4 rows in set (0.00 sec) —1</p>
+</blockquote>
+<blockquote>
+<p>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | zs       |<br>|  4 | wangwu   |<br>|  5 | rose     |<br>|  6 | jack     |<br>+—-+———-+<br>4 rows in set (0.00 sec) —2</p>
+</blockquote>
+<blockquote>
+<p>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | zs       |<br>|  4 | wangwu   |<br>|  5 | rose     |<br>|  6 | jack     |<br>+—-+———-+<br>4 rows in set (0.00 sec) —3</p>
+</blockquote>
+<p>id属性使用 auto-incremant机制，自增的2,3在之前用过了。</p>
 
             </div>
             <hr/>
@@ -1599,7 +1701,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17k</span>&nbsp;字
+                class="white-color">18.2k</span>&nbsp;字
             
             
             
