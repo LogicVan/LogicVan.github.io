@@ -36,7 +36,7 @@
 body {
     background-color: #eaeaea;
 
-	background: url('http://pic1.win4000.com/wallpaper/2020-09-11/5f5b2d05056ca.jpg');
+	background: url('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2497703279,2908953882&fm=26&gp=0.jpg');
 	background-attachment: fixed;
 	margin: 0;
 
@@ -2174,7 +2174,7 @@ footer .copy-right {
 
 /* 滚动条 */
 ::-webkit-scrollbar-thumb {
-    background-color: #FF2A68;
+    background-color: #f07a9b;
     background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.4) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.4) 75%,transparent 75%,transparent);
     border-radius: 3em;
 }

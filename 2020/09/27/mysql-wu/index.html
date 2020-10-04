@@ -633,21 +633,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-01
+                    2020-10-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    12 分
                 </div>
                 
 
@@ -662,7 +662,63 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="数据库三范式-重点，面试常问"><a href="#数据库三范式-重点，面试常问" class="headerlink" title="数据库三范式(重点，面试常问)"></a>数据库三范式(重点，面试常问)</h2><h3 id="什么是设计范式"><a href="#什么是设计范式" class="headerlink" title="什么是设计范式"></a>什么是设计范式</h3><p>设计表的依据。按照这个三范式设计的表不会出现数据冗余。</p>
+                <h2 id="索引-index"><a href="#索引-index" class="headerlink" title="索引(index)"></a>索引(index)</h2><h3 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h3><p>索引就相当于一本书的目录，通过目录可以快速的找到对应的资源。</p>
+<p>在数据库方面，查询一张表的时候有两种检索方式：</p>
+<ul>
+<li>全表扫描</li>
+<li>根据索引检索，效率很高(最根本的原理是缩小了扫描的范围)</li>
+</ul>
+<p>索引虽然可以提高检索效率，但是不能随意的添加索引，因为索引也是数据库当中的对象，也需要数据库不断的维护。是有维护成本的。</p>
+<p>比如，表中的数据经常被修改，这样就不适合添加索引，因为数据一旦修改，索引需要<strong>重新排序(主要）</strong>，进行维护。</p>
+<p>例如：</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> ename<span class="token punctuation">,</span>sal <span class="token keyword">from</span> emp <span class="token keyword">where</span> ename <span class="token operator">=</span> <span class="token string">'SMITH'</span><span class="token punctuation">;</span></code></pre>
+<p>当ename字段上没有添加索引的时候，以上sql语句会进行全表扫描，扫描ename字段中所有的值。</p>
+<p>当ename字段上添加索引的时候，以上sql语句会根据索引扫描，快速定位。</p>
+<h3 id="何时添加索引-条件"><a href="#何时添加索引-条件" class="headerlink" title="何时添加索引(条件)"></a>何时添加索引(条件)</h3><ul>
+<li>数据量庞大（根据客户的需求，根据线上的环境）</li>
+<li>该字段很少的DML操作（因为字段进行修改操作，索引也需要维护）</li>
+<li>该字段经常出现在where子句中（经常根据哪个字段查询）</li>
+</ul>
+<p><strong>注意</strong>：<strong>主键</strong>和<strong>具有unique约束</strong>的字段自动会添加索引。因此，根据主键查询效率较高，尽量根据主键检索。</p>
+<h3 id="SQL语句的执行计划"><a href="#SQL语句的执行计划" class="headerlink" title="SQL语句的执行计划"></a>SQL语句的执行计划</h3><pre class=" language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">explain</span> <span class="token keyword">select</span> ename<span class="token punctuation">,</span>sal <span class="token keyword">from</span> emp <span class="token keyword">where</span> sal <span class="token operator">=</span> <span class="token number">5000</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+—-+———–+——-+——+————-+——+———+——+——+———–+<br>|id |select_type |table |<strong>type</strong>| possible_keys |key  |key_len |ref  |<strong>rows</strong>|Extra |<br>+—-+———–+——-+——+————-+——+———+——+——+———–+<br>|1 | SIMPLE | emp  |<strong>ALL</strong>| NULL| NULL | NULL| NULL |<strong>14</strong>| Using where |<br>+—-+———–+——-+——+————-+——+———+——+——+———–+</p>
+</blockquote>
+<p>给薪资sal字段添加索引：</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">index</span> emp_sal_index <span class="token keyword">on</span> emp<span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+—-+———–+——-+——+————-+————-+———+——-+——+———–+<br>|id |select_type|table|<strong>type</strong>| possible_keys| key| key_len| ref |<strong>rows</strong>| Extra|<br>+—-+———–+——-+——+————-+————-+———+——-+——+———–+<br>|1 |SIMPLE |emp |<strong>ref</strong>|emp_sal_index |emp_sal_index | 9| const |<strong>1</strong>|Using where|<br>+—-+———–+——-+——+————-+————-+———+——-+——+———–+</p>
+</blockquote>
+<h3 id="索引底层原理"><a href="#索引底层原理" class="headerlink" title="索引底层原理"></a>索引底层原理</h3><p><strong>索引底层采用的数据结构是：B + Tree</strong></p>
+<p><img src="/images/MySQL/%E7%B4%A2%E5%BC%9501.png"></p>
+<p>通过B Tree缩小扫描范围，底层索引进行了排序，分区，索引会携带数据在表中的“物理地址”，最终通过索引检索到数据之后，获取到关联的物理地址，通过物理地址定位表中的数据，效率是最高的。</p>
+<blockquote>
+<p>select ename from emp where ename = ‘SMITH’;<br>通过索引转换为：<br>select ename from emp where 物理地址 = 0x3;</p>
+</blockquote>
+<h3 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h3><ul>
+<li>单一索引：给单个字段添加索引</li>
+<li>复合索引: 给多个字段联合起来添加1个索引</li>
+<li>主键索引：主键上会自动添加索引</li>
+<li>唯一索引：有unique约束的字段上会自动添加索引</li>
+<li>……</li>
+</ul>
+<h3 id="索引失效"><a href="#索引失效" class="headerlink" title="索引失效"></a>索引失效</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> ename <span class="token keyword">from</span> emp <span class="token keyword">where</span> ename <span class="token operator">like</span> <span class="token string">'%A%'</span><span class="token punctuation">;</span></code></pre>
+<p>模糊查询的时候，第一个通配符使用的是%，这个时候索引是失效的。</p>
+<h2 id="视图-view"><a href="#视图-view" class="headerlink" title="视图(view)"></a>视图(view)</h2><h3 id="什么是视图"><a href="#什么是视图" class="headerlink" title="什么是视图"></a>什么是视图</h3><p>站在不同的角度去看到数据。（同一张表的数据，通过不同的角度去看待）</p>
+<h3 id="怎么创建-删除视图"><a href="#怎么创建-删除视图" class="headerlink" title="怎么创建 / 删除视图"></a>怎么创建 / 删除视图</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">view</span> myview <span class="token keyword">as</span> <span class="token keyword">select</span> empno<span class="token punctuation">,</span>ename <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
+<span class="token keyword">drop</span> <span class="token keyword">view</span> myview<span class="token punctuation">;</span></code></pre>
+<p><strong>注意</strong>：只有DQL语句才能以视图对象的方式创建出来。</p>
+<h3 id="面向视图操作"><a href="#面向视图操作" class="headerlink" title="面向视图操作"></a>面向视图操作</h3><p>对视图进行增删改查，会<strong>影响</strong>到原表数据。（通过视图影响原表数据的，不是直接操作的原表），可以对视图进行CRUD操作。</p>
+<pre class=" language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> myview<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+——-+——–+<br>| empno | ename  |<br>+——-+——–+<br>|  7369 | SMITH  |<br>|  7499 | ALLEN  |<br>|  7521 | WARD   |<br>|  7566 | JONES  |<br>|  7654 | MARTIN |<br>|  7698 | BLAKE  |<br>|  7782 | CLARK  |<br>|  7788 | SCOTT  |<br>|  7839 | KING   |<br>|  7844 | TURNER |<br>|  7876 | ADAMS  |<br>|  7900 | JAMES  |<br>|  7902 | FORD   |<br>|  7934 | MILLER |<br>+——-+——–+</p>
+</blockquote>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> emp_bak <span class="token keyword">as</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span>
+<span class="token keyword">create</span> <span class="token keyword">view</span> myview1 <span class="token keyword">as</span> <span class="token keyword">select</span> empno<span class="token punctuation">,</span>ename<span class="token punctuation">,</span>sal <span class="token keyword">from</span> emp_bak<span class="token punctuation">;</span>
+<span class="token keyword">update</span> myview1 <span class="token keyword">set</span> ename<span class="token operator">=</span><span class="token string">'hehe'</span><span class="token punctuation">,</span>sal<span class="token operator">=</span><span class="token number">1</span> <span class="token keyword">where</span> empno <span class="token operator">=</span> <span class="token number">7369</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*通过视图修改原表数据*/</span> 
+<span class="token keyword">delete</span> <span class="token keyword">from</span> myview1 <span class="token keyword">where</span> empno <span class="token operator">=</span> <span class="token number">7369</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/*通过视图删除原表数据*/</span>  </code></pre>
+<h3 id="视图的作用"><a href="#视图的作用" class="headerlink" title="视图的作用"></a>视图的作用</h3><p>视图可以隐藏表的实现细节。保密级别较高的系统，数据库只对外提供相关的视图，java程序员只对视图对象进行CRUD。</p>
+<h2 id="数据库三范式-重点，面试常问"><a href="#数据库三范式-重点，面试常问" class="headerlink" title="数据库三范式(重点，面试常问)"></a>数据库三范式(重点，面试常问)</h2><h3 id="什么是设计范式"><a href="#什么是设计范式" class="headerlink" title="什么是设计范式"></a>什么是设计范式</h3><p>设计表的依据。按照这个三范式设计的表不会出现数据冗余。</p>
 <blockquote>
 <p> <strong>规范化</strong></p>
 <p>一个低一级的关系模式通过模式分解可以转化为若干个高一级范式的关系模式的集合，这个过程叫做规范化。</p>
@@ -689,17 +745,17 @@
 <tbody><tr>
 <td>1001</td>
 <td>张三</td>
-<td><a href="mailto:&#122;&#115;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#122;&#115;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a>，1371234567</td>
+<td><a href="mailto:&#x7a;&#x73;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#x7a;&#x73;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a>，1371234567</td>
 </tr>
 <tr>
 <td>1002</td>
 <td>李四</td>
-<td><a href="mailto:&#108;&#x73;&#x40;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#108;&#x73;&#x40;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a>，1381234567</td>
+<td><a href="mailto:&#108;&#115;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#108;&#115;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;</a>，1381234567</td>
 </tr>
 <tr>
 <td>1003</td>
 <td>王五</td>
-<td><a href="mailto:&#119;&#119;&#x40;&#x31;&#54;&#x33;&#46;&#x63;&#111;&#109;">&#119;&#119;&#x40;&#x31;&#54;&#x33;&#46;&#x63;&#111;&#109;</a>，1391234567</td>
+<td><a href="mailto:&#119;&#x77;&#x40;&#x31;&#x36;&#51;&#46;&#x63;&#111;&#x6d;">&#119;&#x77;&#x40;&#x31;&#x36;&#51;&#46;&#x63;&#111;&#x6d;</a>，1391234567</td>
 </tr>
 </tbody></table>
 <p>出现的问题：</p>
@@ -720,19 +776,19 @@
 <tbody><tr>
 <td>1001</td>
 <td>张三</td>
-<td><a href="mailto:&#x7a;&#115;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x7a;&#115;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#122;&#x73;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#122;&#x73;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a></td>
 <td>1371234567</td>
 </tr>
 <tr>
 <td>1002</td>
 <td>李四</td>
-<td><a href="mailto:&#x6c;&#x73;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#x6c;&#x73;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#108;&#x73;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#108;&#x73;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a></td>
 <td>1381234567</td>
 </tr>
 <tr>
 <td>1003</td>
 <td>王五</td>
-<td><a href="mailto:&#119;&#119;&#x40;&#49;&#54;&#x33;&#46;&#99;&#x6f;&#x6d;">&#119;&#119;&#x40;&#49;&#54;&#x33;&#46;&#99;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#119;&#x77;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#109;">&#119;&#x77;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#109;</a></td>
 <td>1391234567</td>
 </tr>
 </tbody></table>
@@ -1522,30 +1578,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/09/27/mysql-wu/">
+                <a href="/2020/10/04/testfordatabase/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="MySQL(五)">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="TestForDatabase">
                         
-                        <span class="card-title">MySQL(五)</span>
+                        <span class="card-title">TestForDatabase</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL笔记(第五弹)：索引，视图和三范式
+                            MySQL34道练习及解析
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-27
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-04
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1558,7 +1613,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1827,7 +1881,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.2k</span>&nbsp;字
+                class="white-color">19.3k</span>&nbsp;字
             
             
             
