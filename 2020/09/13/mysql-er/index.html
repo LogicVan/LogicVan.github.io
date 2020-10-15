@@ -633,7 +633,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-28
+                    2020-10-12
                 </div>
                 
 
@@ -751,7 +751,14 @@
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>                        <span class="token number">4</span>
 
 <span class="token comment" spellcheck="true">//order by是最后执行的。</span></code></pre>
-<h2 id="3-分组函数"><a href="#3-分组函数" class="headerlink" title="3.分组函数"></a>3.分组函数</h2><p><strong>count 计数<br>sum 求和<br>avg 平均值<br>max 最大值<br>min 最小值</strong><br>记住：所有的分组函数都是对“某一组”数据进行操作的。</p>
+<h2 id="3-分组函数"><a href="#3-分组函数" class="headerlink" title="3.分组函数"></a>3.分组函数</h2><ul>
+<li><strong>count</strong> 计数</li>
+<li><strong>sum</strong> 求和</li>
+<li><strong>avg</strong> 平均值</li>
+<li><strong>max</strong> 最大值</li>
+<li><strong>min</strong> 最小值</li>
+</ul>
+<p>记住：所有的分组函数都是对“某一组”数据进行操作的。</p>
 <p>找出工资总和？</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">sum</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">from</span> emp<span class="token punctuation">;</span></code></pre>
 <p>找出最高工资？</p>
@@ -829,7 +836,9 @@
 <blockquote>
 <p>+———-+———–+<br>| max(sal) | job       |<br>+———-+———–+<br>|  3000.00 | ANALYST   |<br>|  1300.00 | CLERK     |<br>|  2975.00 | MANAGER   |<br>|  5000.00 | PRESIDENT |<br>|  1600.00 | SALESMAN  |<br>+———-+———–+</p>
 </blockquote>
-<p><strong>注意</strong>：分组函数一般都会和group by联合使用，这也是为什么它被称为分组函数的原因。<br>    并且任何一个分组函数（count sum avg max min）都是在group by语句执行结束之后才会执行的。<br>    当一条SQL语句没有group by的话，整张表的数据会自成一组。</p>
+<p><strong>注意</strong>：分组函数一般都会和group by联合使用，这也是为什么它被称为分组函数的原因。</p>
+<p>并且任何一个分组函数（count sum avg max min）都是在group by语句执行结束之后才会执行的。</p>
+<p>当一条SQL语句没有group by的话，整张表的数据会自成一组。</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> ename<span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span><span class="token punctuation">,</span>job <span class="token keyword">from</span> emp <span class="token keyword">group</span> <span class="token keyword">by</span> job<span class="token punctuation">;</span></code></pre>
 <p>以上在mysql当中，查询结果是有的，但是结果没有意义，在Oracle数据库当中会报错。语法错误。<br>Oracle的语法规则比MySQL语法规则严谨。<br>记住一个规则：当一条语句中有group by的话，select后面只能跟分组函数和参与分组的字段。</p>
 <p>每个工作岗位的平均薪资？</p>
@@ -1389,7 +1398,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL笔记(第三弹)：DQL(3)，DDL和DML
+                            MySQL(第三弹):DQL(3)，DDL和DML
                         
                     </div>
                     <div class="publish-info">
@@ -1442,7 +1451,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL笔记(第一弹)：SQL详述和DQL(1)
+                            MySQL(第一弹):SQL详述和DQL(1)
                         
                     </div>
                     <div class="publish-info">
@@ -1676,7 +1685,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.3k</span>&nbsp;字
+                class="white-color">25.8k</span>&nbsp;字
             
             
             

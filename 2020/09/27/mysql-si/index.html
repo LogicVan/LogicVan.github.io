@@ -633,21 +633,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-02
+                    2020-10-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    14 分
                 </div>
                 
 
@@ -662,7 +662,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-约束-Constraint"><a href="#1-约束-Constraint" class="headerlink" title="1.约束(Constraint)"></a>1.约束(Constraint)</h2><h3 id="1-1-定义及分类"><a href="#1-1-定义及分类" class="headerlink" title="1-1.定义及分类"></a>1-1.定义及分类</h3><p>在创建表的时候，可以给表的字段添加相应的约束，添加约束的目的是为了保证表中数据的合法性、有效性、完整性。</p>
+                <h2 id="1-约束-Constraint"><a href="#1-约束-Constraint" class="headerlink" title="1.约束(Constraint)"></a>1.约束(Constraint)</h2><p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/w_linux/article/details/79655073">MySQL——约束(constraint)详解</a></p>
+<h3 id="1-1-定义及分类"><a href="#1-1-定义及分类" class="headerlink" title="1-1.定义及分类"></a>1-1.定义及分类</h3><p>在创建表的时候，可以给表的字段添加相应的约束，添加约束的目的是为了保证表中数据的合法性、有效性、完整性。</p>
 <p>常见的约束：</p>
 <ul>
 <li>非空约束(not null)：约束的字段不能为NULL</li>
@@ -670,6 +671,21 @@
 <li>主键约束(primary key)：约束的字段既不能为NULL，也不能重复（简称PK）</li>
 <li>外键约束(foreign key)：…（简称FK）</li>
 <li>检查约束(check)：注意Oracle数据库有check约束，但是mysql没有，目前mysql不支持该约束。</li>
+<li>default：默认值。</li>
+</ul>
+<p>添加约束的时机：</p>
+<ul>
+<li>创建表时</li>
+<li>修改表时</li>
+</ul>
+<p>约束的添加分类：</p>
+<ul>
+<li><p>列级约束</p>
+<p>六大约束语法上都支持，但是，外键约束没有效果</p>
+</li>
+<li><p>表级约束</p>
+<p>除了非空，默认，其他的都支持</p>
+</li>
 </ul>
 <h3 id="1-2-非空约束-not-null"><a href="#1-2-非空约束-not-null" class="headerlink" title="1-2.非空约束 not null"></a>1-2.非空约束 not null</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> t_user<span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">---------------------------------------------------------------------------------</span>
@@ -717,12 +733,15 @@
 <p>ERROR 1062 (23000): Duplicate entry ‘111-zs’ for key ‘usercode’</p>
 </blockquote>
 <p><strong>注意</strong>：not null约束只有列级约束。没有表级约束。</p>
+<p><strong>表级约束</strong>：</p>
+<p><img src="%5Cimages%5CMySQL%5C%E7%BA%A6%E6%9D%9F01.png"></p>
 <h3 id="1-4-主键约束"><a href="#1-4-主键约束" class="headerlink" title="1-4.主键约束"></a>1-4.主键约束</h3><h4 id="1-4-1-添加主键约束"><a href="#1-4-1-添加主键约束" class="headerlink" title="1-4-1.添加主键约束"></a>1-4-1.添加主键约束</h4><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> t_user<span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">---------------------------------------------------------------------------------</span>
 <span class="token keyword">create</span> <span class="token keyword">table</span> t_user<span class="token punctuation">(</span>
     id <span class="token keyword">int</span> <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">/*列级约束*/</span> 
     username <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     email <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">/*constraint [键名] primary key(email) 这是完整写法*/</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">---------------------------------------------------------------------------------</span>
 <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>id<span class="token punctuation">,</span>username<span class="token punctuation">,</span>email<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'zs'</span><span class="token punctuation">,</span><span class="token string">'zs@123.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -731,7 +750,7 @@
 <span class="token comment" spellcheck="true">---------------------------------------------------------------------------------</span>
 <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user<span class="token punctuation">;</span></code></pre>
 <blockquote>
-<p>+—-+———-+————+<br>| id | username | email         |<br>+—-+———-+————+<br>|  1 | zs       | <a href="mailto:&#x7a;&#x73;&#x40;&#x31;&#50;&#51;&#x2e;&#x63;&#x6f;&#x6d;">&#x7a;&#x73;&#x40;&#x31;&#50;&#51;&#x2e;&#x63;&#x6f;&#x6d;</a>   |<br>|  2 | ls        | <a href="mailto:&#x6c;&#115;&#x40;&#49;&#x32;&#x33;&#46;&#99;&#x6f;&#109;">&#x6c;&#115;&#x40;&#49;&#x32;&#x33;&#46;&#99;&#x6f;&#109;</a>    |<br>|  3 | ww      | <a href="mailto:&#119;&#x77;&#64;&#x31;&#50;&#x33;&#46;&#x63;&#x6f;&#109;">&#119;&#x77;&#64;&#x31;&#50;&#x33;&#46;&#x63;&#x6f;&#109;</a> |<br>+—-+———-+————+</p>
+<p>+—-+———-+————+<br>| id | username | email         |<br>+—-+———-+————+<br>|  1 | zs       | <a href="mailto:&#x7a;&#x73;&#x40;&#x31;&#x32;&#51;&#46;&#x63;&#x6f;&#109;">&#x7a;&#x73;&#x40;&#x31;&#x32;&#51;&#46;&#x63;&#x6f;&#109;</a>   |<br>|  2 | ls        | <a href="mailto:&#x6c;&#115;&#64;&#49;&#x32;&#x33;&#x2e;&#99;&#111;&#x6d;">&#x6c;&#115;&#64;&#49;&#x32;&#x33;&#x2e;&#99;&#111;&#x6d;</a>    |<br>|  3 | ww      | <a href="mailto:&#119;&#119;&#x40;&#49;&#50;&#x33;&#46;&#99;&#111;&#x6d;">&#119;&#119;&#x40;&#49;&#50;&#x33;&#46;&#99;&#111;&#x6d;</a> |<br>+—-+———-+————+</p>
 </blockquote>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>id<span class="token punctuation">,</span>username<span class="token punctuation">,</span>email<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'jack'</span><span class="token punctuation">,</span><span class="token string">'jack@123.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <blockquote>
@@ -801,6 +820,140 @@
 <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">insert</span> <span class="token keyword">into</span> t_user<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><strong>提示</strong>：Oracle当中也提供了一个自增机制，叫做：序列（sequence）对象。</p>
+<h3 id="1-5-外键约束"><a href="#1-5-外键约束" class="headerlink" title="1-5.外键约束"></a>1-5.外键约束</h3><p>外键约束支持列级约束，但是没有效果。</p>
+<h4 id="1-5-1-相关术语"><a href="#1-5-1-相关术语" class="headerlink" title="1-5-1.相关术语"></a>1-5-1.相关术语</h4><ul>
+<li>外键约束：foreign key</li>
+<li>外键字段：添加有外键约束的字段</li>
+<li>外键字段：添加有外键约束的字段</li>
+</ul>
+<p>要求在从表设置外键关系，从表的外键列的类型和主表的关联列的类型要求是<strong>一致</strong>或<strong>兼容</strong>的，主表的关联列必须是一个key（一般是主键或唯一）。</p>
+<h4 id="1-5-2-业务背景"><a href="#1-5-2-业务背景" class="headerlink" title="1-5-2.业务背景"></a>1-5-2.业务背景</h4><p>案例：请设计数据库表，用来维护学生和班级的信息</p>
+<p>方案一：一张表存储所有数据</p>
+<table>
+<thead>
+<tr>
+<th>no(pk)</th>
+<th>name</th>
+<th>classno</th>
+<th>classname</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>zs</td>
+<td>12</td>
+<td>二中高三1班</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ls</td>
+<td>12</td>
+<td>二中高三1班</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ww</td>
+<td>13</td>
+<td>二中高三2班</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ll</td>
+<td>13</td>
+<td>二中高三2班</td>
+</tr>
+</tbody></table>
+<p><strong>缺点</strong>：数据冗余</p>
+<p>方案二：两张表（班级表和学生表）</p>
+<p>t_class 班级表</p>
+<table>
+<thead>
+<tr>
+<th>cno(pk)</th>
+<th>cname</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12</td>
+<td>二中高三1班</td>
+</tr>
+<tr>
+<td>13</td>
+<td>二中高三2班</td>
+</tr>
+</tbody></table>
+<p>t_student 学生表</p>
+<table>
+<thead>
+<tr>
+<th>sno(pk)</th>
+<th>sname</th>
+<th>classno(该字段添加外键约束fk)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>zs</td>
+<td>12</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ls</td>
+<td>12</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ww</td>
+<td>13</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ll</td>
+<td>13</td>
+</tr>
+</tbody></table>
+<p>将方案二的语句写出来：</p>
+<p>t_student中的classno字段引用t_class表中的cno字段，此时t_student表叫做子表。t_class表叫做父表。</p>
+<p>顺序要求：</p>
+<ul>
+<li>删除数据的时候，先删除子表，再删除父表</li>
+<li>添加数据的时候，先添加父表，在添加子表</li>
+<li>创建表的时候，先创建父表，再创建子表</li>
+<li>删除表的时候，先删除子表，在删除父表</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> t_student<span class="token punctuation">;</span>
+<span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> t_class<span class="token punctuation">;</span>
+
+<span class="token keyword">create</span> <span class="token keyword">table</span> t_class<span class="token punctuation">(</span>
+    cno <span class="token keyword">int</span><span class="token punctuation">,</span>
+    cname <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">(</span>cno<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">create</span> <span class="token keyword">table</span> t_student<span class="token punctuation">(</span>
+    sno <span class="token keyword">int</span><span class="token punctuation">,</span>
+    sname <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    classno <span class="token keyword">int</span><span class="token punctuation">,</span>
+    <span class="token keyword">primary</span> <span class="token keyword">key</span><span class="token punctuation">(</span>sno<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">foreign</span> <span class="token keyword">key</span><span class="token punctuation">(</span>classno<span class="token punctuation">)</span> <span class="token keyword">references</span> t_class<span class="token punctuation">(</span>cno<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">insert</span> <span class="token keyword">into</span> t_class <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token string">'二中高三1班'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> t_class <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token string">'二中高三2班'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">insert</span> <span class="token keyword">into</span> t_student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">'zs'</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">insert</span> <span class="token keyword">into</span> t_student <span class="token keyword">values</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">'ls'</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<p>外键值可以为NULL。</p>
+<p><strong>问题</strong>：外键字段引用其他表的某个字段的时候，被引用的字段必须是主键吗？</p>
+<p><strong>答</strong>：被引用的字段不一定是主键，但至少具有unique约束。</p>
+<h3 id="check约束"><a href="#check约束" class="headerlink" title="check约束"></a>check约束</h3><pre class=" language-sql"><code class="language-sql">gender char<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">check</span><span class="token punctuation">(</span>gender <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token string">'男'</span><span class="token punctuation">,</span><span class="token string">'女'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span></code></pre>
+<h3 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">index</span> <span class="token keyword">from</span> <span class="token punctuation">[</span>表名<span class="token punctuation">]</span></code></pre>
+<p>查看 [表名] 里所有的索引，包括<strong>主键</strong>，<strong>外键</strong>，<strong>唯一</strong>。</p>
+<h3 id="修改表时添加约束"><a href="#修改表时添加约束" class="headerlink" title="修改表时添加约束"></a>修改表时添加约束</h3><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 列级约束</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> <span class="token punctuation">[</span>表名<span class="token punctuation">]</span> <span class="token keyword">modify</span> <span class="token keyword">column</span> <span class="token punctuation">[</span>列名<span class="token punctuation">]</span> 数据类型 <span class="token keyword">default</span> 值<span class="token operator">/</span><span class="token operator">not</span> <span class="token boolean">null</span><span class="token operator">/</span><span class="token keyword">primary</span> <span class="token keyword">key</span>
+<span class="token comment" spellcheck="true">-- 表级约束</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> <span class="token punctuation">[</span>表名<span class="token punctuation">]</span> <span class="token keyword">add</span> 约束类型<span class="token punctuation">(</span>字段名<span class="token punctuation">)</span></code></pre>
 <h2 id="2-事务-Transaction"><a href="#2-事务-Transaction" class="headerlink" title="2.事务(Transaction)"></a>2.事务(Transaction)</h2><h3 id="2-1-什么是事务"><a href="#2-1-什么是事务" class="headerlink" title="2-1.什么是事务"></a>2-1.什么是事务</h3><p>一个事务是一个<strong>完整</strong>的<strong>业务逻辑单元</strong>，不可再分。</p>
 <blockquote>
 <p>比如：银行账户转账，从A账户向B账户转账10000.需要执行两条update语句：<br>update t_act set balance = balance - 10000 where actno = ‘act-001’;<br>update t_act set balance = balance + 10000 where actno = ‘act-002’;</p>
@@ -903,6 +1056,50 @@ mysql<span class="token operator">></span> <span class="token keyword">select</s
 <p>+—-+———-+<br>| id | username |<br>+—-+———-+<br>|  1 | zs       |<br>|  4 | wangwu   |<br>|  5 | rose     |<br>|  6 | jack     |<br>+—-+———-+<br>4 rows in set (0.00 sec) —3</p>
 </blockquote>
 <p>id属性使用 auto-incremant机制，自增的2,3在之前用过了。</p>
+<h2 id="3-存储引擎（了解）"><a href="#3-存储引擎（了解）" class="headerlink" title="3.存储引擎（了解）"></a>3.存储引擎（了解）</h2><h3 id="3-1-完整的建表语句"><a href="#3-1-完整的建表语句" class="headerlink" title="3-1.完整的建表语句"></a>3-1.完整的建表语句</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span>t_x<span class="token punctuation">`</span> <span class="token punctuation">(</span>
+    <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token keyword">DEFAULT</span> <span class="token boolean">NULL</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span>    </code></pre>
+<p><strong>注意</strong>：在MySQL当中，凡是标识符是可以使用飘号括起来的。最好别用，不通用。</p>
+<p>从上述的完整的建表语句，可以看出，建表的时候可以指定存储引擎，也可以指定字符集。</p>
+<p>MySQL默认使用的存储引擎是InnoDB方式，默认采用的字符集是UTF8。</p>
+<h3 id="3-2-什么是存储引擎"><a href="#3-2-什么是存储引擎" class="headerlink" title="3-2.什么是存储引擎"></a>3-2.什么是存储引擎</h3><p>存储引擎这个名字只有在MySQL中存在。（Oracle中有对应的机制，但是不叫做存储引擎。Oracle中没有特殊的名字，就是“表的存储方式”）</p>
+<p>mysql支持很多存储引擎，每一个存储引擎都对应了一种不同的存储方式。每一个存储引擎都有自己的优缺点，需要在合适的时机选择合适的存储引擎。</p>
+<h3 id="3-3-查看当前MySQL支持的存储引擎"><a href="#3-3-查看当前MySQL支持的存储引擎" class="headerlink" title="3-3.查看当前MySQL支持的存储引擎"></a>3-3.查看当前MySQL支持的存储引擎</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">show</span> engines \G</code></pre>
+<h3 id="3-4-常见的存储引擎"><a href="#3-4-常见的存储引擎" class="headerlink" title="3-4.常见的存储引擎"></a>3-4.常见的存储引擎</h3><blockquote>
+<p>Engine: <strong>MyISAM</strong><br> Support: YES<br>Comment: MyISAM storage engine<br>Transactions: NO<br>XA: NO<br> Savepoints: NO</p>
+</blockquote>
+<ul>
+<li>MyISAM这种存储引擎不支持事务</li>
+<li>MySQL最常用的存储引擎，但是这种引擎不是默认的</li>
+<li>MyISAM采用三个文件组织一张表：<ul>
+<li>xxx.frm（存储格式的文件）</li>
+<li>xxx.MYD（存储表中数据的文件）</li>
+<li>xxx.MYI（存储表中索引的文件）</li>
+</ul>
+</li>
+<li>优点：可被压缩，节省存储空间。并且可以转换为只读表，提高检索效率</li>
+<li>缺点：不支持事务</li>
+</ul>
+<blockquote>
+<ul>
+<li>Engine: <strong>InnoDB</strong><br>Support: DEFAULT<br>Comment: Supports transactions, row-level locking, and foreign keys<br>Transactions: YES<br>XA: YES<br>Savepoints: YES</li>
+</ul>
+</blockquote>
+<ul>
+<li>优点：支持事务、行级锁、外键等。这种存储引擎数据的安全得到保障</li>
+<li>表的结构存储在xxx.frm文件中</li>
+<li>数据存储在tablespace这样的表空间中（逻辑概念），无法被压缩，无法转换成只读</li>
+<li>这种InnoDB存储引擎在MySQL数据库崩溃之后提供自动恢复机制</li>
+<li>InnoDB支持级联删除和级联更新</li>
+</ul>
+<blockquote>
+<p>Engine: <strong>MEMORY</strong><br>Support: YES<br>Comment: Hash based, stored in memory, useful for temporary tables<br>Transactions: NO<br>XA: NO<br>Savepoints: NO</p>
+</blockquote>
+<ul>
+<li>缺点：不支持事务。数据容易丢失。因为所有数据和索引都是存储在内存当中的</li>
+<li>优点：查询速度最快</li>
+<li>以前叫做HEPA引擎</li>
+</ul>
 
             </div>
             <hr/>
@@ -1418,7 +1615,7 @@ mysql<span class="token operator">></span> <span class="token keyword">select</s
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL笔记(第五弹)：索引，视图和三范式
+                            MySQL(第五弹):索引，视图和三范式
                         
                     </div>
                     <div class="publish-info">
@@ -1463,9 +1660,9 @@ mysql<span class="token operator">></span> <span class="token keyword">select</s
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="javase">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="JavaSE基础">
                         
-                        <span class="card-title">javase</span>
+                        <span class="card-title">JavaSE基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1701,7 +1898,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.3k</span>&nbsp;字
+                class="white-color">25.8k</span>&nbsp;字
             
             
             

@@ -633,21 +633,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-04
+                    2020-10-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    188
+                    493
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -674,8 +674,35 @@
 <span class="token keyword">join</span> <span class="token punctuation">(</span><span class="token keyword">select</span> deptno<span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">as</span> maxsal <span class="token keyword">from</span> emp <span class="token keyword">group</span> <span class="token keyword">by</span> deptno <span class="token punctuation">)</span> t
 <span class="token keyword">on</span> t<span class="token punctuation">.</span>deptno <span class="token operator">=</span> <span class="token number">e</span><span class="token punctuation">.</span>deptno <span class="token operator">and</span> t<span class="token punctuation">.</span>maxsal <span class="token operator">=</span> <span class="token number">e</span><span class="token punctuation">.</span>sal<span class="token punctuation">;</span></code></pre>
 <h3 id="2、哪些人的薪水在部门的平均薪水之上"><a href="#2、哪些人的薪水在部门的平均薪水之上" class="headerlink" title="2、哪些人的薪水在部门的平均薪水之上"></a>2、哪些人的薪水在部门的平均薪水之上</h3><p><img src="/images/MySQLExercises/2.png"></p>
+<p>第一步：取得每个部门的平均薪水（按照部门编号分组，找出每一组的平均值）</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">as</span> avgsal <span class="token keyword">from</span> emp <span class="token keyword">group</span> <span class="token keyword">by</span> deptno<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+——–+————-+<br>| deptno | avgsal      |<br>+——–+————-+<br>|     20 | 2175.000000 |<br>|     30 | 1566.666667 |<br>|     10 | 2916.666667 |<br>+——–+————-+</p>
+</blockquote>
+<p>第二步：将以上的查询结果当做一张临时表 t，t 和 emp表连接，连接条件是：t.deptno = e.deptno and t.avgsal &lt; e.sal</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token number">e</span><span class="token punctuation">.</span>ename<span class="token punctuation">,</span><span class="token number">e</span><span class="token punctuation">.</span>sal 
+<span class="token keyword">from</span> emp <span class="token number">e</span>
+<span class="token keyword">join</span> <span class="token punctuation">(</span><span class="token keyword">select</span> deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">as</span> avgsal <span class="token keyword">from</span> emp <span class="token keyword">group</span> <span class="token keyword">by</span> deptno <span class="token punctuation">)</span> t
+<span class="token keyword">on</span> t<span class="token punctuation">.</span>deptno <span class="token operator">=</span> <span class="token number">e</span><span class="token punctuation">.</span>deptno <span class="token operator">and</span> t<span class="token punctuation">.</span>avgsal <span class="token operator">&lt;</span> <span class="token number">e</span><span class="token punctuation">.</span>sal<span class="token punctuation">;</span></code></pre>
 <h3 id="3、取得部门中（所有人的）平均的薪水等级"><a href="#3、取得部门中（所有人的）平均的薪水等级" class="headerlink" title="3、取得部门中（所有人的）平均的薪水等级"></a>3、取得部门中（所有人的）平均的薪水等级</h3><p><img src="/images/MySQLExercises/3.png"></p>
-<h3 id="4、不准用组函数（Max），取得最高薪水"><a href="#4、不准用组函数（Max），取得最高薪水" class="headerlink" title="4、不准用组函数（Max），取得最高薪水"></a>4、不准用组函数（Max），取得最高薪水</h3><p><img src="/images/MySQLExercises/4.png"></p>
+<p>第一步：求每一个员工的薪水等级</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token number">e</span><span class="token punctuation">.</span>ename<span class="token punctuation">,</span><span class="token number">e</span><span class="token punctuation">.</span>deptno<span class="token punctuation">,</span><span class="token number">e</span><span class="token punctuation">.</span>sal<span class="token punctuation">,</span>s<span class="token punctuation">.</span>grade
+<span class="token keyword">from</span> emp <span class="token number">e</span>
+<span class="token keyword">join</span> salgrade s
+<span class="token keyword">on</span> <span class="token number">e</span><span class="token punctuation">.</span>sal <span class="token operator">between</span> s<span class="token punctuation">.</span>losal <span class="token operator">and</span> s<span class="token punctuation">.</span>hisal<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+——–+———+——-+——–+<br>| ename  | sal     | grade | deptno |<br>+——–+———+——-+——–+<br>| SMITH  |  800.00 |     1 |     20 |<br>| ALLEN  | 1600.00 |     3 |     30 |<br>| WARD   | 1250.00 |     2 |     30 |<br>| JONES  | 2975.00 |     4 |     20 |<br>| MARTIN | 1250.00 |     2 |     30 |<br>| BLAKE  | 2850.00 |     4 |     30 |<br>| CLARK  | 2450.00 |     4 |     10 |<br>| SCOTT  | 3000.00 |     4 |     20 |<br>| KING   | 5000.00 |     5 |     10 |<br>| TURNER | 1500.00 |     3 |     30 |<br>| ADAMS  | 1100.00 |     1 |     20 |<br>| JAMES  |  950.00 |     1 |     30 |<br>| FORD   | 3000.00 |     4 |     20 |<br>| MILLER | 1300.00 |     2 |     10 |<br>+——–+———+——-+——–+<br>14 rows in set (0.00 sec)</p>
+</blockquote>
+<p>第二步：根据上表，在按照deptno分组，求grade的平均值</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token number">e</span><span class="token punctuation">.</span>deptno<span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>grade<span class="token punctuation">)</span>
+<span class="token keyword">from</span> emp <span class="token number">e</span>
+<span class="token keyword">join</span> salgrade s
+<span class="token keyword">on</span> <span class="token number">e</span><span class="token punctuation">.</span>sal <span class="token operator">between</span> s<span class="token punctuation">.</span>losal <span class="token operator">and</span> s<span class="token punctuation">.</span>hisal
+<span class="token keyword">group</span> <span class="token keyword">by</span> <span class="token number">e</span><span class="token punctuation">.</span>deptno<span class="token punctuation">;</span></code></pre>
+<blockquote>
+<p>+——–+————+<br>| deptno | avg(grade) |<br>+——–+————+<br>|     20 |     2.8000 |<br>|     30 |     2.5000 |<br>|     10 |     3.6667 |<br>+——–+————+<br>3 rows in set (0.00 sec)</p>
+</blockquote>
+<h3 id="4、不用组函数Max，取得最高薪水"><a href="#4、不用组函数Max，取得最高薪水" class="headerlink" title="4、不用组函数Max，取得最高薪水"></a>4、不用组函数Max，取得最高薪水</h3><p><img src="/images/MySQLExercises/4.png"></p>
 
             </div>
             <hr/>
@@ -1175,30 +1202,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/10/04/testfordatabase/">
+                <a href="/2020/10/08/mysql-liu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="TestForDatabase">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="MySQL(六)">
                         
-                        <span class="card-title">TestForDatabase</span>
+                        <span class="card-title">MySQL(六)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL34道练习及解析
+                            MySQL(第六弹):变量，存储过程，函数和流程
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-04
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-08
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1211,7 +1237,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1246,7 +1271,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL笔记(第五弹)：索引，视图和三范式
+                            MySQL(第五弹):索引，视图和三范式
                         
                     </div>
                     <div class="publish-info">
@@ -1480,7 +1505,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.3k</span>&nbsp;字
+                class="white-color">25.8k</span>&nbsp;字
             
             
             
