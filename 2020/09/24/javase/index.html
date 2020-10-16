@@ -701,8 +701,8 @@
     boolean sex;
 &#125;</code></pre>
 <p>以上程序当中 no、name、age、sex 都是属性，它们都是成员变量中的实例变量，所谓实例变量就是对象级别的变量，这些属性要想访问，必须先创建对象才能访问，不能直接通过类去访问，因为每一个学生的学号都是不一样的。没有学生对象，谈何学号！ </p>
-<h2 id="对象的创建和使用"><a href="#对象的创建和使用" class="headerlink" title="对象的创建和使用"></a>对象的创建和使用</h2><h3 id="知识框架"><a href="#知识框架" class="headerlink" title="知识框架"></a>知识框架</h3><p><img src="/images/JavaSE%E5%9F%BA%E7%A1%80/%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8%E7%9B%AE%E6%A0%87.png" alt="对象的创建和使用"></p>
-<h3 id="对象的创建和使用-1"><a href="#对象的创建和使用-1" class="headerlink" title="对象的创建和使用"></a>对象的创建和使用</h3><h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h4><p>一个类是可以创建多个对象的，语法格式：**new 类名()**。</p>
+<h2 id="对象的创建和使用"><a href="#对象的创建和使用" class="headerlink" title="对象的创建和使用"></a>对象的创建和使用</h2><h3 id="知识框架"><a href="#知识框架" class="headerlink" title="知识框架"></a>知识框架</h3><p><img src="https://cdn.jsdelivr.net/gh/LogicVan/LogicVan.github.io/images/JavaSE%E5%9F%BA%E7%A1%80/1.png" alt="对象的创建和使用"></p>
+<h3 id="对象的创建和使用-1"><a href="#对象的创建和使用-1" class="headerlink" title="对象的创建和使用"></a>对象的创建和使用</h3><h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h4><p>一个类是可以创建多个对象的，语法格式：new 类名()。</p>
 <p>比如：</p>
 <pre><code>public class StudentTest &#123;
     public static void main(String[] args) &#123;
@@ -715,7 +715,7 @@
     &#125;
 &#125;</code></pre>
 <p>对于 Student s1 = new Student() 来说，其中 Student 是一种<strong>引用数据类型</strong>，s1 是变量名，new Student() 执行之后是一个 Student 类型的<strong>对象</strong>。 （s1与new Student() 的概念要分清），具体见下图：</p>
-<p><img src="/images/JavaSE%E5%9F%BA%E7%A1%80/%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%BC%95%E7%94%A8.png" alt="对象和引用"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LogicVan/LogicVan.github.io/images/JavaSE%E5%9F%BA%E7%A1%80/2.png" alt="对象和引用"></p>
 <h4 id="对象的使用"><a href="#对象的使用" class="headerlink" title="对象的使用"></a>对象的使用</h4><pre><code>public class StudentTest &#123;
     public static void main(String[] args) &#123;
         //创建一个学生对象
@@ -777,7 +777,7 @@
 <td>null</td>
 </tr>
 </tbody></table>
-<h3 id="深层理解"><a href="#深层理解" class="headerlink" title="深层理解"></a>深层理解</h3><h4 id="java虚拟机（JVM）内存管理"><a href="#java虚拟机（JVM）内存管理" class="headerlink" title="java虚拟机（JVM）内存管理"></a>java虚拟机（JVM）内存管理</h4><p><img src="/images/JavaSE%E5%9F%BA%E7%A1%80/JVM%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86.png" alt="JVM内存管理图"></p>
+<h3 id="深层理解"><a href="#深层理解" class="headerlink" title="深层理解"></a>深层理解</h3><h4 id="java虚拟机（JVM）内存管理"><a href="#java虚拟机（JVM）内存管理" class="headerlink" title="java虚拟机（JVM）内存管理"></a>java虚拟机（JVM）内存管理</h4><p><img src="https://cdn.jsdelivr.net/gh/LogicVan/LogicVan.github.io/images/JavaSE%E5%9F%BA%E7%A1%80/3.png" alt="JVM内存管理图"></p>
 <p>① 程序计数器： </p>
 <ul>
 <li>概念：可以看做当前线程所执行的字节码的行号指示器</li>
