@@ -626,14 +626,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-14
+                    2020-10-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-14
+                    2020-10-18
                 </div>
                 
 
@@ -842,8 +842,8 @@
     dept<span class="token number">.d</span>
 <span class="token keyword">on</span>
     <span class="token number">e</span><span class="token punctuation">.</span>deptno <span class="token operator">=</span> <span class="token number">d</span><span class="token punctuation">.</span>deptno<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//where</span>
-<span class="token comment" spellcheck="true">//    ...</span>
+<span class="token comment" spellcheck="true">-- where</span>
+<span class="token comment" spellcheck="true">-- ...</span>
 </code></pre>
 <p>因为此处是等值连接，正如小标题所述一样，等值连接属于内连接（inner)，所以inner被省略了，但是，带着inner目的是可读性更好一些。</p>
 <p>SQL99语法结构更清晰一些：表的连接条件和后来的where条件分离了。同样达到避免笛卡尔积现象的目的。</p>
@@ -888,7 +888,7 @@
 <span class="token comment" spellcheck="true">/*inner*/</span><span class="token keyword">join</span>
     emp <span class="token number">b</span>
 <span class="token keyword">on</span>
-    <span class="token number">a</span><span class="token punctuation">.</span>mgr <span class="token operator">=</span> <span class="token number">b</span><span class="token punctuation">.</span>empno<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//员工的领导编号 = 领导的员工编号</span></code></pre>
+    <span class="token number">a</span><span class="token punctuation">.</span>mgr <span class="token operator">=</span> <span class="token number">b</span><span class="token punctuation">.</span>empno<span class="token punctuation">;</span><span class="token comment" spellcheck="true">-- 员工的领导编号 = 领导的员工编号</span></code></pre>
 <h2 id="7-外连接"><a href="#7-外连接" class="headerlink" title="7.外连接"></a>7.外连接</h2><h3 id="7-1-与内连接区别"><a href="#7-1-与内连接区别" class="headerlink" title="7-1.与内连接区别"></a>7-1.与内连接区别</h3><ul>
 <li>内连接<ul>
 <li>假设A和B表使用内(inner)连接的话，凡是A表和B表能够匹配上的记录查询出来，这就是内连接。AB两张表没有主副之分，两张表是平等的。</li>
@@ -1266,8 +1266,7 @@
 <p>+——–+————+<br>| ename  | dname      |<br>+——–+————+<br>| SMITH  | RESEARCH   |<br>| ALLEN  | SALES      |<br>| WARD   | SALES      |<br>| JONES  | RESEARCH   |<br>| MARTIN | SALES      |<br>| BLAKE  | SALES      |<br>| CLARK  | ACCOUNTING |<br>| SCOTT  | RESEARCH   |<br>| KING   | ACCOUNTING |<br>| TURNER | SALES      |<br>| ADAMS  | RESEARCH   |<br>| JAMES  | SALES      |<br>| FORD   | RESEARCH   |<br>| MILLER | ACCOUNTING |<br>+——–+————+</p>
 </blockquote>
 <h4 id="仅仅支持标量子查询（尚硅谷）"><a href="#仅仅支持标量子查询（尚硅谷）" class="headerlink" title="仅仅支持标量子查询（尚硅谷）"></a>仅仅支持标量子查询（尚硅谷）</h4><p>案例1：查询每个部门的员工个数？</p>
-<pre class=" language-sql"><code class="language-sql">
-<span class="token keyword">SELECT</span> <span class="token number">d</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token punctuation">(</span>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token number">d</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">,</span><span class="token punctuation">(</span>
     <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span>
     <span class="token keyword">FROM</span> employees <span class="token number">e</span>
     <span class="token keyword">WHERE</span> <span class="token number">e</span><span class="token punctuation">.</span>department_id <span class="token operator">=</span> <span class="token number">d</span><span class="token punctuation">.</span><span class="token punctuation">`</span>department_id<span class="token punctuation">`</span>
@@ -1438,11 +1437,7 @@
 </blockquote>
 <h2 id="14-表的复制"><a href="#14-表的复制" class="headerlink" title="14.表的复制"></a>14.表的复制</h2><p>语法格式：</p>
 <blockquote>
-<p>create table 表名 as select语句;</p>
-<p>将查询结果当做表创建出来。</p>
-<p>比如：</p>
-<p>create table emp1 as select * from emp;</p>
-<p>将后面的查询结果当做一张新表emp1，创建出来。</p>
+<p>create table 表名 as select语句;<br>将查询结果当做表创建出来。<br>比如：<br>create table emp1 as select * from emp;<br>将后面的查询结果当做一张新表emp1，创建出来。</p>
 </blockquote>
 <h2 id="15-将查询结果插入表中"><a href="#15-将查询结果插入表中" class="headerlink" title="15.将查询结果插入表中"></a>15.将查询结果插入表中</h2><blockquote>
 <p>mysql&gt; insert into dept1 select * from dept;<br>mysql&gt; select * from dept1;<br>+——–+————+———-+<br>| DEPTNO | DNAME      | LOC      |<br>+——–+————+———-+<br>|     10 | ACCOUNTING | NEW YORK |<br>|     20 | RESEARCH   | DALLAS   |<br>|     30 | SALES      | CHICAGO  |<br>|     40 | OPERATIONS | BOSTON   |<br>|     10 | ACCOUNTING | NEW YORK |<br>|     20 | RESEARCH   | DALLAS   |<br>|     30 | SALES      | CHICAGO  |<br>|     40 | OPERATIONS | BOSTON   |<br>+——–+————+———-+</p>
@@ -1503,7 +1498,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://LogicVan.github.io/2020/09/14/mysql-san/">http://LogicVan.github.io/2020/09/14/mysql-san/</a>
+                    <a href="http://LogicVan.github.io/2020/10/18/mysql-san/">http://LogicVan.github.io/2020/10/18/mysql-san/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1981,31 +1976,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/09/14/gituse/">
+                <a href="/2020/10/18/mysql-si/">
                     <div class="card-image">
                         
                         
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://cdn.jsdelivr.net/gh/LogicVan/LogicVan.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="Git介绍及使用(更新中)">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://cdn.jsdelivr.net/gh/LogicVan/LogicVan.github.io/medias/featureimages/4.jpg" class="responsive-img" alt="MySQL(四)">
                         
-                        <span class="card-title">Git介绍及使用(更新中)</span>
+                        <span class="card-title">MySQL(四)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git介绍及其使用
+                            MySQL(第四弹):约束，存储引擎和事务
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -2015,8 +2010,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -2030,7 +2029,7 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/13/mysql-er/">
+                <a href="/2020/10/18/mysql-er/">
                     <div class="card-image">
                         
                         
@@ -2047,7 +2046,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
                             </span>
                         <span class="publish-author">
                             
