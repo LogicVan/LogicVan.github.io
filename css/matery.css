@@ -36,7 +36,7 @@
 body {
     background-color: #eaeaea;
 
-	background: url('https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1334347724,45752687&fm=26&gp=0.jpg');
+	background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603095015294&di=d25279d3005103db8411136af6319c38&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201312%2F13%2F20131213151705_VKEcM.jpeg');
 	background-attachment: fixed;
 	margin: 0;
 
@@ -270,7 +270,7 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #f59bc8 0%, #4aabfa 100%);
+    background-image: linear-gradient(to right, #51e977 0%, #4aaaeb 100%);
 }
 
 .text-color {
@@ -2174,12 +2174,12 @@ footer .copy-right {
 
 /* 滚动条 */
 ::-webkit-scrollbar-thumb {
-    background-color: #f07a9b;
+    background-color: #1e57c0;
     background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.4) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.4) 75%,transparent 75%,transparent);
     border-radius: 3em;
 }
 ::-webkit-scrollbar-track {
-    background-color: #ffcacaff;
+    background-color: rgb(43, 164, 245);
     border-radius: 3em;
 }
 ::-webkit-scrollbar {
